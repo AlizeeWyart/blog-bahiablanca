@@ -14,10 +14,10 @@
     seconds -= hours * 60 * 60;
     minutes = Math.floor(seconds / 60);
     seconds -= minutes * 60;
-    days == 1 ? thisEl.find(".timeRefDays").text("day") : thisEl.find(".timeRefDays").text("days");
-    hours == 1 ? thisEl.find(".timeRefHours").text("hour") : thisEl.find(".timeRefHours").text("hours");
+    days == 1 ? thisEl.find(".timeRefDays").text("jour") : thisEl.find(".timeRefDays").text("jours");
+    hours == 1 ? thisEl.find(".timeRefHours").text("heure") : thisEl.find(".timeRefHours").text("heures");
     minutes == 1 ? thisEl.find(".timeRefMinutes").text("minute") : thisEl.find(".timeRefMinutes").text("minutes");
-    seconds == 1 ? thisEl.find(".timeRefSeconds").text("second") : thisEl.find(".timeRefSeconds").text("seconds");
+    seconds == 1 ? thisEl.find(".timeRefSeconds").text("seconde") : thisEl.find(".timeRefSeconds").text("secondes");
     if (r["format"] == "on") {
       days = String(days).length >= 2 ? days : "0" + days;
       hours = String(hours).length >= 2 ? hours : "0" + hours;
@@ -387,20 +387,20 @@ var Digits = function (params) {
 
     // Days
     for (var d = 0; d < days.length; d++) {
-      digits.push(new Digit({ name: ['day', 'day-' + (d + 1)], ready: params.ready, wrapper: params.wrapper, start: parseInt(days[d]) }));
+      digits.push(new Digit({ name: ['jour', 'jour-' + (d + 1)], ready: params.ready, wrapper: params.wrapper, start: parseInt(days[d]) }));
     }
 
     // Hours
-    digits.push(new Digit({ name: ['hour', 'hour-1'], ready: params.ready, wrapper: params.wrapper, start: parseInt(hours[0]), max: 2 }));
-    digits.push(new Digit({ name: ['hour', 'hour-2'], ready: params.ready, wrapper: params.wrapper, start: parseInt(hours[1]), max: 3, group: true }));
+    digits.push(new Digit({ name: ['heure', 'heure-1'], ready: params.ready, wrapper: params.wrapper, start: parseInt(hours[0]), max: 2 }));
+    digits.push(new Digit({ name: ['heure', 'heure-2'], ready: params.ready, wrapper: params.wrapper, start: parseInt(hours[1]), max: 3, group: true }));
 
     // Minutes
     digits.push(new Digit({ name: ['minute', 'minute-1'], ready: params.ready, wrapper: params.wrapper, start: parseInt(minutes[0]), max: 5 }));
     digits.push(new Digit({ name: ['minute', 'minute-2'], ready: params.ready, wrapper: params.wrapper, start: parseInt(minutes[1]) }));
 
     // Seconds
-    digits.push(new Digit({ name: ['second', 'second-1'], ready: params.ready, wrapper: params.wrapper, start: parseInt(seconds[0]), max: 5 }));
-    digits.push(new Digit({ name: ['second', 'second-2'], ready: params.ready, wrapper: params.wrapper, start: parseInt(seconds[1]), play: diff > 0 ? true : false, offset: offset }));
+    digits.push(new Digit({ name: ['seconde', 'seconde-1'], ready: params.ready, wrapper: params.wrapper, start: parseInt(seconds[0]), max: 5 }));
+    digits.push(new Digit({ name: ['seconde', 'seconde-2'], ready: params.ready, wrapper: params.wrapper, start: parseInt(seconds[1]), play: diff > 0 ? true : false, offset: offset }));
 
     // Fire ready event when countdown is not required
     if (diff <= 0) {
@@ -411,10 +411,10 @@ var Digits = function (params) {
     if (params.labels) {
       labels = JS.createElement({ type: 'div', parent: params.wrapper, classes: ['labels'] });
 
-      JS.createElement({ parent: labels, classes: ['label', 'days'], type: 'span' })
-      JS.createElement({ parent: labels, classes: ['label', 'hours'], type: 'span' })
+      JS.createElement({ parent: labels, classes: ['label', 'jours'], type: 'span' })
+      JS.createElement({ parent: labels, classes: ['label', 'heures'], type: 'span' })
       JS.createElement({ parent: labels, classes: ['label', 'minutes'], type: 'span' })
-      JS.createElement({ parent: labels, classes: ['label', 'seconds'], type: 'span' })
+      JS.createElement({ parent: labels, classes: ['label', 'secondes'], type: 'span' })
     }
 
     // Link digits

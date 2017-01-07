@@ -1,5 +1,5 @@
 <div id="countdown">
-  <p id="paragraph-home"><%= @infos[1].content %></p>
+  <%= @infos[1].content.html_safe %>
   <div class="countdown-card">
     <h3><%= @infos[2].content %></h3>
     <div class="time-card">

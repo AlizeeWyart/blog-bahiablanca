@@ -473,7 +473,7 @@ function init () {
   new Digits({
     wrapper: '#example-1',
     mode: 'countdown',
-    to: 'January 31 2017 00:00:00',  // GMT-0500
+    to: 'January 16 2017 00:00:00',  // GMT-0500
     labels: true,
     ready: function () {
       alert("C'est le grand départ de Bahia Blanca !");
@@ -490,5 +490,4 @@ function init () {
 }
 
 
-// GO!
-init();
+

@@ -13,3 +13,10 @@
 @import "components/index";
 @import "pages/index";
 @import "vendor/index";
+
+// FROALA TEXT EDITOR
+@import "froala_editor.min";
+@import "froala_style.min";
+@import "plugins/file.min";
+@import "plugins/emoticons.min";
+@import "plugins/colors.min";

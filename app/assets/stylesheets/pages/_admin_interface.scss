@@ -1,11 +1,28 @@
 $dark-red: #750F19;
 $bahia-red: #9F1723;
+$dark-grey: #434141;
+
+
 
 .wrapper-admin-interface {
   background-color: #f5f5f5;
   min-height: 75vh;
   margin:0;
   padding:0;
+  .edit-btn {
+    background-color: $bahia-red;
+    border: none;
+    color: white;
+    position: absolute;
+    right: 15px;
+    font-size:12px;
+    margin-top: 10px;
+  }
+  .edit-btn:hover {
+    color:black;
+    background-color: $dark-red;
+    color: white;
+  }
   h1 {
     margin:0;
   }
@@ -202,170 +219,92 @@ $bahia-red: #9F1723;
           color:#616668;
         }
       }
-      .startup-logo {
-        flex: 0 0 20%;
-        padding: 0;
-        .logo {
-          width: 100%;
-          height:auto;
-        }
-      }
-      .bloomer-logo {
-        flex: 0 0 20%;
-        padding: 0;
-        .logo {
-          width: 100%;
-          height:auto;
-        }
-      }
+
       .page-description {
         margin-left: 40px;
-        flex: 1 0 70%;
-        padding:20px;
-        position: relative;
-        .edit-btn {
-          position: absolute;
-          right: 20px;
-          font-size: 12px;
-          font-weight: lighter;
-        }
-        .edit-btn:hover {
-          cursor:pointer;
-          color:#FEC300;
-          font-weight:bolder;
-        }
-        .startup-contact-info {
-          margin-top:15px;
-          h4 {
-            font-family: "Muli";
-            font-weight: 100;
-            font-size: 12px;
-            margin-bottom: 6px;
-            color: #04677D;
-            i {
-              margin: 0 20px 0 20px;
-              color:#03414F;
-            }
-          }
-        }
-      }
-      .bloomer-description {
-        margin-left: 40px;
-        flex: 1 0 70%;
-        padding:20px;
-        position: relative;
-        .edit-btn {
-          position: absolute;
-          right: 20px;
-          font-size: 12px;
-          font-weight: lighter;
-        }
-        .edit-btn:hover {
-          cursor:pointer;
-          color:#FEC300;
-          font-weight:bolder;
-        }
-        .bloomer-contact-info {
-          margin-top:15px;
-          h4 {
-            font-family: "Muli";
-            font-weight: 100;
-            font-size: 12px;
-            margin-bottom: 6px;
-            color: #04677D;
-            i {
-              margin: 0 20px 0 20px;
-              color:#03414F;
-            }
-          }
-        }
-      }
-      .startup-photo {
-        flex: 1 0 33%;
-      }
-      .bloomer-photo {
-        flex: 1 0 20%;
-      }
-      .photos {
-          width:100%;
-          height:auto
-      }
-      .startup-team-members {
-        flex: 0 0 45%;
-      }
-      .startup-team-story {
-        flex: 1 0 45%;
-        margin-left:50px;
-      }
-      .more-infos-first {
-        flex: 1 1 45%;
-      }
-      .more-infos {
-        flex: 1 1 45%;
-        margin-left:50px;
-      }
-      .member-card {
+        padding:34px 20px 20px 20px;
         display:flex;
-        .photo-member {
-          flex: 0 0 15%;
+        flex-direction:column;
+        h4 {
+          margin: 0 0 10px 0;
+          text-transform: uppercase;
           text-align: center;
-          .img {
-          width: 60%;
-          height: auto;
-          }
+          padding: 10px;
+          background-color: #F3EAEA;
+          border-radius: 2px;
+          color: $dark-grey;
         }
-        .info-member {
-          flex: 1 0 80%;
-          padding-left: 10px;
-          h2 {
-            font-family: 'Quicksand', sans-serif;
-            font-weight: lighter;
-            font-size: 18px;
-            color: #04677D;
-            border:none;
-            text-align:left;
-            text-transform:none;
-            margin:0;
-            padding:0;
-          }
-          h3 {
-            text-align: left;
-            text-transform: uppercase;
-            font-family: 'Quicksand', sans-serif;
-            font-weight: 300;
-            font-size: 10px;
-            color: rgba(0,0,0,0.59);
-            margin-top: 5px;
-            margin-bottom: 0px;
-          }
-          a {
-            color: #FEC300;
-            font-size:11px;
-            padding-top: 5px;
-            cursor:pointer;
-          }
-          i {
-            margin-right: 5px;
-          }
-          .extra {
-            display:none;
-            opacity:0.6;
-            font-weight: lighter;
-          }
-          a:hover .extra {
-            display: inline-block;
-            font-weight:lighter;
-          }
+        h5 {
+          font-family: 'Quicksand';
+          color: #9F1723;
+          text-align: center;
         }
       }
-      .bloomer-logo {
-        flex: 0 0 20%;
-        padding: 0;
-        .logo {
-          width: 100%;
-          height:auto;
+
+    }
+  }
+  .form-group {
+    margin-bottom: 5px;
+  }
+  .form-control {
+    box-shadow: none;
+    border: none;
+    border-bottom: 2px solid #9F1723;
+    background-color: #F3EAEA;
+    font-family: "Quicksand", sans-serif;
+  }
+  .row-title {
+    margin-left: 40px;
+    background-color: #9F1723;
+    border-radius: 5px 5px 0 0;
+    padding: 10px;
+    text-align: center;
+    h2 {
+      margin: 0;
+      color: white;
+      font-size: 30px;
+      font-weight: lighter;
+      text-transform: none;
+      font-family: "Quicksand", sans-serif;
+      color: white;
+    }
+  }
+  .simple_form {
+    margin-bottom:50px;
+  }
+  .fr-box.fr-basic.fr-top .fr-wrapper {
+      box-shadow:0px 0px 0px white;
+  }
+  .fr-box {
+    .fr-top {
+      box-shadow: 0px 0px white;
+    }
+    .fr-desktop {
+      background-color: #9F1723;
+      border-radius: 3px 3px 0 0;
+      border-top: 0px solid white;
+      button {
+        color:white;
+      }
+    }
+    .fr-wrapper {
+      box-shadow:0px 0px 0px white;
+      .fr-element {
+        border-radius: 0 0 3px 3px;
+        border-bottom: 2px solid #9F1723;
+        background-color:#F3EAEA;
+        box-shadow:0px 0px 0px white;
+        p {
+          color:$dark-grey;
         }
       }
     }
+  }
+  .separator {
+    border: 0.5px solid #9F1723;
+    width: 50%;
+    border-radius: 21px;
+    align-items: center;
+    margin: 30px 25% 20px 25%;
   }
 }

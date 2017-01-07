@@ -32,28 +32,39 @@
       <!-- COMPTE STARTUPS -->
         <div class="content-dashboard" id="startup-info-">
           <!-- logo & main infos -->
+          <div class="row-title">
+            <h2>Modifier la page blog</h2>
+          </div>
           <div class="row-content">
             <div class="content-card page-description">
-              <!-- <h4 class="edit-btn">
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> modifier
-              </h4> -->
-              <h4> Modifier la page "BLOG"</h4>
-              <img src="https://s27.postimg.org/peh646ghf/Capture_d_e_cran_2017_01_07_a_18_18_15.png" style="width:100%"/></a>
-              <button href="/" class="bahia-btn"> Visualiser la page </button>
-              <% @infos.each do |info| %>
-                <%= simple_form_for(info) do |f| %>
-                  <%= f.error_notification %>
-                  <%= f.input :content, label: ' ** ' %>
-                  <%= f.button :submit, 'Modifier' %>
-                <% end %>
-              <% end %>
-            </div>
+              <div class="row-nude">
+                <div class="col-xs-6">
+                  <h4>Le contenu</h4>
+                  <h5>- Titre de la page -</h5>
+                  <%= render partial: "shared/edit_page_info", locals: {info: @infos.first} %>
+                  <h5>- Description -</h5>
+                  <%= render partial: "shared/froala_edit_page_info", locals: {info: @infos[1]} %>
+                  <h5>- Titre du Compte à Rebours -</h5>
+                  <%= render partial: "shared/edit_page_info", locals: {info: @infos[2]} %>
+                </div>
+
+                <div class="col-xs-6" ">
+                  <h4>Preview</h4>
+                  <img src="https://s27.postimg.org/peh646ghf/Capture_d_e_cran_2017_01_07_a_18_18_15.png" style="width:100%"/>
+                  <button href="#" class="btn btn-default edit-btn" style="right: 126px;">Refresh preview </button>
+                  <a href="/" class="btn btn-default edit-btn"> Aller à la page </a>
+                </div>
+              </div>
+
+              <div class="separator"></div>
+
             </div>
           </div>
+        </div>
           <!-- <iframe id="preview-homepage" src="/">
           </iframe> -->
-
-
         </div>
       </div>
     </div>
+
+

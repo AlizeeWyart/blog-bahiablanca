@@ -1,76 +1,27 @@
-<div class="navbar-wagon">
-  <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png" %>
-  <% end %>
-
-  <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-    <!-- Search form -->
-    <form action="" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
-      <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
-    </form>
-
-    <!-- Different navigation if login or not -->
-    <% if user_signed_in? %>
-
-      <!-- Notification -->
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-        <div class="badge-container">
-          <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-blue">3</div>
-        </div>
-      <% end %>
-
-      <!-- Profile picture and dropdown -->
-      <div class="navbar-wagon-item">
-        <div class="dropdown">
-          <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
+<nav class="navbar-bahia" style="border-bottom: 2px solid #9F1723">
+  <div class="container navbar-bahia-container">
+    <div class="navbar-bahia-side left hidden-sm hidden-xs">
+      <!-- Div à récupérer sur site du Wagon -->
+<!--       <a href="#">Femme <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+      <a href="#">Homme <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+      <a href="#">Enfant <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+ -->  <a href="http://www.bahiablanca-artisanat.com">e-shop</a>
+    </div>
+    <div class="logo-bahia-container">
+      <a href="/">
+        <img class="logo-bahia" src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_9000,w_1200,f_auto,q_90/v1/780428/3c85003c1c774eb3be89f15a39066756_urnolg.jpg" alt="">
+      </a>
+    </div>
+    <div class="navbar-bahia-side right hidden-sm hidden-xs">
+      <div class="dropdown-navbar-btn">
+        <a href="/" class="drop-btn">Blog <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+        <div class="dropdown-content">
+          <h2>Notre voyage au Mexique</h2>
+          <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> L'artisanat</a>
+          <br>
+          <a href="#"><i class="fa fa-star" aria-hidden="true"></i> Nos coups de cœur </a>
         </div>
       </div>
-
-    <% else %>
-
-      <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
-    <% end %>
-
-    <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Post stuff"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
-  </div>
-
-  <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
-      </ul>
     </div>
   </div>
-</div>
-
+</nav>

@@ -2,3 +2,84 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+
+a:hover {
+  text-decoration: none;
+  font-weight:bolder;
+}
+
+
+// PHOTO HOMEPAGE
+.homepage-photos {
+  width:100vw;
+  height:100vh;
+  background-image: url('http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_9000,w_1200,f_auto,q_90/v1/780428/jujuclaireyunan_zfiw2q.jpg');
+  background-repeat:no-repeat;
+  background-position: center center;
+  background-size: cover;
+  position:relative;
+  padding:60px 40px 40px 40px;
+  h1 {
+    text-align: center;
+    margin: 0 0 40px 0;
+    color: $red;
+    font-weight: 300;
+  }
+}
+
+// PAGE BLOG HOME
+
+.wrapper-blog-home {
+  padding: 40px;
+  margin-top: 20px;
+
+  .intro-blog {
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content: space-around;
+    .card-photo {
+      flex:0 0 45%;
+      height:30vh;
+      transition: opacity 0.35s, transform 0.35s;
+      padding:50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background:-webkit-linear-gradient(#2c539e 0%,#37AAC6 50%,#2c539e 100%);
+      p {
+        color: white;
+        font-weight: 100;
+        font-family: 'Raleway', sans-serif;
+        text-align: center;
+        opacity:0;
+        transition: opacity 0.35s, transform 0.35s;
+        }
+      h2 {
+        color:white;
+        text-transform:uppercase;
+        text-align:center;
+        transition: opacity 0.35s, transform 0.35s;
+      }
+    }
+    .card-photo:hover p {
+      opacity:1;
+    }
+    .card-photo:hover {
+      outline: 1px solid white;
+      outline-offset: -40px;
+    }
+    #artisanat {
+        background-image: url(http://www.lonelyplanet.fr/sites/default/files/styles/slideshow_destination/public/images_lpi/2014-06-27/fotolia_21517398_subscription_monthly_xl.jpg?itok=Nc5tpUIF);
+        background-position:center center;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+    #visits {
+      background-image: url(http://www.businesstravel.fr/images/stories/destinations/mexique/cholula-mexique.jpg);
+      background-position:center center;
+      background-repeat:no-repeat;
+      background-size:cover;
+    }
+  }
+}

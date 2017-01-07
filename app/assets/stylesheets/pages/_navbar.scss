@@ -1,0 +1,91 @@
+/*// NAVBAR*/
+
+.navbar-bahia {
+  background-color: white;
+  /*padding: 30px 0;*/
+  z-index: 2;
+  position: relative;
+  width:100vw;
+  border-bottom: 1px solid #9F1723;
+}
+
+.navbar-bahia-container {
+  display: flex;
+  height: 70px;
+  align-items: center;
+  justify-content: space-around;
+  width: 90%;
+}
+
+.navbar-bahia-side {
+  flex: 0 0 40%;
+  display: flex;
+  text-transform: uppercase;
+  font-family: 'Raleway', sans-serif;
+  padding-top: 35px;
+  a {
+    color:black;
+  }
+  .dropdown-navbar-btn {
+    position: relative;
+    .dropdown-content {
+      display:none;
+      position: absolute;
+      background-color: white;
+      min-width: 250px;
+      padding: 10px;
+
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+      a {
+        font-size: 13px;
+        padding: 0;
+      }
+      h2 {
+        margin: 0;
+        font-size: 16px;
+        color: #9F1723;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+      a {
+        text-transform: none;
+        padding: 10px;
+      }
+      i {
+        margin-right:5px;
+      }
+    }
+  }
+  .dropdown-navbar-btn:hover .dropdown-content {
+    display:block;
+  }
+}
+
+.navbar-bahia-side a {
+  color:black;
+}
+
+.left {
+  justify-content: flex-end;
+  a {
+    margin-left:20px;
+  }
+}
+.right {
+  justify-content: flex-start;
+  a {
+    margin-right: 20px;
+  }
+}
+
+.logo-bahia-container {
+  flex: 0 0 8%;
+  justify-content: center;
+}
+
+.logo-bahia {
+  position: relative;
+  top: 2px;
+  width: 100%;
+  top: 21px;
+}

@@ -1,0 +1,59 @@
+<div class="wrapper-admin-interface">
+  <!-- MENU -->
+  <div class="menu-left">
+    <!-- SHORT PROFILE  -->
+    <div class="user-profile">
+      <% avatar_url =  "https://cdn4.iconfinder.com/data/icons/linecon/512/photo-512.png" %>
+      <%= image_tag avatar_url, class:"avatar" %>
+      <h2><%= current_user.email %>   </h2>
+    </div>
+    <!-- MON DASHBOARD -->
+    <div class="menu-card active">
+      <h3><i class="fa fa-tachometer" aria-hidden="true"></i> Le Blog</h3>
+    </div>
+  </div>
+  <!-- CONTENU -->
+  <div class="content-right">
+    <div class="title-navbar">
+      <div class="content-title-navbar">
+        <h1 id="title-dashboard">Le Blog</h1>
+        <h2>
+          <%= link_to root_path do %>
+            <i class="fa fa-home" aria-hidden="true"></i>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+          <% end %>
+        </h2>
+      </div>
+    </div>
+    <!--  CONTENU STARTUP -->
+
+      <!-- COMPTE STARTUPS -->
+        <div class="content-dashboard" id="startup-info-">
+          <!-- logo & main infos -->
+          <div class="row-content">
+            <div class="content-card page-description">
+              <!-- <h4 class="edit-btn">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> modifier
+              </h4> -->
+              <h4> Modifier la page "BLOG"</h4>
+              <img src="https://s27.postimg.org/peh646ghf/Capture_d_e_cran_2017_01_07_a_18_18_15.png" style="width:100%"/></a>
+              <button href="/" class="bahia-btn"> Visualiser la page </button>
+              <% @infos.each do |info| %>
+                <%= simple_form_for(info) do |f| %>
+                  <%= f.error_notification %>
+                  <%= f.input :content, label: ' ** ' %>
+                  <%= f.button :submit, 'Modifier' %>
+                <% end %>
+              <% end %>
+            </div>
+            </div>
+          </div>
+          <!-- <iframe id="preview-homepage" src="/">
+          </iframe> -->
+
+
+        </div>
+      </div>
+    </div>

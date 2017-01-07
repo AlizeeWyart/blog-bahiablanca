@@ -1,19 +1,19 @@
+
+<%= render 'shared/navbar' %>
 <div class="homepage-photos">
-   <h1>Découvrez le Mexique avec nous !</h1>
+   <h1><%= @infos.first.content %></h1>
     <%= render 'shared/countdown' %>
 </div>
 
 <div class="wrapper-blog-home">
-
-
   <div class="intro-blog">
     <div class="card-photo" id="artisanat">
-      <h2>Artisanat</h2>
-      <p>Découvrez les artisans du Mexique et les spécificités régionales</p>
+      <h2><%= @infos[3].content %></h2>
+      <p><%= @infos[4].content %></p>
     </div>
     <div class="card-photo" id="visits">
-    <h2>Voyages</h2>
-    <p>Voyagez avec nous en découvrant nos coups de cœurs sur place</p>
+    <h2><%= @infos[5].content %></h2>
+    <p><%= @infos[6].content %></p>
     </div>
   </div>
 </div>

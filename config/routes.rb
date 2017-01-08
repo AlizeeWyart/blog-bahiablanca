@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get "voyages" => "dashboard#voyages"
   end
 
+  get "map" => "pages#map"
   resources :page_infos, only: [:update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

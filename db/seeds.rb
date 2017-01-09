@@ -23,4 +23,23 @@ PageInfo.create(page_id: 1, name: "Content 2e card", content: "Voyagez avec nous
 
 print "Creating user admin..."
 
-User.create(email:"hola@bahiablanca.co", admin:true, password:"Bahiablanca92!")
+User.create(first_name: "Claire", last_name:"Desto", email:"hola@bahiablanca.co", admin:true, password:"Bahiablanca92!")
+
+print "Creating  Article..."
+Article.create(user_id:1, title:"C'est le grand dpart pour Bahia blanca !")
+
+print "Creating  Regions et ses tables de jointure..."
+Region.create(name:"Mexique", code:"MEX-ALL")
+Region.create(name:"Yucatan", code:"MEX-YUC")
+Region.create(name:"Chiapas", code:"MEX-CHP")
+
+Region4a.create(region_id:1, article_id:1)
+Region4a.create(region_id:3, article_id:1)
+
+print "Creating  Categories et ses tables de jointure..."
+Category.create(name:"Notre aventure", code:"AVENTURE")
+Category.create(name:"Voyages", code:"VOYAGE")
+Category.create(name:"Artisanat", code:"ART")
+
+Category4a.create(region_id:1, article_id:1)
+

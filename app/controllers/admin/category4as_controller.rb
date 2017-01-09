@@ -3,10 +3,11 @@ class Admin::Category4asController < ApplicationController
 
   def create
     @category4a = Category4a.new(category4a_params)
+    @article = @category4a.article
     if @category4a.save
-       redirect_to admin_article_path(@category4a.article)
+       redirect_to admin_article_path(@article)
     else
-       render admin_article_path(params[:article_id])
+       redirect_to admin_article_path(@article)
     end
   end
 

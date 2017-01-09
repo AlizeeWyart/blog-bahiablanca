@@ -1,0 +1,7 @@
+<div class="chose-category">
+  <h4>Choississez une catégorie :</h4>
+  <span id="all-categories-selector">tout</span>
+  <% categories.each do |category| %>
+    <span class="category-choice" data-name="<%= category.code %>"><i class="fa fa-tag" aria-hidden="true"></i> <%= category.name %></span>
+  <% end %>
+</div>

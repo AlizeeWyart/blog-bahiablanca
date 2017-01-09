@@ -72,3 +72,13 @@
   </div>
 </div>
 
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $('.froala-simple-editor').froalaEditor({
+      toolbarButtons: [
+          'bold', 'italic', 'underline', 'paragraphFormat', 'formatOL',
+          'formatUL', 'insertHTML', 'undo', 'redo', 'html'
+      ]
+    });
+  <% end %>
+<% end %>

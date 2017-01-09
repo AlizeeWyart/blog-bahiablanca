@@ -6,39 +6,37 @@
       <div id="description-map-box">
         <% if params[:region] %>
         <h3><%= params[:region] %></h3>
-        <% elsif params[:article_id]  %>
-        <h3>Découvez le <%= @regions.first.name %></h3>
         <% else %>
-        <h3>Découvrez une région</h3>
+        <h3><%= @title_region_map.content %></h3>
         <% end %>
       </div>
+      </div>
+      <div style="text-align:center">
+        <span id="all-regions-selector"> toutes les régions </span>
       </div>
        <%= render partial: 'shared/mexico_map' %>
     </div>
     <div class="content-articles">
-<!--       <h1 id="title-region">L'artisanat <#%= @region_name %></h1>
- --> <% if params[:article_id] %>
-      <%= render partial: 'shared/article_show', locals: {article: @article} %>
-      <% else %>
-        <% if params[:region] %>
-          <% if @articles.count == 0 %>
-            Pas d'article pour l'instant !
-          <% else %>
-            <% @articles.each do |article| %>
-              <%= render partial: 'shared/article_miniature', locals: {article: article} %>
-            <% end %>
-          <% end %>
-        <% elsif params[:category] %>
-          <% if @articles.count == 0 %>
-            Pas d'article pour l'instant !
-          <% else %>
-            <% @articles.each do |article| %>
-              <%= render partial: 'shared/article_miniature', locals: {article: article} %>
-            <% end %>
-          <% end %>
+
+      <% if params[:region] || params[:category] %>
+        <% if @articles.count == 0 %>
+          <%= render partial: 'shared/category_selector', locals: {categories: @all_categories} %>
+          <div class="no-article">
+            <h3>Pas d'article pour l'instant !</h3>
+          </div>
         <% else %>
-          <% @all_articles.each do |article| %>
+          <%= render partial: 'shared/category_selector', locals: {categories: @all_categories} %>
+          <% @articles.each do |article| %>
+            <%= link_to article_path(article) do %>
             <%= render partial: 'shared/article_miniature', locals: {article: article} %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <%= render partial: 'shared/category_selector', locals: {categories: @all_categories} %>
+        <% @all_articles.each do |article| %>
+          <%= link_to article_path(article) do %>
+          <%= render partial: 'shared/article_miniature', locals: {article: article} %>
           <% end %>
         <% end %>
       <% end %>
@@ -51,10 +49,6 @@
   <%= javascript_tag do %>
     <% if params[:region] %>
       $('*[data-name="<%= params[:region] %>"]').addClass("state--selected");
-    <% elsif params[:article_id] %>
-      <% @regions.each do |region| %>
-        $('#<%= region.code %>').addClass("state--selected");
-      <% end %>
     <% end %>
 
     $(".map g").mouseover( function(){
@@ -65,10 +59,8 @@
     $(".map g").mouseout(function(){
       <% if params[:region] %>
       $('#description-map-box').html("<h3><%= params[:region] %></h3>");
-      <% elsif params[:article_id]  %>
-      $('#description-map-box').html("<h3>Découvrez le <%= @regions.first.name %></h3>");
       <% else %>
-      $('#description-map-box').html("<h3>Découvrez une région</h3>");
+      $('#description-map-box').html("<h3><%= @title_region_map.content %></h3>");
       <% end %>
     });
 
@@ -77,13 +69,41 @@
       $(this).addClass("state--selected");
       var regionNameh1 = $(this).data("name");
       console.log(regionNameh1);
+      <% if params[:category].nil? %>
       document.location = "/map" + "?region=" + regionNameh1;
+      <% else %>
+      document.location = "/map" + "?region=" + regionNameh1 + "&" + "category=" + "<%= params[:category] %>";
+      <% end %>
     })
 
-    $('.article-miniature').on("click", function(){
-        var article_id = $(this).attr('id');
-        document.location = "/map" + "?article_id=" + article_id;
-    })
+
+      $(".category-choice").on("click", function(){
+        var categoryName = $(this).data("name");
+        console.log(categoryName);
+        <% if params[:region].nil? %>
+          console.log("pas de region sélectionnée");
+          document.location = "/map" + "?category=" + categoryName;
+        <% else %>
+          console.log("<%= params[:region]%> sélectionnée");
+           document.location = "/map" + "?region=" + "<%= params[:region] %>" + "&" + "category=" + categoryName  ;
+        <% end %>
+      });
+
+      $('#all-categories-selector').on("click", function(){
+        <% if params[:region].nil? %>
+          document.location = "/map";
+        <% else %>
+          document.location = "/map" + "?region=" + "<%= params[:region] %>";
+        <% end %>
+      });
+
+      $('#all-regions-selector').on("click", function(){
+        <% if params[:category].nil? %>
+          document.location = "/map";
+        <% else %>
+          document.location = "/map" + "?category=" + "<%= params[:category] %>";
+        <% end %>
+      });
 
   <% end %>
 <% end %>

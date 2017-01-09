@@ -1,0 +1,62 @@
+<div class="wrapper-admin-interface">
+  <!-- MENU -->
+  <%= render partial: 'admin/shared/navbar_admin' %>
+  <!-- NAV BAR DU HAUT -->
+  <div class="content-right">
+    <div class="title-navbar">
+      <div class="content-title-navbar">
+        <h1 id="title-dashboard">Mon profil</h1>
+        <h2>
+          <%= link_to root_path do %>
+            <i class="fa fa-home" aria-hidden="true"></i>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+          <% end %>
+        </h2>
+      </div>
+    </div>
+    <!-- CONTENU HOME PAGE-->
+    <div class="content-dashboard" id="home_page_blog">
+      <!-- logo & main infos -->
+      <div class="row-title">
+        <h2>Editer mon profil</h2>
+      </div>
+      <div class="row-content">
+        <div class="content-card page-description" style="width:100%">
+          <div class="row-nude">
+          <%= simple_form_for(current_user) do |f| %>
+            <%= f.error_notification %>
+            <div class="col-xs-6" style="text-align: right;">
+              <% if current_user.photo? %>
+                <%= cl_image_tag current_user.photo, class:"avatar", style: "width:150px" %>
+              <% end %>
+              <%= f.input :photo, label: false%>
+              <%= f.input :photo_cache, as: :hidden %>
+              <%= f.button :submit, "Modifier", class: "btn btn-default bahia-btn" %>
+              <br>
+            </div>
+            <div class="col-xs-6">
+              <%= f.input :first_name %>
+              <%= f.input :last_name %>
+              <%= f.input :email %>
+            </div>
+          <% end %>
+      </div>
+    </div>
+    <!-- <iframe id="preview-homepage" src="/">
+    </iframe> -->
+    </div>
+  </div>
+</div>
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $('.menu-card').removeClass('active');
+    $('#edit-profile-navbar-btn').addClass('active');
+
+  <% end %>
+<% end %>
+
+

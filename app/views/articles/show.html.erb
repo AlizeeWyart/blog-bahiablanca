@@ -1,0 +1,130 @@
+<%= render 'shared/navbar' %>
+
+<div class="wrapper-show-article">
+  <!-- CONTENU DE L'ARTICLE -->
+  <div class="col-xs-12 col-sm-8">
+    <div class="article-show" id="<%= @article.id %>">
+      <% photo_url = @article.photo || "https://cdn4.iconfinder.com/data/icons/linecon/512/photo-512.png" %>
+      <div class="article-photo" style="background-image:url('<%= photo_url %>')">
+      </div>
+      <div class="article-title">
+        <h4 class="categ">
+          <% @article.regions.each do |region| %>
+          <i class="fa fa-tag" aria-hidden="true"></i> <%= region.name %>
+          <% end %>
+          <i class="fa fa-tag" aria-hidden="true"></i>
+          Artisanat</h4>
+
+      </div>
+      <div class="article-title">
+        <h3><%= @article.title %></h3>
+        <% avatar_url =  @article.user.photo || "https://cdn4.iconfinder.com/data/icons/linecon/512/photo-512.png" %>
+        <h4 class="article-details" ><i class="fa fa-calendar-o" aria-hidden="true"></i> <%= @article.date.strftime("%e %b %Y") %> <i class="fa fa-comment-o margin-left-20" aria-hidden="true"></i> <%= @article.comments.count %>  <img class="user-photo" src="<%= avatar_url %>" alt="">Par <%= @article.user.first_name %></h4>
+      </div>
+      <div class="article-content">
+        <%= @article.content.html_safe %>
+      </div>
+    </div>
+  </div>
+  <!-- CARTES ET AUTRES ARTICLES -->
+  <div class="col-xs-12 col-sm-4">
+    <div class="show-article-map">
+      <div class="dynamic-map">
+        <div class="box-title-map">
+          <div class="description-map-box">
+            <% if @regions.count == 0 %>
+            <% elsif @regions.count == 1 %>
+            <h3>Région : <%= @regions.first.name %></h3>
+            <% else %>
+              <h3>Régions :</h3>
+              <% @regions.each do |region| %>
+              <span class="region-selector" data-name="<%= region.name %>"><%= region.name %></span>
+              <% end %>
+            <% end %>
+            <span id="all-regions-selector">Mexique</span>
+          </div>
+        </div>
+        <%= render partial: 'shared/mexico_map' %>
+        <div class="region-selector">
+          <div id="region-map-selector" >
+            <h3>Choisissez<br>une autre région</h3>
+          </div>
+        </div>
+      </div>
+      <div class="dynamic-map" style="margin-top:20px;padding:0px">
+        <div class="box-title-map">
+          <div class="description-map-box" id="comments-box">
+            <h3>Commentaires</h3>
+            <% @comments.each do |comment| %>
+            <div class="comment-show-box">
+              <b><%= comment.title %></b> par <%= comment.first_name %>
+              <div class="content-comment">
+                <%= comment.content %>
+              </div>
+            </div>
+            <% end %>
+            <button id="comment-form-btn" class="btn btn-default bahia-btn">
+              Ajouter un commentaire
+            </button>
+          </div>
+          <div class="comment-form" style="display:none">
+            <%= simple_form_for [@new_comment] do |f| %>
+              <%= f.error_notification %>
+              <%= f.input :first_name, label: "Votre prénom" %>
+<!--               <#%= f.input :last_name, label: "Votre nom" %> -->
+              <div class="no-display" style="display:none">
+                <%= f.input :article_id, label: false %>
+              </div>
+              <%= f.input :email, label: "Votre email" %>
+              <%= f.input :title, label: "Titre" %>
+              <%= f.input :content, label: "Votre commentaire" %>
+              <%= f.button :submit, 'Go :)', class:"edit-btn" %>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+
+      <% @regions.each do |region| %>
+      $('*[data-name="<%= region.name %>"]').addClass("state--selected");
+      <% end %>
+
+      $(".map g").mouseover( function(){
+        var regionName = $(this).data("region");
+        $('#region-map-selector').hide().html(regionName).fadeIn(100);
+      });
+
+      $(".map g").mouseout(function(){
+        $('#region-map-selector').html("<h3>Choisissez <br>une autre région</h3>");
+      });
+
+      $(".map g g").on("click", function(){
+        var regionNameh1 = $(this).data("name");
+        console.log(regionNameh1);
+        document.location = "/map" + "?region=" + regionNameh1;
+      });
+
+      $('#all-regions-selector').on("click", function(){
+          document.location = "/map";
+      });
+
+      $('.region-selector').on("click", function(){
+         var regionName = $(this).data("name");
+        document.location = "/map" + "?region=" + regionName;
+      })
+
+      $('#comment-form-btn').on("click", function() {
+        $('#comments-box').css("display", "none");
+        $('.comment-form').css("display", "block");
+      })
+  <% end %>
+<% end %>
+
+
+

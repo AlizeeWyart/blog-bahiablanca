@@ -2,10 +2,13 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
-
+a {
+  color:#434141;
+}
 a:hover {
   text-decoration: none;
   font-weight:bolder;
+  color: #434141;
 }
 
 

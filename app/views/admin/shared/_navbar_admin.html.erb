@@ -1,9 +1,9 @@
 <div class="menu-left">
     <!-- SHORT PROFILE  -->
     <div class="user-profile">
-      <% avatar_url =  "https://cdn4.iconfinder.com/data/icons/linecon/512/photo-512.png" %>
+      <% avatar_url =  current_user.photo || "https://cdn4.iconfinder.com/data/icons/linecon/512/photo-512.png" %>
       <%= image_tag avatar_url, class:"avatar" %>
-      <h2><%= current_user.email %></h2>
+      <h2><%= current_user.first_name %></h2>
     </div>
     <!-- MON DASHBOARD -->
     <!-- EDIT BLOG -->
@@ -26,6 +26,14 @@
     <%= link_to admin_articles_path do %>
     <div class="menu-card" id="edit-articles-navbar-btn">
       <h3><i class="fa fa-pencil" aria-hidden="true"></i> Les Articles</h3>
+    </div>
+    <% end %>
+
+    <!-- EDIT ARTICLES -->
+    <%= link_to admin_profile_path do %>
+    <div class="menu-card" id="edit-profile-navbar-btn">
+      <h3><i class="fa fa-user-circle" aria-hidden="true"></i>
+       Mon profil</h3>
     </div>
     <% end %>
   </div>

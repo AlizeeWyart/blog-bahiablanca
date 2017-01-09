@@ -3,10 +3,11 @@ class Admin::Region4asController < ApplicationController
 
   def create
     @region4a = Region4a.new(region4a_params)
+    @article = @region4a.article
     if @region4a.save
-       redirect_to admin_article_path(@region4a.article)
+       redirect_to admin_article_path(@article)
     else
-       render admin_article_path(params[:article_id])
+       redirect_to admin_article_path(@article)
     end
   end
 

@@ -12,6 +12,9 @@ class PagesController < ApplicationController
 
   def map
     @all_articles = Article.all
+    @title_region_map = PageInfo.find_by(name: "title_region_map")
+    @title_category = PageInfo.find_by(name: "title_category")
+    @all_categories = Category.all
     if params[:region]
       @region = Region.find_by_name(params[:region])
       if @region
@@ -28,10 +31,6 @@ class PagesController < ApplicationController
         @articles = []
       end
     end
-    if params[:article_id]
-      @article = Article.find(params[:article_id])
-      @regions = @article.regions.select { |region| region.code != "MEX-ALL"}
-    end
   end
 
   def category
@@ -45,8 +44,9 @@ class PagesController < ApplicationController
         @articles = []
       end
     end
-    if params[:article_id]
-      @article = Article.find(params[:article_id])
-    end
+  end
+
+  def profile
+    @admin_users = User.find_by_admin(true)
   end
 end

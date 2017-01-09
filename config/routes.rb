@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/" => "dashboard#home"
     get "thematics" => "dashboard#categories"
+    get "profile" => "dashboard#profile"
     resources :category4as, only: [:create, :destroy]
     resources :region4as, only: [:create, :destroy]
     resources :articles, only: [:index, :show, :new, :create, :edit, :update]
@@ -14,6 +15,9 @@ Rails.application.routes.draw do
   get "thematic" => "pages#category"
   resources :page_infos, only: [:update]
   resources :categories, only: [:create, :update, :destroy]
+  resources :articles, only: [:show]
+  resources :users, only: [:update]
+  resources :comments, only: [:create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 

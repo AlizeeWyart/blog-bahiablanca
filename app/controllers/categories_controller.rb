@@ -23,6 +23,6 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:name, :short_description)
+    params.require(:category).permit(:name, :short_description, :photo, :photo_cache)
   end
 end

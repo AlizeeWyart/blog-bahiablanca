@@ -324,6 +324,7 @@ $dark-grey: #434141;
     margin: 30px 25% 40px 25%;
   }
   .row-nude {
+
     h4 {
       position:relative;
     }
@@ -384,4 +385,44 @@ $dark-grey: #434141;
     background-color:#F3EAEA;
     cursor: pointer;
   }
+  .category-preview-card {
+    .category-preview-card-h3 {
+      color: white;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 26px;
+      font-family:'Raleway', sans-serif;
+      transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+    }
+    .category-preview-card-p {
+      color: white;
+      font-weight: 100;
+      font-family: 'Raleway', sans-serif;
+      text-align: center;
+      opacity:0;
+      font-family:12px;
+      transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+    }
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 30vh;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+    padding: 50px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    background: -webkit-linear-gradient(#2c539e 0%, #37AAC6 50%, #2c539e 100%);
+    }
+  .category-preview-card:hover {
+    outline: 1px solid white;
+    outline-offset: -20px;
+    .category-preview-card-p {
+      opacity: 1;
+    }
+  }
 }
+

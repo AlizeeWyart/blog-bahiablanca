@@ -1,4 +1,6 @@
 class Article < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
+
   belongs_to :user
   has_many :region4as
   has_many :regions, through: :region4as

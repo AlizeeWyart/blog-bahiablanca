@@ -22,7 +22,8 @@
         <h3><%= @title_category.content %></h3>
         <div class="intro-blog">
           <% @categories.each do |categ| %>
-          <div class="card-photo" id="<%= categ.code %>">
+
+          <div class="card-photo" id="<%= categ.code %>" style="background-image: url('<% if categ.photo? %><%= cl_image_path categ.photo %><% else %>http://www.businesstravel.fr/images/stories/destinations/mexique/cholula-mexique.jpg<% end %>');background-position:center center;background-repeat:no-repeat;background-size:cover;">
             <h2><%= categ.name %></h2>
             <p><%= categ.short_description %></p>
           </div>

@@ -8,10 +8,11 @@
       Artisanat</h4>
 
   </div>
-  <div class="article-photo" style="background-image:url('http://www.global-gps.ca/files/destinations/MEXIQUE_Depositphotos_21976063_original.jpg')">
+  <div class="article-photo" style="background-image:url('<%= cl_image_path article.photo %>')">
   </div>
   <div class="article-title">
     <h3><%= article.title %></h3>
     <h4 class="article-details" ><i class="fa fa-calendar-o" aria-hidden="true"></i> <%= article.date.strftime("%e %b %Y") %> <i class="fa fa-comment-o margin-left-20" aria-hidden="true"></i> <%= article.comments.count %>  <img class="user-photo" src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAY-AAAAJGM1ODE5OWUyLWRhYjctNGFkNy1iOTk5LTc4OTAwYjE2MWRlZA.jpg" alt="">Par <%= article.user.first_name %></h4>
+    <%= article.content.html_safe %>
   </div>
 </div>

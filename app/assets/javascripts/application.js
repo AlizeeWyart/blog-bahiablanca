@@ -11,8 +11,6 @@
 //= require plugins/code_beautifier.min
 //= require plugins/emoticons.min
 //= require plugins/font_family.min
-//= require plugins/image.min
-//= require plugins/image_manager.min
 
 //= require plugins/inline_style.min
 //= require plugins/line_breaker.min

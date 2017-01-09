@@ -25,7 +25,9 @@ print "Creating user admin..."
 User.create(first_name: "Claire", last_name:"Desto", email:"hola@bahiablanca.co", admin:true, password:"12345")
 
 print "Creating  Article..."
-Article.create(user_id:1, title:"C'est le grand départ pour Bahia blanca !")
+a1 = Article.new(user_id:1, title:"C'est le grand départ pour Bahia blanca !")
+a1.remote_photo_url = "http://www.global-gps.ca/files/destinations/MEXIQUE_Depositphotos_21976063_original.jpg"
+a1.save
 
 print "Creating  Regions et ses tables de jointure..."
 Region.create(name:"Mexique", code:"MEX-ALL")

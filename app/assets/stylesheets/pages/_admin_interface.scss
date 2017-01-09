@@ -9,6 +9,7 @@ $dark-grey: #434141;
   min-height: 75vh;
   margin:0;
   padding:0;
+
   .edit-btn {
     background-color: $bahia-red;
     border: none;
@@ -259,6 +260,7 @@ $dark-grey: #434141;
     border-radius: 5px 5px 0 0;
     padding: 10px;
     text-align: center;
+    position: relative;
     h2 {
       margin: 0;
       color: white;
@@ -267,6 +269,20 @@ $dark-grey: #434141;
       text-transform: none;
       font-family: "Quicksand", sans-serif;
       color: white;
+    }
+    .new-red-btn {
+      position: absolute;
+      top: 15px;
+      right: 24px;
+      color: white;
+      text-transform: uppercase;
+      font-weight: 100;
+      font-family: 'Raleway', sans-serif;
+    }
+    .new-red-btn:hover {
+      color:#F3EAEA;
+      cursor: pointer;
+      font-weight:500;
     }
   }
   .simple_form {
@@ -305,6 +321,67 @@ $dark-grey: #434141;
     width: 50%;
     border-radius: 21px;
     align-items: center;
-    margin: 30px 25% 20px 25%;
+    margin: 30px 25% 40px 25%;
+  }
+  .row-nude {
+    h4 {
+      position:relative;
+    }
+    .destroy-red-btn {
+      position: absolute;
+      top: 10px;
+      right: 40px;
+      color:grey;
+    }
+    .destroy-red-btn:hover {
+      font-weight:bolder;
+      color:$dark-grey;
+    }
+  }
+  #new-category-form {
+    display:none;
+  }
+  #new-region-form {
+    display:none;
+  }
+  .category-show-tags {
+    margin-bottom: 5px;
+    background-color: #F3EAEA;
+    padding: 10px;
+    position: relative;
+    width:90%;
+    .category-show-tags-h3 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px;
+      text-transform: uppercase;
+      color:$bahia-red;
+      margin-top:0;
+    }
+    a {
+      position: absolute;
+      top: 8px;
+      right: -30px;
+      color: $bahia-red;
+    }
+    a:hover {
+      color: $dark-red;
+    }
+  }
+  .row-article {
+    padding: 20px;
+    background-color: white;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    p {
+      margin-top: 10px;
+    }
+    a {
+      color:$dark-grey;
+    }
+
+  }
+  .row-article:hover {
+    background-color:#F3EAEA;
+    cursor: pointer;
   }
 }

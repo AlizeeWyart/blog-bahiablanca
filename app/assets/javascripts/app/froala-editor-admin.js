@@ -3,8 +3,8 @@ $('.edit-btn').on('click', function(){
 });
 
 $('.froala-editor').froalaEditor({
-    toolbarButtons: [
-        'bold', 'italic', 'underline', 'paragraphFormat', 'formatOL',
-        'formatUL', 'insertHTML', 'undo', 'redo', 'html'
-    ]
+    // toolbarButtons: [
+    //     'bold', 'italic', 'underline', 'paragraphFormat', 'formatOL',
+    //     'formatUL', 'insertHTML', 'undo', 'redo', 'html'
+    // ]
 });

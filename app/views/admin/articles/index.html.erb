@@ -1,0 +1,30 @@
+<div class="wrapper-admin-interface">
+  <%= render partial: 'admin/shared/navbar_admin' %>
+  <!-- NAV BAR DU HAUT -->
+  <div class="content-right">
+    <div class="title-navbar">
+      <div class="content-title-navbar">
+        <h1 id="title-dashboard">Les Articles</h1>
+        <h2>
+          <%= link_to root_path do %>
+            <i class="fa fa-home" aria-hidden="true"></i>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+          <% end %>
+        </h2>
+      </div>
+    </div>
+    <!-- CONTENU HOME PAGE-->
+    <div class="content-dashboard" id="home_page_blog">
+      <!-- logo & main infos -->
+      <% @articles.each do |article| %>
+        <div class="row-article">
+          <%= link_to admin_article_path(article) do %>
+            <%= render partial: "admin/shared/article_miniature", locals: {article: article} %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="wrapper-admin-interface">
+  <!-- MENU -->
+  <%= render partial: 'admin/shared/navbar_admin' %>
+  <!-- NAV BAR DU HAUT -->
+  <div class="content-right">
+    <div class="title-navbar">
+      <div class="content-title-navbar">
+        <h1 id="title-dashboard">Les thématiques</h1>
+        <h2>
+          <%= link_to root_path do %>
+            <i class="fa fa-home" aria-hidden="true"></i>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+          <% end %>
+        </h2>
+      </div>
+    </div>
+    <!-- CONTENU HOME PAGE-->
+    <div class="content-dashboard" id="home_page_blog">
+      <!-- logo & main infos -->
+      <div class="row-title">
+        <h2>Editer les thématiques</h2>
+        <%= render partial: "admin/shared/new_category_modal", locals: {category: @new_category} %>
+        <a data-toggle="modal" data-target="#NewCategoryModal" class="new-red-btn"><i class="fa fa-plus-circle" aria-hidden="true" ></i> Créer</a>
+
+      </div>
+      <div class="row-content">
+        <div class="content-card page-description">
+          <% @categories.each do |category| %>
+          <div class="row-nude">
+            <div class="col-xs-6">
+              <h4>Catégorie n°<%= category.id %></h4>
+              <%= link_to category_path(category), class:"destroy-red-btn", :method => :delete do %>
+              <i class="fa fa-trash-o" aria-hidden="true" ></i>
+              <% end %>
+              <h5>- Nom de la thématique -</h5>
+              <%= render partial: "admin/shared/edit_name_category", locals: {category: category} %>
+              <h5>- Description de la thématique -</h5>
+              <%= render partial: "admin/shared/edit_description_category", locals: {category: category} %>
+            </div>
+
+            <div class="col-xs-6" ">
+              <h4>Preview</h4>
+              <img src="https://s24.postimg.org/iru9cy68l/Capture_d_e_cran_2017_01_09_a_14_51_42.png" style="width:100%"/>
+              <button onClick="window.location.reload()" class="btn btn-default edit-btn" style="right: 126px;">Refresh preview </button>
+              <a href="/" class="btn btn-default edit-btn"> Aller à la page </a>
+            </div>
+          </div>
+
+          <div class="separator"></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <!-- <iframe id="preview-homepage" src="/">
+    </iframe> -->
+    </div>
+  </div>
+</div>
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $('.menu-card').removeClass('active');
+    $('#edit-categories-navbar-btn').addClass('active');
+  <% end %>
+<% end %>
+
+

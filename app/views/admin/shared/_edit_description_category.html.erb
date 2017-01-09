@@ -1,0 +1,5 @@
+<%= simple_form_for(category) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :short_description, label: false %>
+  <%= f.button :submit, 'Modifier', class:"edit-btn" %>
+<% end %>

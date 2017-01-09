@@ -1,18 +1,7 @@
 <div class="wrapper-admin-interface">
   <!-- MENU -->
-  <div class="menu-left">
-    <!-- SHORT PROFILE  -->
-    <div class="user-profile">
-      <% avatar_url =  "https://cdn4.iconfinder.com/data/icons/linecon/512/photo-512.png" %>
-      <%= image_tag avatar_url, class:"avatar" %>
-      <h2><%= current_user.email %>   </h2>
-    </div>
-    <!-- MON DASHBOARD -->
-    <div class="menu-card active">
-      <h3><i class="fa fa-tachometer" aria-hidden="true"></i> Le Blog</h3>
-    </div>
-  </div>
-  <!-- CONTENU -->
+  <%= render partial: 'admin/shared/navbar_admin' %>
+  <!-- NAV BAR DU HAUT -->
   <div class="content-right">
     <div class="title-navbar">
       <div class="content-title-navbar">
@@ -27,44 +16,59 @@
         </h2>
       </div>
     </div>
-    <!--  CONTENU STARTUP -->
+    <!-- CONTENU HOME PAGE-->
+    <div class="content-dashboard" id="home_page_blog">
+      <!-- logo & main infos -->
+      <div class="row-title">
+        <h2>Editer la page blog</h2>
+      </div>
+      <div class="row-content">
+        <div class="content-card page-description">
+          <div class="row-nude">
+            <div class="col-xs-6">
+              <h4>Le contenu</h4>
+              <h5>- Titre de la page -</h5>
+              <%= render partial: "shared/edit_page_info", locals: {info: @infos.first} %>
+              <h5>- Description -</h5>
+              <%= render partial: "shared/froala_edit_page_info", locals: {info: @infos[1]} %>
+              <h5>- Titre du Compte à Rebours -</h5>
+              <%= render partial: "shared/edit_page_info", locals: {info: @infos[2]} %>
+            </div>
 
-      <!-- COMPTE STARTUPS -->
-        <div class="content-dashboard" id="startup-info-">
-          <!-- logo & main infos -->
-          <div class="row-title">
-            <h2>Modifier la page blog</h2>
-          </div>
-          <div class="row-content">
-            <div class="content-card page-description">
-              <div class="row-nude">
-                <div class="col-xs-6">
-                  <h4>Le contenu</h4>
-                  <h5>- Titre de la page -</h5>
-                  <%= render partial: "shared/edit_page_info", locals: {info: @infos.first} %>
-                  <h5>- Description -</h5>
-                  <%= render partial: "shared/froala_edit_page_info", locals: {info: @infos[1]} %>
-                  <h5>- Titre du Compte à Rebours -</h5>
-                  <%= render partial: "shared/edit_page_info", locals: {info: @infos[2]} %>
-                </div>
-
-                <div class="col-xs-6" ">
-                  <h4>Preview</h4>
-                  <img src="https://s27.postimg.org/peh646ghf/Capture_d_e_cran_2017_01_07_a_18_18_15.png" style="width:100%"/>
-                  <button href="#" class="btn btn-default edit-btn" style="right: 126px;">Refresh preview </button>
-                  <a href="/" class="btn btn-default edit-btn"> Aller à la page </a>
-                </div>
-              </div>
-
-              <div class="separator"></div>
-
+            <div class="col-xs-6" ">
+              <h4>Preview</h4>
+              <img src="https://s27.postimg.org/peh646ghf/Capture_d_e_cran_2017_01_07_a_18_18_15.png" style="width:100%"/>
+              <button href="#" class="btn btn-default edit-btn" style="right: 126px;">Refresh preview </button>
+              <a href="/" class="btn btn-default edit-btn"> Aller à la page </a>
             </div>
           </div>
-        </div>
-          <!-- <iframe id="preview-homepage" src="/">
-          </iframe> -->
+
+          <div class="separator"></div>
+
+          <div class="row-nude">
+            <div class="col-xs-6">
+              <h4>Le contenu</h4>
+              <h5>- Titre de la carte -</h5>
+              <%= render partial: "shared/edit_page_info", locals: {info: @title_region_map} %>
+              <h5>- Titre des Thématiques -</h5>
+              <%= render partial: "shared/edit_page_info", locals: {info: @title_category} %>
+            </div>
+
+            <div class="col-xs-6" ">
+              <h4>Preview</h4>
+              <img src="https://s29.postimg.org/nombyhnzb/Capture_d_e_cran_2017_01_09_a_14_11_50.png" style="width:100%"/>
+              <button href="#" class="btn btn-default edit-btn" style="right: 126px;">Refresh preview </button>
+              <a href="/" class="btn btn-default edit-btn"> Aller à la page </a>
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>
-
+    <!-- <iframe id="preview-homepage" src="/">
+    </iframe> -->
+    </div>
+  </div>
+</div>
 

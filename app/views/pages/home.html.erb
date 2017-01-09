@@ -11,7 +11,7 @@
     <div class="dynamic-map">
       <div class="box-title-map">
       <div id="description-map-box">
-        <h3>Découvrez une région</h3>
+        <h3><%= @title_region_map.content %></h3>
       </div>
       </div>
        <%= render partial: 'shared/mexico_map' %>
@@ -19,7 +19,7 @@
     <div class="dynamic-map">
       <div class="box-title-map">
       <div id="description-map-box">
-        <h3>Bahia Blanca par thématique</h3>
+        <h3><%= @title_category.content %></h3>
         <div class="intro-blog">
           <% @categories.each do |categ| %>
           <div class="card-photo" id="<%= categ.code %>">
@@ -44,7 +44,7 @@
     });
 
     $(".map g").mouseout(function(){
-      $('#description-map-box').html("<h3>Découvrez une région</h3>");
+      $('#description-map-box').html("<h3><%= @title_region_map.content %></h3>");
     });
 
     $(".map g g").on("click", function(){

@@ -1,0 +1,31 @@
+<div class="menu-left">
+    <!-- SHORT PROFILE  -->
+    <div class="user-profile">
+      <% avatar_url =  "https://cdn4.iconfinder.com/data/icons/linecon/512/photo-512.png" %>
+      <%= image_tag avatar_url, class:"avatar" %>
+      <h2><%= current_user.email %></h2>
+    </div>
+    <!-- MON DASHBOARD -->
+    <!-- EDIT BLOG -->
+    <%= link_to admin_path do %>
+      <div class="menu-card active" id="edit-blog-navbar-btn">
+        <h3><i class="fa fa-tachometer" aria-hidden="true"></i> Editer le blog</h3>
+      </div>
+    <% end %>
+    <!-- EDIT CATEGORIES -->
+    <%= link_to admin_thematics_path do %>
+      <div class="menu-card" id="edit-categories-navbar-btn">
+        <h3><i class="fa fa-tags" aria-hidden="true"></i> Les Thématiques</h3>
+      </div>
+    <% end %>
+    <!-- EDIT REGIONS -->
+    <div class="menu-card" id="edit-regions-navbar-btn">
+      <h3><i class="fa fa-map-marker" aria-hidden="true"></i> Les Régions</h3>
+    </div>
+    <!-- EDIT ARTICLES -->
+    <%= link_to admin_articles_path do %>
+    <div class="menu-card" id="edit-articles-navbar-btn">
+      <h3><i class="fa fa-pencil" aria-hidden="true"></i> Les Articles</h3>
+    </div>
+    <% end %>
+  </div>

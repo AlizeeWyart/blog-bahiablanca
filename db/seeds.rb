@@ -16,17 +16,16 @@ print "Creating page info......"
 PageInfo.create(page_id: 1, name: "Page h1", content: "Découvez le Mexique avec nous !")
 PageInfo.create(page_id: 1, name: "Page Description", content: "L'équipe de Bahia Blanca embarque le 31 janvier pour un périple au Mexique afin de découvrir en profondeur l'artisanat mexicain et trouver les artisans qui produiront la nouvelle collection 2017 de Bahia Blanca.")
 PageInfo.create(page_id: 1, name: "Titre Compte à Rebours", content: "Temps restant avant le grand départ")
-PageInfo.create(page_id: 1, name: "Titre 1e card", content: "Artisanat")
-PageInfo.create(page_id: 1, name: "Content 1e card", content: "Découvrez les artisans du Mexique et les spécificités régionales")
-PageInfo.create(page_id: 1, name: "Titre 2e card", content: "Voyages")
-PageInfo.create(page_id: 1, name: "Content 2e card", content: "Voyagez avec nous en découvrant nos coups de cœurs sur place")
+PageInfo.create(page_id: 1, name: "title_region_map", content: "Découvrez une région")
+PageInfo.create(page_id: 1, name: "title_category", content: "Bahia Blanca par thématique")
+
 
 print "Creating user admin..."
 
 User.create(first_name: "Claire", last_name:"Desto", email:"hola@bahiablanca.co", admin:true, password:"12345")
 
 print "Creating  Article..."
-Article.create(user_id:1, title:"C'est le grand dpart pour Bahia blanca !")
+Article.create(user_id:1, title:"C'est le grand départ pour Bahia blanca !")
 
 print "Creating  Regions et ses tables de jointure..."
 Region.create(name:"Mexique", code:"MEX-ALL")

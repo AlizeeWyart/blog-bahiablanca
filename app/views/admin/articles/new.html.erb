@@ -1,0 +1,57 @@
+<div class="wrapper-admin-interface">
+  <%= render partial: 'admin/shared/navbar_admin' %>
+  <!-- NAV BAR DU HAUT -->
+  <div class="content-right">
+    <div class="title-navbar">
+      <div class="content-title-navbar">
+        <h1 id="title-dashboard">Nouvel Article</h1>
+        <h2>
+          <%= link_to root_path do %>
+            <i class="fa fa-home" aria-hidden="true"></i>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+          <% end %>
+        </h2>
+      </div>
+    </div>
+    <!-- CONTENU HOME PAGE-->
+    <div class="content-dashboard" id="home_page_blog">
+      <!-- logo & main infos -->
+      <div class="row-title">
+        <h2>Créer un nouvel article</h2>
+      </div>
+      <div class="row-content">
+        <div class="content-card page-description" style="width: 100%; padding-bottom:60px">
+          <div class="row-nude">
+            <%= simple_form_for [:admin, @article] do |f| %>
+              <%= f.error_notification %>
+            <div class="col-xs-8">
+              <h5>- Titre -</h5>
+              <%= f.input :title, label: false %>
+              <h5>- Contenu -</h5>
+              <%= f.input :content, label: false, :input_html => { :class => 'froala-editor'} %>
+            </div>
+            <div class="col-xs-4">
+              <h5>- Date de publication -</h5>
+              <%= f.input :date, label: false %>
+              <h5>- Courte description -</h5>
+              <%= f.input :short_description, label: false %>
+              <%= f.button :submit, 'Publier l\'article', class:"edit-btn" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $('.menu-card').removeClass('active');
+    $('#edit-articles-navbar-btn').addClass('active');
+
+    $('.fr-element').css( "min-height", "50vh" );
+  <% end %>
+<% end %>

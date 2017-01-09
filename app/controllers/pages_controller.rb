@@ -1,9 +1,12 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [ :home, :map, :category ]
 
   def home
     @page = Page.find(1)
     @categories = Category.all
+    # CONTENU & TEXT
+    @title_region_map = PageInfo.find_by(name: "title_region_map")
+    @title_category = PageInfo.find_by(name: "title_category")
     @infos = PageInfo.select{|info| info.page = @page}.sort_by {|info| info.id }
   end
 

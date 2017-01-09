@@ -1,0 +1,119 @@
+<div class="wrapper-admin-interface">
+  <%= render partial: 'admin/shared/navbar_admin' %>
+  <!-- NAV BAR DU HAUT -->
+  <div class="content-right">
+    <div class="title-navbar">
+      <div class="content-title-navbar">
+        <h1 id="title-dashboard">Article n°<%= @article.id %></h1>
+        <h2>
+          <%= link_to root_path do %>
+            <i class="fa fa-home" aria-hidden="true"></i>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+          <% end %>
+        </h2>
+      </div>
+    </div>
+    <!-- CONTENU HOME PAGE-->
+    <div class="content-dashboard" id="home_page_blog">
+      <!-- logo & main infos -->
+      <div class="row-title">
+        <h2>Modifier l'article</h2>
+      </div>
+      <div class="row-content">
+        <div class="content-card page-description" style="width: 100%; padding-bottom:60px">
+          <div class="row-nude">
+            <%= simple_form_for [:admin, @article] do |f| %>
+              <%= f.error_notification %>
+            <div class="col-xs-8">
+              <h5>- Titre -</h5>
+              <%= f.input :title, label: false %>
+              <h5>- Contenu -</h5>
+              <%= f.input :content, label: false, :input_html => { :class => 'froala-editor'} %>
+            </div>
+            <div class="col-xs-4">
+              <h5>- Date de publication -</h5>
+              <%= f.input :date, label: false %>
+              <h5>- Courte description -</h5>
+              <%= f.input :short_description, label: false %>
+              <%= f.button :submit, 'Modifier l\'article', class:"edit-btn" %>
+            <% end %>
+              <!-- AJOUTER DES THEMATIQUES -->
+              <h5 style="margin-top: 100px;">- Les Thématiques -</h5>
+              <% @categories.each do |category| %>
+                <div class="category-show-tags">
+                  <span class="category-show-tags-h3">
+                    <i class="fa fa-tag" aria-hidden="true"></i>
+                     <%= category.name %>
+                  </span>
+                      <% category4a = category.category4as.select {|c4a| c4a.article = @article }.first %>
+                   <%= link_to admin_category4a_path(category4a), :method => :delete do %>
+                    <i class="fa fa-trash-o" aria-hidden="true" ></i>
+                   <% end %>
+                </div>
+              <% end %>
+                <a id="new-category-form-btn" class="btn btn-default edit-btn"> <i class="fa fa-plus" aria-hidden="true"></i> Ajouter</a>
+                <div id="new-category-form">
+                  <h5>- Nouvelle thématique -</h5>
+                  <%= simple_form_for [:admin, @category4a] do |f| %>
+                    <%= f.error_notification %>
+                    <%= f.input :category_id, label: false, collection: @all_categories %>
+                    <div style="display:none;">
+                      <%= f.input :article_id, label: false %>
+                    </div>
+                    <%= f.button :submit, 'Ajouter la thématique', class:"edit-btn" %>
+                  <% end %>
+                </div>
+               <!-- AJOUTER DES REGIONS -->
+               <h5 style="margin-top: 100px;">- Les Régions -</h5>
+              <% @regions.each do |region| %>
+                <div class="category-show-tags">
+                  <span class="category-show-tags-h3">
+                    <i class="fa fa-tag" aria-hidden="true"></i>
+                     <%= region.name %>
+                  </span>
+                      <% region4a = region.region4as.select {|r4a| r4a.article = @article }.first %>
+                   <%= link_to admin_region4a_path(region4a), :method => :delete do %>
+                    <i class="fa fa-trash-o" aria-hidden="true" ></i>
+                   <% end %>
+                </div>
+              <% end %>
+                <a id="new-region-form-btn" class="btn btn-default edit-btn"> <i class="fa fa-plus" aria-hidden="true"></i> Ajouter</a>
+                <div id="new-region-form">
+                  <h5>- Nouvelle Région -</h5>
+                  <%= simple_form_for [:admin, @region4a] do |f| %>
+                    <%= f.error_notification %>
+                    <%= f.input :region_id, label: false, collection: @all_regions %>
+                    <div style="display:none;">
+                      <%= f.input :article_id, label: false %>
+                    </div>
+                    <%= f.button :submit, 'Ajouter la région', class:"edit-btn" %>
+                  <% end %>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $('.menu-card').removeClass('active');
+    $('#edit-articles-navbar-btn').addClass('active');
+
+    $('.fr-element').css( "min-height", "50vh" );
+
+    $('#new-category-form-btn').on("click", function(){
+      $('#new-category-form-btn').css( "display", "none");
+      $('#new-category-form').css( "display", "block");
+    })
+
+    $('#new-region-form-btn').on("click", function(){
+      $('#new-region-form-btn').css( "display", "none");
+      $('#new-region-form').css( "display", "block");
+    })
+  <% end %>
+<% end %>

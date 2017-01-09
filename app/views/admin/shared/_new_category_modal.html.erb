@@ -1,0 +1,19 @@
+<div class="modal fade" id="NewCategoryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4>Créer une nouvelle catégorie</h4>
+      </div>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <%= simple_form_for(category) do |f| %>
+          <%= f.error_notification %>
+          <%= f.input :name %>
+          <%= f.input :short_description %>
+          <%= f.button :submit, "Créer !", class: "btn btn-default bahia-btn" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

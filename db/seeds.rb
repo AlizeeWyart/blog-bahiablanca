@@ -23,7 +23,7 @@ PageInfo.create(page_id: 1, name: "Content 2e card", content: "Voyagez avec nous
 
 print "Creating user admin..."
 
-User.create(first_name: "Claire", last_name:"Desto", email:"hola@bahiablanca.co", admin:true, password:"Bahiablanca92!")
+User.create(first_name: "Claire", last_name:"Desto", email:"hola@bahiablanca.co", admin:true, password:"12345")
 
 print "Creating  Article..."
 Article.create(user_id:1, title:"C'est le grand dpart pour Bahia blanca !")
@@ -41,5 +41,5 @@ Category.create(name:"Notre aventure", code:"AVENTURE")
 Category.create(name:"Voyages", code:"VOYAGE")
 Category.create(name:"Artisanat", code:"ART")
 
-Category4a.create(region_id:1, article_id:1)
+Category4a.create(category_id:1, article_id:1)
 

@@ -10,10 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170107164419) do
+ActiveRecord::Schema.define(version: 20170108221153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "short_description"
+    t.text     "content"
+    t.date     "date"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "code"
+    t.string   "short_description"
+    t.text     "description"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "category4as", force: :cascade do |t|
+    t.integer  "article_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["article_id"], name: "index_category4as_on_article_id", using: :btree
+    t.index ["category_id"], name: "index_category4as_on_category_id", using: :btree
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "article_id"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_comments_on_article_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
 
   create_table "page_infos", force: :cascade do |t|
     t.string   "name"
@@ -31,6 +71,24 @@ ActiveRecord::Schema.define(version: 20170107164419) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "region4as", force: :cascade do |t|
+    t.integer  "region_id"
+    t.integer  "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_region4as_on_article_id", using: :btree
+    t.index ["region_id"], name: "index_region4as_on_region_id", using: :btree
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "code"
+    t.string   "short_description"
+    t.text     "description"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -45,9 +103,19 @@ ActiveRecord::Schema.define(version: 20170107164419) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "admin",                  default: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "twitter_account"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "articles", "users"
+  add_foreign_key "category4as", "articles"
+  add_foreign_key "category4as", "categories"
+  add_foreign_key "comments", "articles"
+  add_foreign_key "comments", "users"
   add_foreign_key "page_infos", "pages"
+  add_foreign_key "region4as", "articles"
+  add_foreign_key "region4as", "regions"
 end

@@ -1,12 +1,21 @@
 .wrapper-map {
   margin-top: 30px;
+
   .row-map-and-content {
-    display:flex;
-    flex-direction:row;
-    flex-wrap:wrap;
-    justify-content: space-between;
-    padding:40px;
-    .dynamic-map {
+      display:flex;
+      flex-direction:row;
+      flex-wrap:wrap;
+      justify-content: space-between;
+      padding:40px;
+  }
+
+  .content-articles {
+    flex: 0 0 50%;
+  }
+}
+
+
+.dynamic-map {
       flex: 0 0 45%;
       background-color:#F3EAEA;
       border-radius: 10px;
@@ -43,11 +52,4 @@
         }
       }
     }
-    .content-articles {
-      flex: 0 0 50%;
-    }
-  }
-}
-
-
 

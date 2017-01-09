@@ -1,0 +1,33 @@
+<%= render 'shared/navbar' %>
+
+<div class="wrapper-category">
+  <div class="row-map-and-content">
+    <div class="dynamic-map">
+      <div class="box-title-map">
+      <div id="description-map-box">
+        <h3>Par thématique</h3>
+        <div class="intro-blog">
+          <% @categories.each do |categ| %>
+          <div class="card-photo" id="<%= categ.code %>">
+            <h2><%= categ.name %></h2>
+            <p><%= categ.short_description %></p>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+
+    $(".card-photo").on("click", function(){
+      var nameCategory = $(this).attr('id');
+      console.log(nameCategory);
+      document.location = "/thematic" + "?category=" + nameCategory;
+    })
+
+  <% end %>
+<% end %>

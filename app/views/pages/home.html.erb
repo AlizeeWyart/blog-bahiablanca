@@ -5,15 +5,61 @@
     <%= render 'shared/countdown' %>
 </div>
 
+
 <div class="wrapper-blog-home">
-  <div class="intro-blog">
-    <div class="card-photo" id="artisanat">
-      <h2><%= @infos[3].content %></h2>
-      <p><%= @infos[4].content %></p>
+  <div class="row-map-and-content">
+    <div class="dynamic-map">
+      <div class="box-title-map">
+      <div id="description-map-box">
+        <h3>Découvrez une région</h3>
+      </div>
+      </div>
+       <%= render partial: 'shared/mexico_map' %>
     </div>
-    <div class="card-photo" id="visits">
-    <h2><%= @infos[5].content %></h2>
-    <p><%= @infos[6].content %></p>
+    <div class="dynamic-map">
+      <div class="box-title-map">
+      <div id="description-map-box">
+        <h3>Bahia Blanca par thématique</h3>
+        <div class="intro-blog">
+          <% @categories.each do |categ| %>
+          <div class="card-photo" id="<%= categ.code %>">
+            <h2><%= categ.name %></h2>
+            <p><%= categ.short_description %></p>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      </div>
     </div>
   </div>
 </div>
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+
+    $(".map g").mouseover( function(){
+      var regionName = $(this).data("region");
+      $('#description-map-box').hide().html(regionName).fadeIn(100);
+    });
+
+    $(".map g").mouseout(function(){
+      $('#description-map-box').html("<h3>Découvrez une région</h3>");
+    });
+
+    $(".map g g").on("click", function(){
+      $(".map g g").removeClass("state--selected");
+      $(this).addClass("state--selected");
+      var regionNameh1 = $(this).data("name");
+      console.log(regionNameh1);
+      document.location = "/map" + "?region=" + regionNameh1;
+    })
+
+    $(".card-photo").on("click", function(){
+      var nameCategory = $(this).attr('id');
+      console.log(nameCategory);
+      document.location = "/map" + "?category=" + nameCategory;
+    })
+
+  <% end %>
+<% end %>

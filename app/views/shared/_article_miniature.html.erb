@@ -1,10 +1,17 @@
-<div class="article-miniature">
+<div class="article-miniature" id="<%= article.id %>">
   <div class="article-miniature-photo">
     <img src="http://www.global-gps.ca/files/destinations/MEXIQUE_Depositphotos_21976063_original.jpg" alt="">
   </div>
   <div class="article-miniature-text">
-    <h4 class="categ"> <i class="fa fa-tag" aria-hidden="true"></i> Mexique <i class="fa fa-tag margin-left-20" aria-hidden="true"></i> Yucatan <i class="fa fa-tag margin-left-20" aria-hidden="true"></i> Artisanat</h4>
-    <h3>C'est le grand départ pour Bahia blanca !</h2>
-    <h4><i class="fa fa-calendar-o" aria-hidden="true"></i> 15 novemvre 2017 <i class="fa fa-comment-o margin-left-20" aria-hidden="true"></i> 6  <img class="user-photo" src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAY-AAAAJGM1ODE5OWUyLWRhYjctNGFkNy1iOTk5LTc4OTAwYjE2MWRlZA.jpg" alt="">Par Claire</h4></h4>
+    <h4 class="categ">
+      <% article.regions.each do |region| %>
+      <i class="fa fa-tag" aria-hidden="true"></i> <%= region.name %>
+      <% end %>
+      <% article.categories.each do |categ| %>
+      <i class="fa fa-tag" aria-hidden="true"></i><%= categ.name %>
+      <% end %>
+    </h4>
+    <h3><%= article.title %></h2>
+    <h4><i class="fa fa-calendar-o" aria-hidden="true"></i> <%= article.date.strftime("%e %b %Y") %> <i class="fa fa-comment-o margin-left-20" aria-hidden="true"></i> <%= article.comments.count %>  <img class="user-photo" src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAY-AAAAJGM1ODE5OWUyLWRhYjctNGFkNy1iOTk5LTc4OTAwYjE2MWRlZA.jpg" alt="">Par <%= article.user.first_name %></h4>
   </div>
 </div>

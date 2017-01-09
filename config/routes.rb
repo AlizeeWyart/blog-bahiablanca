@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   get "map" => "pages#map"
+  get "thematic" => "pages#category"
   resources :page_infos, only: [:update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,52 +1,20 @@
-/* -------------------------------------
- * CSS code specific to home page
- * (margin/padding adjustments)
- * ------------------------------------- */
+.wrapper-category {
+  margin-top: 30px;
 
-a:hover {
-  text-decoration: none;
-  font-weight:bolder;
-}
-
-
-
-.bahia-btn {
-  background-color: #9F1723;
-  border-radius: 15px;
-  border: 2px solid #9F1723;
-  font-family: "Raleway";
-  text-transform: uppercase;
-  color: white;
-  font-weight: 300;
-  font-size: 0.8em;
-}
-.bahia-btn:hover {
-
-}
-// PHOTO HOMEPAGE
-.homepage-photos {
-  width:100vw;
-  height:100vh;
-  background-image: url('http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_9000,w_1200,f_auto,q_90/v1/780428/jujuclaireyunan_zfiw2q.jpg');
-  background-repeat:no-repeat;
-  background-position: center center;
-  background-size: cover;
-  position:relative;
-  padding:60px 40px 40px 40px;
-  h1 {
-    text-align: center;
-    margin: 0 0 40px 0;
-    color: $red;
-    font-weight: 300;
+  .row-map-and-content {
+      display:flex;
+      flex-direction:row;
+      flex-wrap:wrap;
+      justify-content: space-between;
+      padding:40px;
+      .dynamic-map {
+        flex: 0 0 25%;
+      }
   }
-}
 
-// PAGE BLOG HOME
-
-.wrapper-blog-home {
-  padding: 40px;
-  margin-top: 20px;
-
+  .content-articles {
+    flex: 0 0 50%;
+  }
   .intro-blog {
     display:flex;
     flex-direction:row;
@@ -55,7 +23,6 @@ a:hover {
     .card-photo {
       border-radius: 3px;
       margin-bottom: 20px;
-      cursor:pointer;
       flex: 0 0 90%;
       height:30vh;
       transition: opacity 0.35s, transform 0.35s;
@@ -110,13 +77,5 @@ a:hover {
       background-size:cover;
     }
   }
-  .row-map-and-content {
-    display:flex;
-    flex-direction:row;
-    flex-wrap:wrap;
-    justify-content: space-between;
-    .dynamic-map {
-      flex: 0 0 48%;
-    }
-  }
 }
+

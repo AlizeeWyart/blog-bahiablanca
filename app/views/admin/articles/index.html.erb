@@ -18,6 +18,11 @@
     <!-- CONTENU HOME PAGE-->
     <div class="content-dashboard" id="home_page_blog">
       <!-- logo & main infos -->
+      <div class="row-article" style="text-align: center">
+        <%= link_to new_admin_article_path do %>
+          <button class="btn btn-default bahia-btn">Ecrire un article</button>
+       <% end %>
+      </div>
       <% @articles.each do |article| %>
         <div class="row-article">
           <%= link_to admin_article_path(article) do %>

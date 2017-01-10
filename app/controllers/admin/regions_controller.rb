@@ -10,7 +10,7 @@ class Admin::RegionsController < ApplicationController
   private
 
   def region_params
-    params.require(:region).permit(:short_description, :description)
+    params.require(:region).permit(:short_description, :description, :photo, :photo_cache)
   end
 
   def is_admin?

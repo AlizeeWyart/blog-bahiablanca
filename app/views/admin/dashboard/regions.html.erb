@@ -50,6 +50,14 @@
             <%= f.input :short_description, label: false %>
             <h5>- Description -</h5>
             <%= f.input :description, label: false, :input_html => { :class => 'froala-editor'} %>
+            <% if @region.photo? %>
+            <%= cl_image_tag @region.photo %>
+            <h5>- Modifier la photo -</h5>
+            <% else %>
+            <h5>- Ajouter une photo -</h5>
+            <% end %>
+            <%= f.input :photo, label: false %>
+            <%= f.input :photo_cache, as: :hidden %>
             <%= f.button :submit, 'Modifier', class:"edit-btn" %>
           <% end %>
           <% end %>

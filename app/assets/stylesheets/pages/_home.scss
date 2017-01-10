@@ -2,6 +2,10 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+
+$bahia-red: #9F1723;
+$dark-red: #6C0E18;
+
 a {
   color:#434141;
 }
@@ -11,7 +15,11 @@ a:hover {
   color: #434141;
 }
 
-
+.btn-default:hover {
+  color: white;
+  background-color: $dark-red;
+  border-color: $dark-red;
+}
 
 .bahia-btn {
   background-color: #9F1723;

@@ -4,7 +4,8 @@
   <!-- CONTENU DE L'ARTICLE -->
   <div class="col-xs-12 col-sm-8">
     <div class="article-show" id="<%= @article.id %>">
-      <% photo_url = @article.photo || "https://cdn4.iconfinder.com/data/icons/linecon/512/photo-512.png" %>
+      <% mexico_photo_url = image_path "photo_mexique_1.jpg" %>
+      <% photo_url = @article.photo || mexico_photo_url %>
       <div class="article-photo" style="background-image:url('<%= photo_url %>')">
       </div>
       <div class="article-title">
@@ -71,7 +72,6 @@
             <%= simple_form_for [@new_comment] do |f| %>
               <%= f.error_notification %>
               <%= f.input :first_name, label: "Votre prénom" %>
-<!--               <#%= f.input :last_name, label: "Votre nom" %> -->
               <div class="no-display" style="display:none">
                 <%= f.input :article_id, label: false %>
               </div>
@@ -80,12 +80,17 @@
               <%= f.input :content, label: "Votre commentaire" %>
               <%= f.button :submit, 'Go :)', class:"edit-btn" %>
             <% end %>
-            </div>
           </div>
         </div>
       </div>
+      <div class="suggest-articles">
+        <% @other_articles.each do |article| %>
+        <!-- TO DO : mettre les derniers articles -->
+        <% end %>
+      </div>
     </div>
   </div>
+</div>
 </div>
 <%= render 'shared/footer' %>
 

@@ -20,7 +20,7 @@ class Admin::DashboardController < ApplicationController
   end
 
   def regions
-    @regions = Region.all.sort_by(:code)
+    @regions = Region.all.sort_by { |region| region.code }
     if params[:region]
       @region = Region.find_by_name(params[:region])
     end

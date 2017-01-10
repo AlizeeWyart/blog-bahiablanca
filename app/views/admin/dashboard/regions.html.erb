@@ -58,8 +58,10 @@
   </div>
 </div>
 
+<% if @regions.count >= 1 %>
 <% @regions.each do |region| %>
-<%= region.code %>
+  <%= region.code %>
+<% end %>
 <% end %>
 
 

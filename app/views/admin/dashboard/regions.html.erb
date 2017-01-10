@@ -1,0 +1,91 @@
+<div class="wrapper-admin-interface">
+  <!-- MENU -->
+  <%= render partial: 'admin/shared/navbar_admin' %>
+  <!-- NAV BAR DU HAUT -->
+  <div class="content-right">
+    <div class="title-navbar">
+      <div class="content-title-navbar">
+        <h1 id="title-dashboard">Les régions du Mexique</h1>
+        <h2>
+          <%= link_to root_path do %>
+            <i class="fa fa-home" aria-hidden="true"></i>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+          <% end %>
+        </h2>
+      </div>
+    </div>
+    <!-- CONTENU HOME PAGE-->
+    <div class="content-dashboard" id="admin_region_page">
+
+      <div class="dynamic-map">
+        <div class="box-title-map">
+        <div id="description-map-box">
+          <% if params[:region] %>
+          <h3>Région : <%= params[:region] %></h3>
+          <% else %>
+          <h3>Choisis une région</h3>
+          <% end %>
+        </div>
+        </div>
+         <%= render partial: 'shared/mexico_map' %>
+      </div>
+      <!-- logo & main infos -->
+      <% if params[:region] %>
+      <div class="edit-region-box">
+        <div class="row-region-title">
+          <h2>Éditer la région <%= params[:region] %></h2>
+        </div>
+        <div class="row-region-content">
+<!--           <h4>Infos</h4> -->
+          <h5>- Courte description -</h5>
+          <%= simple_form_for [:admin, @region] do |f| %>
+            <%= f.error_notification %>
+            <%= f.input :short_description, label: false %>
+            <%= f.button :submit, 'Modifier', class:"edit-btn" %>
+          <% end %>
+          <h5>- Description -</h5>
+          <%= simple_form_for [:admin, @region] do |f| %>
+            <%= f.error_notification %>
+            <%= f.input :description, label: false, :input_html => { :class => 'froala-editor'} %>
+            <%= f.button :submit, 'Modifier', class:"edit-btn" %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% @regions.each do |region| %>
+<%= region.code %>
+<% end %>
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+
+    $(".map g").mouseover( function(){
+      var regionName = $(this).data("region");
+      $('#description-map-box').hide().html(regionName).fadeIn(100);
+    });
+
+    $(".map g").mouseout(function(){
+      <% if params[:region] %>
+      $('#description-map-box').html("<h3>Région : <%= params[:region] %></h3>");
+      <% else %>
+      $('#description-map-box').html("<h3>Choisis une région</h3>");
+      <% end %>
+    });
+
+    $(".map g g").on("click", function(){
+      $(".map g g").removeClass("state--selected");
+      $(this).addClass("state--selected");
+      var regionNameh1 = $(this).data("name");
+      console.log(regionNameh1);
+      document.location = "/admin/regions" + "?region=" + regionNameh1;
+    })
+
+  <% end %>
+<% end %>

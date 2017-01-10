@@ -19,6 +19,13 @@ class Admin::DashboardController < ApplicationController
     @categories = Category.all.order(:id)
   end
 
+  def regions
+    @regions = Region.all.sort_by(:code)
+    if params[:region]
+      @region = Region.find_by_name(params[:region])
+    end
+  end
+
   private
 
   def is_admin?

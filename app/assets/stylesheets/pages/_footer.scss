@@ -1,0 +1,57 @@
+/*FOOTER*/
+
+.footer-items {
+  // box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  background: #FFFFFF;
+  transition: all 0.3s ease;
+  padding: 10px 10px 10px 10px;
+  display:inline;
+  margin:0px;
+  text-transform: none;
+  text-align:left;
+}
+
+
+.footer-bloomer-brand{
+  width: 120px;
+  padding-left: 40px;
+  padding-top:2%;
+}
+
+.section-footer {
+  display:inline;
+  color: #9F1723;
+  float: right;
+  line-height:12px;
+}
+
+.section-footer h1 {
+  font-size: 18px;
+}
+
+.section-footer h1:hover {
+  opacity: 0.5;
+  cursor:pointer;
+}
+
+.section-footer p {
+  font-size: 13px;
+  color: #434141;
+}
+
+.section-footer p:hover {
+  cursor:pointer;
+  opacity:0.5;
+}
+
+.section-footer a {
+  font-size: 20px;
+  text-decoration: none;
+  padding-right: 5px;
+  margin-top: 20px;
+  color: #9F1723;
+}
+
+.section-footer a:hover {
+  opacity:0.5;
+}

@@ -6,8 +6,10 @@ Rails.application.routes.draw do
     get "/" => "dashboard#home"
     get "thematics" => "dashboard#categories"
     get "profile" => "dashboard#profile"
+    get "regions" => "dashboard#regions"
     resources :category4as, only: [:create, :destroy]
     resources :region4as, only: [:create, :destroy]
+    resources :regions, only: [:update]
     resources :articles, only: [:index, :show, :new, :create, :edit, :update]
   end
 

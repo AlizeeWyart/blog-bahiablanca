@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :home, :map ]
+
   def show
     @article = Article.find(params[:id])
     @regions = @article.regions.select { |region| region.code != "MEX-ALL"}

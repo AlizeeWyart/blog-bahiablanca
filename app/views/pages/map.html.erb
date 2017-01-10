@@ -45,6 +45,9 @@
   </div>
 </div>
 
+<%= render 'shared/footer' %>
+
+
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     <% if params[:region] %>
@@ -53,6 +56,8 @@
 
     $(".map g").mouseover( function(){
       var regionName = $(this).data("region");
+      console.log($(this).data("name"));
+      console.log($(this).attr("id"));
       $('#description-map-box').hide().html(regionName).fadeIn(100);
     });
 
@@ -68,7 +73,6 @@
       $(".map g g").removeClass("state--selected");
       $(this).addClass("state--selected");
       var regionNameh1 = $(this).data("name");
-      console.log(regionNameh1);
       <% if params[:category].nil? %>
       document.location = "/map" + "?region=" + regionNameh1;
       <% else %>

@@ -29,7 +29,7 @@
   <!-- CARTES ET AUTRES ARTICLES -->
   <div class="col-xs-12 col-sm-4">
     <div class="show-article-map">
-      <div class="dynamic-map">
+      <div class="dynamic-map" style="min-height:380px">
         <div class="box-title-map">
           <div class="description-map-box">
             <% if @regions.count == 0 %>
@@ -87,6 +87,8 @@
     </div>
   </div>
 </div>
+<%= render 'shared/footer' %>
+
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>

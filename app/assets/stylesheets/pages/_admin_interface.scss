@@ -424,5 +424,48 @@ $dark-grey: #434141;
       opacity: 1;
     }
   }
+  #admin_region_page {
+    display:flex;
+    padding:50px;
+    .edit-btn {
+      position: relative;
+      right:0;
+    }
+    .simple_form {
+      margin:0;
+    }
+    .edit-region-box {
+      flex: 0 0 50%;
+      margin-left: 20px;
+      .row-region-title {
+        background-color: #9F1723;
+        border-radius: 5px 5px 0 0;
+        padding: 10px;
+        text-align: center;
+        h2 {
+          text-transform: none;
+          color: white;
+        }
+      }
+      .row-region-content {
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0px 1px #E7EAEC;
+        border-radius: 0 0 2px 2px;
+        h4 {
+          text-transform: uppercase;
+          text-align: center;
+          padding: 10px;
+          background-color: #F3EAEA;
+          border-radius: 2px;
+        }
+        h5 {
+          font-family: 'Quicksand', sans-serif;
+          color: #9F1723;
+          text-align: center;
+        }
+      }
+    }
+  }
 }
 

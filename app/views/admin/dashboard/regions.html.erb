@@ -39,25 +39,24 @@
         </div>
         <div class="row-region-content">
 <!--           <h4>Infos</h4> -->
+          <% if @region.nil? %>
+          Pas de région créée, Contacte-moi !!
+          Envoie moi un screenshot avec le lien url pour qu'elle fixe ça en 10min chrono :)
+          (j'espère que tu ne verras jamais ce message)
+          <% else %>
           <h5>- Courte description -</h5>
           <%= simple_form_for [:admin, @region] do |f| %>
             <%= f.error_notification %>
             <%= f.input :short_description, label: false %>
-            <%= f.button :submit, 'Modifier', class:"edit-btn" %>
-          <% end %>
-          <h5>- Description -</h5>
-          <%= simple_form_for [:admin, @region] do |f| %>
-            <%= f.error_notification %>
+            <h5>- Description -</h5>
             <%= f.input :description, label: false, :input_html => { :class => 'froala-editor'} %>
             <%= f.button :submit, 'Modifier', class:"edit-btn" %>
+          <% end %>
           <% end %>
         </div>
       </div>
       <% end %>
     </div>
-<% @regions.each do |region| %>
-  <%= region.code %>
-<% end %>
   </div>
 </div>
 
@@ -65,6 +64,13 @@
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
+
+    $('.menu-card').removeClass('active');
+    $('#edit-regions-navbar-btn').addClass('active');
+
+    <% if params[:region] %>
+      $('*[data-name="<%= params[:region] %>"]').addClass("state--selected");
+    <% end %>
 
     $(".map g").mouseover( function(){
       var regionName = $(this).data("region");

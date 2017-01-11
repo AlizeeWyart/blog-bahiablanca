@@ -14,18 +14,16 @@
       <div style="text-align:center">
         <span id="all-regions-selector"> toutes les régions </span>
       </div>
-       <%= render partial: 'shared/mexico_map' %>
+       <div id="map" style="widows: 100%; height: 100%;"></div>
     </div>
     <div class="content-articles">
 
       <% if params[:region] || params[:category] %>
         <% if @articles.count == 0 %>
-          <%= render partial: 'shared/category_selector', locals: {categories: @all_categories} %>
           <div class="no-article">
             <h3>Pas d'article pour l'instant !</h3>
           </div>
         <% else %>
-          <%= render partial: 'shared/category_selector', locals: {categories: @all_categories} %>
           <% @articles.each do |article| %>
             <%= link_to article_path(article) do %>
             <%= render partial: 'shared/article_miniature', locals: {article: article} %>
@@ -33,7 +31,6 @@
           <% end %>
         <% end %>
       <% else %>
-        <%= render partial: 'shared/category_selector', locals: {categories: @all_categories} %>
         <% @all_articles.each do |article| %>
           <%= link_to article_path(article) do %>
           <%= render partial: 'shared/article_miniature', locals: {article: article} %>
@@ -50,56 +47,6 @@
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
-    <% if params[:region] %>
-      $('*[data-name="<%= params[:region] %>"]').addClass("state--selected");
-    <% end %>
-
-    $(".map g").mouseover( function(){
-      var regionName = $(this).data("region");
-      console.log($(this).data("name"));
-      console.log($(this).attr("id"));
-      $('#description-map-box').hide().html(regionName).fadeIn(100);
-    });
-
-    $(".map g").mouseout(function(){
-      <% if params[:region] %>
-      $('#description-map-box').html("<h3><%= params[:region] %></h3>");
-      <% else %>
-      $('#description-map-box').html("<h3><%= @title_region_map.content %></h3>");
-      <% end %>
-    });
-
-    $(".map g g").on("click", function(){
-      $(".map g g").removeClass("state--selected");
-      $(this).addClass("state--selected");
-      var regionNameh1 = $(this).data("name");
-      <% if params[:category].nil? %>
-      document.location = "/map" + "?region=" + regionNameh1;
-      <% else %>
-      document.location = "/map" + "?region=" + regionNameh1 + "&" + "category=" + "<%= params[:category] %>";
-      <% end %>
-    })
-
-
-      $(".category-choice").on("click", function(){
-        var categoryName = $(this).data("name");
-        console.log(categoryName);
-        <% if params[:region].nil? %>
-          console.log("pas de region sélectionnée");
-          document.location = "/map" + "?category=" + categoryName;
-        <% else %>
-          console.log("<%= params[:region]%> sélectionnée");
-           document.location = "/map" + "?region=" + "<%= params[:region] %>" + "&" + "category=" + categoryName  ;
-        <% end %>
-      });
-
-      $('#all-categories-selector').on("click", function(){
-        <% if params[:region].nil? %>
-          document.location = "/map";
-        <% else %>
-          document.location = "/map" + "?region=" + "<%= params[:region] %>";
-        <% end %>
-      });
 
       $('#all-regions-selector').on("click", function(){
         <% if params[:category].nil? %>
@@ -107,6 +54,220 @@
         <% else %>
           document.location = "/map" + "?category=" + "<%= params[:category] %>";
         <% end %>
+      });
+
+      $(".card-photo").on("click", function(){
+      var nameCategory = $(this).attr('id');
+      console.log(nameCategory);
+      document.location = "/map" + "?category=" + nameCategory;
+    })
+
+      var centerlocation = {lat: 23.634501, lng:  -102.552784};
+      var setzoomvariable = 5;
+      var mapStyle = [
+    {
+        "featureType": "all",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "saturation": "1"
+            },
+            {
+                "color": "#9f1723"
+            },
+            {
+                "lightness": "0"
+            },
+            {
+                "gamma": "0.90"
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#f3eaea"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#fefefe"
+            },
+            {
+                "lightness": 17
+            },
+            {
+                "weight": 1.2
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#f3eaea"
+            },
+            {
+                "lightness": "0"
+            },
+            {
+                "saturation": "0"
+            },
+            {
+                "weight": "0.01"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#f1f1f1"
+            },
+            {
+                "lightness": 21
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#dedede"
+            },
+            {
+                "lightness": 17
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#dedede"
+            },
+            {
+                "lightness": 29
+            },
+            {
+                "weight": 0.2
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#dedede"
+            },
+            {
+                "lightness": 18
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 16
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "lightness": 19
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 17
+            }
+        ]
+    }
+];
+      var handler = Gmaps.build('Google');
+      handler.buildMap(
+        {internal: { id: 'map' },
+        provider: {
+        scrollwheel: false,
+        <!-- zoomControl: false, -->
+        styles: mapStyle,
+        }},
+        function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.map.centerOn(centerlocation);
+        handler.getMap().setZoom(setzoomvariable);
+        <!-- handler.fitMapToBounds(); -->
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
       });
 
   <% end %>

@@ -5,37 +5,34 @@
     <%= render 'shared/countdown' %>
 </div>
 
-
 <div class="wrapper-blog-home">
-  <div class="row-map-and-content">
-    <div class="dynamic-map">
-      <div class="box-title-map">
-      <div id="description-map-box">
-        <h3><%= @title_region_map.content %></h3>
-      </div>
-      </div>
-       <%= render partial: 'shared/mexico_map' %>
+  <div class="row">
+    <div class="intro-text">
+      <h3 class="title-first-page">Notre voyage au Mexique</h3>
+      <%= @infos[1].content.html_safe %>
     </div>
-    <div class="dynamic-map">
-      <div class="box-title-map">
-      <div id="description-map-box">
-        <h3><%= @title_category.content %></h3>
-        <div class="intro-blog">
-          <% @categories.each do |categ| %>
-
-          <div class="card-photo" id="<%= categ.code %>" style="background-image: url('<% if categ.photo? %><%= cl_image_path categ.photo %><% else %>http://www.businesstravel.fr/images/stories/destinations/mexique/cholula-mexique.jpg<% end %>');background-position:center center;background-repeat:no-repeat;background-size:cover;">
-            <h2><%= categ.name %></h2>
-            <p><%= categ.short_description %></p>
-          </div>
-          <% end %>
-        </div>
+    <div class="col-xs-12 col-md-6">
+      <div class="info-box-left">
+        <div id="map" style="widows: 100%; height: 100%;"></div>
       </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+      <div class="info-box-right">
+        <% @categories.each do |categ| %>
+
+        <div class="card-photo" id="<%= categ.code %>" style="background-image: url('<% if categ.photo? %><%= cl_image_path categ.photo %><% else %>http://www.businesstravel.fr/images/stories/destinations/mexique/cholula-mexique.jpg<% end %>');background-position:center center;background-repeat:no-repeat;background-size:cover;">
+          <h2><%= categ.name %></h2>
+          <p><%= categ.short_description %></p>
+        </div>
+        <% end %>
+
       </div>
     </div>
   </div>
 </div>
 
 <%= render 'shared/footer' %>
+<%= render partial: 'shared/bahialetter_modal' %>
 
 
 <% content_for(:after_js) do %>
@@ -50,6 +47,12 @@
       $('#description-map-box').html("<h3><%= @title_region_map.content %></h3>");
     });
 
+
+    $(window).load(function(){
+        $('#bahialetterModal').modal('show');
+    });
+
+
     $(".map g g").on("click", function(){
       $(".map g g").removeClass("state--selected");
       $(this).addClass("state--selected");
@@ -63,6 +66,214 @@
       console.log(nameCategory);
       document.location = "/map" + "?category=" + nameCategory;
     })
+
+      var centerlocation = {lat: 23.634501, lng:  -102.552784};
+      var setzoomvariable = 5;
+      var mapStyle = [
+    {
+        "featureType": "all",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "saturation": "1"
+            },
+            {
+                "color": "#9f1723"
+            },
+            {
+                "lightness": "0"
+            },
+            {
+                "gamma": "0.90"
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#f3eaea"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#fefefe"
+            },
+            {
+                "lightness": 17
+            },
+            {
+                "weight": 1.2
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#f3eaea"
+            },
+            {
+                "lightness": "0"
+            },
+            {
+                "saturation": "0"
+            },
+            {
+                "weight": "0.01"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#f1f1f1"
+            },
+            {
+                "lightness": 21
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#dedede"
+            },
+            {
+                "lightness": 17
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#dedede"
+            },
+            {
+                "lightness": 29
+            },
+            {
+                "weight": 0.2
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#dedede"
+            },
+            {
+                "lightness": 18
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 16
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "lightness": 19
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 17
+            }
+        ]
+    }
+];
+      var handler = Gmaps.build('Google');
+      handler.buildMap(
+        {internal: { id: 'map' },
+        provider: {
+        scrollwheel: false,
+        <!-- zoomControl: false, -->
+        styles: mapStyle,
+        }},
+        function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.map.centerOn(centerlocation);
+        handler.getMap().setZoom(setzoomvariable);
+        <!-- handler.fitMapToBounds(); -->
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
 
   <% end %>
 <% end %>

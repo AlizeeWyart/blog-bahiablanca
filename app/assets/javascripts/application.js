@@ -2,6 +2,9 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 
+//= require underscore
+//= require gmaps/google
+
 //= require froala_editor.min
 //= require plugins/url.min
 //= require plugins/code_view.min

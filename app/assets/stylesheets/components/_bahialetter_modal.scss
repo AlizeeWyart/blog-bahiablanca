@@ -1,0 +1,79 @@
+.modal-sm {
+  @media (min-width: 768px) {
+    width: 50%;
+  }
+}
+
+.modal-content {
+  padding: 20px;
+  #mc_embed_signup h2 {
+    margin: 0;
+    text-transform: uppercase;
+    text-align: center;
+    color: #9F1723;
+    font-weight: 300;
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+  #mc_embed_signup_scroll {
+    .other-fields {
+      display: flex;
+      padding-right: 22px;
+    }
+    .clear {
+      text-align: center;
+    }
+    .indicates-required {
+      font-family: 'Raleway', sans-serif;
+    }
+    .mc-field-group {
+      input {
+        border: none;
+        border-bottom: 2px solid #9F1723;
+        background-color:#F3EAEA;
+        border-radius: 0;
+        font-family: 'Raleway', sans-serif;
+      }
+    }
+    #mc-embedded-subscribe {
+      border-radius: 0px;
+      background-color: #9F1723;
+      font-family: 'Raleway', sans-serif;
+      text-transform: uppercase;
+    }
+    #mc-embedded-subscribe:hover {
+      background-color: #6C0E18;
+    }
+    #fermer-button {
+      border-radius: 0px;
+      background-color: #9F1723;
+      font-family: 'Raleway', sans-serif;
+      text-transform: uppercase;
+      width: 130px;
+    }
+
+    #fermer-button:hover {
+      background-color: #6C0E18;
+    }
+  }
+}
+
+#mc_embed_signup #mce-success-response {
+  font-weight: 300;
+  font-family: 'Raleway', sans-serif;
+  margin-left: 40px;
+}
+
+label {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+}
+
+
+#modal-hide-btn {
+  cursor:pointer;
+  position: absolute;
+  top: -5px;
+  padding:20px;
+  right: 0;
+}

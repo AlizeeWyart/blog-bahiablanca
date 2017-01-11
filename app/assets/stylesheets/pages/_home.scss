@@ -34,6 +34,11 @@ a:hover {
 .bahia-btn:hover {
 
 }
+
+.row {
+  margin:0;
+  padding:0;
+}
 // PHOTO HOMEPAGE
 .homepage-photos {
   width:100vw;
@@ -50,6 +55,79 @@ a:hover {
     color: $red;
     font-weight: 300;
   }
+}
+
+
+
+.wrapper-blog-home {
+  padding: 40px;
+  .col-xs-12 {
+    padding:0;
+  }
+  .col-md-6 {
+    padding:0;
+  }
+  .intro-text {
+    padding: 0 250px 40px 250px;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 18px;
+  }
+  .title-first-page {
+    margin: 0 0 40px 0;
+    text-align: center;
+    color: #9F1723;
+    text-transform: uppercase;
+    font-size: 40px;
+  }
+  .info-box-left {
+    padding: 20px;
+    border: 1px solid #9F1723;
+    margin-right: 10px;
+    height:400px;
+  }
+  .info-box-right {
+    padding: 20px;
+    border: 1px solid #9F1723;
+    margin-left: 10px;
+    height:400px;
+    display:flex;
+    flex-direction:column;
+    .card-photo {
+      flex: 0 0 47%;
+      border-radius: 3px;
+      margin-bottom: 20px;
+      cursor:pointer;
+      transition: opacity 0.35s, transform 0.35s;
+      padding:50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background:-webkit-linear-gradient(#2c539e 0%,#37AAC6 50%,#2c539e 100%);
+      p {
+        color: white;
+        font-weight: 100;
+        font-family: 'Raleway', sans-serif;
+        text-align: center;
+        opacity:0;
+        transition: opacity 0.35s, transform 0.35s;
+        }
+      h2 {
+        color:white;
+        text-transform:uppercase;
+        text-align:center;
+        transition: opacity 0.35s, transform 0.35s;
+      }
+    }
+    .card-photo:hover p {
+      opacity:1;
+    }
+    .card-photo:hover {
+      outline: 1px solid white;
+      outline-offset: -20px;
+    }
+  }
+
 }
 
 // PAGE BLOG HOME

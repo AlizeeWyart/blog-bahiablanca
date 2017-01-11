@@ -44,10 +44,12 @@
               </div>
               <h5>- Date de publication -</h5>
               <%= f.input :date, label: false %>
+              <h5>- Lieu -</h5>
+              <%= f.input :address, label: false %>
               <%= f.button :submit, 'Modifier l\'article', class:"edit-btn" %>
             <% end %>
               <!-- AJOUTER DES THEMATIQUES -->
-              <h5 style="margin-top: 100px;">- Les Thématiques -</h5>
+              <h5 style="margin-top: 100px;">- La Catégorie -</h5>
               <% @categories.each do |category| %>
                 <div class="category-show-tags">
                   <span class="category-show-tags-h3">
@@ -62,7 +64,7 @@
               <% end %>
                 <a id="new-category-form-btn" class="btn btn-default edit-btn"> <i class="fa fa-plus" aria-hidden="true"></i> Ajouter</a>
                 <div id="new-category-form">
-                  <h5>- Nouvelle thématique -</h5>
+                  <h5>- Nouvelle catégorie -</h5>
                   <%= simple_form_for [:admin, @category4a] do |f| %>
                     <%= f.error_notification %>
                     <%= f.input :category_id, label: false, collection: @all_categories %>

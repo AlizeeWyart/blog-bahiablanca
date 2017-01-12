@@ -31,10 +31,13 @@
               <%= f.input :title, label: false %>
               <h5>- Courte description -</h5>
               <%= f.input :short_description, label: false %>
-              <h5>- Contenu -</h5>
-              <%= f.input :content, label: false, :input_html => { :class => 'froala-editor'} %>
+              <h5>- Lieu -</h5>
+              <%= f.input :address, label: false %>
+              <%= f.button :submit, 'Modifier', class:"edit-btn" %>
             </div>
             <div class="col-xs-4">
+              <h5>- Date de publication -</h5>
+              <%= f.input :date, label: false %>
               <h5>- Photo de l'article -</h5>
               <%= cl_image_tag @article.photo, style:"width: 100%;" %>
               <a id="change-photo-form-btn" class="btn btn-default edit-btn" style="position:relative;right:0"> <i class="fa fa-plus" aria-hidden="true"></i> Changer la photo</a>
@@ -42,14 +45,106 @@
                 <%= f.input :photo %>
                 <%= f.input :photo_cache, as: :hidden %>
               </div>
-              <h5>- Date de publication -</h5>
-              <%= f.input :date, label: false %>
-              <h5>- Lieu -</h5>
-              <%= f.input :address, label: false %>
-              <%= f.button :submit, 'Modifier l\'article', class:"edit-btn" %>
             <% end %>
-              <!-- AJOUTER DES THEMATIQUES -->
-              <h5 style="margin-top: 100px;">- La Catégorie -</h5>
+            </div>
+          </div>
+          <h4>- Ajouter une section -</h4>
+          <a id="choice-section-form-btn" class="btn btn-default bahia-btn"> <i class="fa fa-plus" aria-hidden="true"></i> Ajouter une section</a>
+          <div class="row-nude" id="style-choice-box" style="display:none;">
+              <form id="styleContent">
+               <% Content::STYLE.each_with_index do |style, index| %>
+                  <input type="radio" name="gender" value="<%= index %>"> <%= style %><br>
+                <% end %>
+              </form>
+              <a id="new-section-form-btn" class="btn btn-default bahia-btn"> <i class="fa fa-plus" aria-hidden="true"></i> Go !</a>
+          </div>
+          <!-- AFFICHER -->
+          <% @contents.each_with_index do |content, index| %>
+            <h4> SECTION n° <%= index + 1 %></h4>
+            <!-- TEXTE UNIQUEMENT -->
+            <% if content.style == "Texte uniquement" %>
+              <%= simple_form_for [:admin, content] do |f| %>
+              <%= f.error_notification %>
+              <h5>- Style -</h5>
+              <%= f.input :style, label: false, collection: Content::STYLE %>
+              <h5>- Texte -</h5>
+              <%= f.input :text, label: false, :input_html => { :class => 'froala-editor'} %>
+              <%= f.button :submit, 'Modifier', class:"bahia-btn" %>
+              <% end %>
+            <% end %>
+            <!-- DEUX PHOTOS -->
+            <% if content.style == "Deux photos" %>
+              <%= simple_form_for [:admin, content] do |f| %>
+              <%= f.error_notification %>
+              <h5>- Style -</h5>
+              <%= f.input :style, label: false, collection: Content::STYLE %>
+                <div class="col-xs-6">
+                  <%= cl_image_tag content.photo, height: 150, width: 300 %>
+                  <%= f.input :photo %>
+                  <%= f.input :photo_cache, as: :hidden %>
+                </div>
+                <div class="col-xs-6">
+                  <%= cl_image_tag content.photo2, height: 150, width: 300 %>
+                  <%= f.input :photo2 %>
+                  <%= f.input :photo2_cache, as: :hidden %>
+                </div>
+                <%= f.button :submit, 'Modifier', class:"bahia-btn" %>
+                <% end %>
+              <% end %>
+            <!-- Une vidéo -->
+            <% if content.style == "Une vidéo" %>
+              <%= simple_form_for [:admin, content] do |f| %>
+                <%= f.error_notification %>
+                <h5>- Style -</h5>
+                <%= f.input :style, label: false, collection: Content::STYLE %>
+                <h5>- Lien de la vidéo Youtube -</h5>
+                <%= f.input :video, label: false %>
+                <%= f.button :submit, 'Modifier', class:"bahia-btn" %>
+              <% end %>
+            <% end %>
+            <!-- Une photo -->
+            <% if content.style == "Une photo" %>
+              <%= simple_form_for [:admin, content] do |f| %>
+                <%= f.error_notification %>
+                <h5>- Style -</h5>
+                <%= f.input :style, label: false, collection: Content::STYLE %>
+                <div class="col-xs-7">
+                  <%= cl_image_tag content.photo, style:"width:100%" %>
+                </div>
+                <div class="col-xs-5">
+                <h5>- Description de la photo -</h5>
+                <%= f.input :text, label: false %>
+                <h5>- Changer la photo -</h5>
+                <%= f.input :photo %>
+                <%= f.input :photo_cache, as: :hidden %>
+                <%= f.button :submit, 'Modifier', class:"bahia-btn" %>
+                </div>
+              <% end %>
+            <% end %>
+            <!-- Un portrait -->
+            <% if content.style == "Portrait artisan" %>
+              <%= simple_form_for [:admin, content] do |f| %>
+                <%= f.error_notification %>
+                <h5>- Style -</h5>
+                <%= f.input :style, label: false, collection: Content::STYLE %>
+                <div class="col-xs-8">
+                  <h5>- Description de l'artisan(e) -</h5>
+                  <%= f.input :text, label: false, :input_html => { :class => 'froala-editor'} %>
+                </div>
+                <div class="col-xs-4">
+                  <%= cl_image_tag content.photo, style:"width:100%" %>
+                  <%= f.input :photo %>
+                  <%= f.input :photo_cache, as: :hidden %>
+                </div>
+                <%= f.button :submit, 'Modifier', class:"bahia-btn" %>
+              <% end %>
+            <% end %>
+          <% end %>
+          <!-- FIN DE L'AFFICHAGE -->
+          <h4>- LES CATÉGORIES & LIEUX</h4>
+          <div class="row-nude">
+            <div class="col-xs-6">
+              <h5 style="margin-top: 20px">- La Catégorie -</h5>
               <% @categories.each do |category| %>
                 <div class="category-show-tags">
                   <span class="category-show-tags-h3">
@@ -74,8 +169,9 @@
                     <%= f.button :submit, 'Ajouter la thématique', class:"edit-btn" %>
                   <% end %>
                 </div>
-               <!-- AJOUTER DES REGIONS -->
-               <h5 style="margin-top: 100px;">- Les Régions -</h5>
+            </div>
+            <div class="col-xs-6">
+              <h5 style="margin-top: 20px;">- Les Régions -</h5>
               <% @regions.each do |region| %>
                 <div class="category-show-tags">
                   <span class="category-show-tags-h3">
@@ -102,6 +198,17 @@
                 </div>
             </div>
           </div>
+
+
+
+
+
+
+
+
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -113,21 +220,30 @@
     $('.menu-card').removeClass('active');
     $('#edit-articles-navbar-btn').addClass('active');
 
-    $('.fr-element').css( "min-height", "50vh" );
 
     $('#new-category-form-btn').on("click", function(){
       $('#new-category-form-btn').css( "display", "none");
       $('#new-category-form').css( "display", "block");
-    })
+    });
 
     $('#new-region-form-btn').on("click", function(){
       $('#new-region-form-btn').css( "display", "none");
       $('#new-region-form').css( "display", "block");
-    })
+    });
 
     $('#change-photo-form-btn').on("click", function(){
       $('#change-photo-form-btn').css( "display", "none");
       $('#change-photo-form').css( "display", "block");
+    });
+
+    $("#choice-section-form-btn").on("click", function(){
+      $('#choice-section-form-btn').css( "display", "none");
+      $('#style-choice-box').css( "display", "inline");
+    });
+
+    $("#new-section-form-btn").on("click", function(){
+      var choiceChecked = $('input[name=gender]:checked', '#styleContent').val();
+      document.location = "/admin/contents/new" + "?style=" + choiceChecked + "&" + "article_id=" + "<%= @article.id %>";
     })
 
   <% end %>

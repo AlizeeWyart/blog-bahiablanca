@@ -1,78 +1,64 @@
 <%= render 'shared/navbar' %>
 
 <div class="wrapper-show-article">
-  <!-- PHOTO & MAP -->
+  <!-- CONTENU DE L'ARTICLE -->
   <div class="row">
     <div class="col-xs-12 col-sm-8">
-      <% mexico_photo_url = image_path "photo_mexique_1.jpg" %>
-      <% photo_url = @article.photo || mexico_photo_url %>
-      <div class="article-photo" style="background-image:url('<%= photo_url %>')">
+      <div class="article-show" id="<%= @article.id %>">
+        <% mexico_photo_url = image_path "photo_mexique_1.jpg" %>
+        <% photo_url = @article.photo || mexico_photo_url %>
+        <div class="article-photo" style="background-image:url('<%= photo_url %>')">
+        </div>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="map-card-article">
-         <div id="map" style="widows: 100%; height: 100%;"></div>
+    <div class="col-xs-12 col-sm 4">
+       <div id="map" style="widows: 100%; height: 100%;"></div>
+    </div>
+  </div>
+      <div class="article-title">
+        <h4 class="categ">
+          <% @article.regions.each do |region| %>
+          <i class="fa fa-tag" aria-hidden="true"></i> <%= region.name %>
+          <% end %>
+          <i class="fa fa-tag" aria-hidden="true"></i>
+          Artisanat</h4>
+
+      </div>
+      <div class="article-title">
+        <h3><%= @article.title %></h3>
+        <% avatar_url =  @article.user.photo || "https://cdn4.iconfinder.com/data/icons/linecon/512/photo-512.png" %>
+        <h4 class="article-details" ><i class="fa fa-calendar-o" aria-hidden="true"></i> <%= @article.date.strftime("%e %b %Y") %> <i class="fa fa-comment-o margin-left-20" aria-hidden="true"></i> <%= @article.comments.count %>  <img class="user-photo" src="<%= avatar_url %>" alt="">Par <%= @article.user.first_name %></h4>
+      </div>
+      <div class="article-content">
+        <%= @article.content.html_safe %>
       </div>
     </div>
   </div>
-  <!-- CONTENU ARTICLE -->
-  <div class="row article-show">
-    <!-- LES TAGS -->
-    <div class="article-title">
-      <h4 class="categ">
-        <% @article.regions.each do |region| %>
-        <i class="fa fa-tag" aria-hidden="true"></i> <%= region.name %>
-        <% end %>
-        <i class="fa fa-tag" aria-hidden="true"></i>
-        Artisanat
-      </h4>
-    </div>
-    <!-- TITRE & INFOS -->
-    <div class="article-title">
-      <h3><%= @article.title %></h3>
-      <% avatar_url =  @article.user.photo || "https://cdn4.iconfinder.com/data/icons/linecon/512/photo-512.png" %>
-      <h4 class="article-details" ><i class="fa fa-calendar-o" aria-hidden="true"></i> <%= @article.date.strftime("%e %b %Y") %> <i class="fa fa-heart-o" aria-hidden="true"></i> <%= @article.likes %> <i class="fa fa-comment-o margin-left-20" aria-hidden="true"></i> <%= @article.comments.count %>  <img class="user-photo" src="<%= avatar_url %>" alt="">Par <%= @article.user.first_name %></h4>
-    </div>
-    <% @contents.each do |content| %>
-    <div class="article-content" style="text-align:justify">
-        <!-- TEXTE UNIQUEMENT -->
-        <% if content.style == "Texte uniquement" %>
-          <%= content.text.html_safe %>
-        <!-- DEUX PHOTOS -->
-        <% elsif content.style == "Deux photos" %>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6" style="padding-left:0">
-              <%= cl_image_tag content.photo, style: "width:100%" %>
-            </div>
-            <div class="col-xs-12 col-sm-6" style="padding-right:0">
-              <%= cl_image_tag content.photo2, style: "width:100%" %>
-            </div>
+  <!-- CARTES ET AUTRES ARTICLES -->
+  <div class="col-xs-12 col-sm-4">
+    <div class="show-article-map">
+      <div class="dynamic-map" style="min-height:380px">
+        <div class="box-title-map">
+          <div class="description-map-box">
+            <% if @regions.count == 0 %>
+            <% elsif @regions.count == 1 %>
+            <h3>Région : <%= @regions.first.name %></h3>
+            <% else %>
+              <h3>Régions :</h3>
+              <% @regions.each do |region| %>
+              <span class="region-selector" data-name="<%= region.name %>"><%= region.name %></span>
+              <% end %>
+            <% end %>
+            <span id="all-regions-selector">Mexique</span>
           </div>
-        <!-- Une vidéo -->
-        <% elsif content.style == "Une vidéo" %>
-          <%= content.video %>
-          <%= content.text.html_safe %>
-        <!-- Une photo -->
-        <% elsif content.style == "Une photo" %>
-          <%= cl_image_tag content.photo, style: "width:100%" %>
-          <p style="text-align:center"><%= content.text %></p>
-        <!-- Un portrait -->
-        <% elsif content.style == "Portrait artisan" %>
-        <div class="row">
-            <div class="col-xs-12 col-sm-4" style="padding-left:0">
-              <%= cl_image_tag content.photo, style: "width:100%" %>
-            </div>
-            <div class="col-xs-12 col-sm-4" style="padding-right:0">
-             <%= content.text.html_safe %>
-            </div>
-        <% end %>
-      <!-- FIN DE L'AFFICHAGE -->
-    </div>
-    <% end %>
-    <!-- AFFICHER CONTENT -->
-  </div>
-
-
+        </div>
+        <%= render partial: 'shared/mexico_map' %>
+        <div class="region-selector">
+          <div id="region-map-selector" >
+            <h3>Choisissez<br>une autre région</h3>
+          </div>
+        </div>
+      </div>
       <div class="dynamic-map" style="margin-top:20px;padding:0px">
         <div class="box-title-map">
           <div class="description-map-box" id="comments-box">
@@ -119,6 +105,48 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
 
+      <% @regions.each do |region| %>
+      $('*[data-name="<%= region.name %>"]').addClass("state--selected");
+      <% end %>
+
+      $(".map g").mouseover( function(){
+        var regionName = $(this).data("region");
+        $('#region-map-selector').hide().html(regionName).fadeIn(100);
+      });
+
+      $(".map g").mouseout(function(){
+        $('#region-map-selector').html("<h3>Choisissez <br>une autre région</h3>");
+      });
+
+      $(".map g g").on("click", function(){
+        var regionNameh1 = $(this).data("name");
+        console.log(regionNameh1);
+        document.location = "/map" + "?region=" + regionNameh1;
+      });
+
+      $('#all-regions-selector').on("click", function(){
+          document.location = "/map";
+      });
+
+      $('.region-selector').on("click", function(){
+         var regionName = $(this).data("name");
+        document.location = "/map" + "?region=" + regionName;
+      })
+
+      $('#comment-form-btn').on("click", function() {
+        $('#comments-box').css("display", "none");
+        $('.comment-form').css("display", "block");
+      })
+  <% end %>
+<% end %>
+
+
+
+
+
+
+var centerlocation = {lat: 23.634501, lng:  -102.552784};
+      var setzoomvariable = 5;
       var mapStyle = [
         {
         "featureType": "all",
@@ -315,21 +343,12 @@
         function() {
         markers = handler.addMarkers(<%= raw @hash.to_json %>);
         handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
+        handler.map.centerOn(centerlocation);
+        handler.getMap().setZoom(setzoomvariable);
+        <!-- handler.fitMapToBounds(); -->
         if (markers.length == 0) {
           handler.getMap().setZoom(2);
         } else if (markers.length == 1) {
-          handler.getMap().setZoom(6);
+          handler.getMap().setZoom(14);
         }
       });
-
-
-      $('#comment-form-btn').on("click", function() {
-        $('#comments-box').css("display", "none");
-        $('.comment-form').css("display", "block");
-      })
-  <% end %>
-<% end %>
-
-
-

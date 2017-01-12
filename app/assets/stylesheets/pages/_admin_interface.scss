@@ -319,9 +319,10 @@ $dark-grey: #434141;
   .separator {
     border: 0.5px solid #9F1723;
     width: 50%;
-    border-radius: 21px;
     align-items: center;
     margin: 30px 25% 40px 25%;
+    background-color:#9F1723;
+
   }
   .row-nude {
 
@@ -464,6 +465,26 @@ $dark-grey: #434141;
           color: #9F1723;
           text-align: center;
         }
+      }
+    }
+  }
+  #style-choice-box {
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    .btn-style-choice {
+      flex: 0 0 17%;
+      background-color: #9F1723;
+      padding: 10px;
+      min-height: 40px;
+      text-align: center;
+      color: white;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      .text-style-choice {
+        color: white;
+        font-size: 14px;
       }
     }
   }

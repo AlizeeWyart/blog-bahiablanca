@@ -26,23 +26,20 @@
           <div class="row-nude">
             <%= simple_form_for [:admin, @article] do |f| %>
               <%= f.error_notification %>
-            <div class="col-xs-8">
-              <h5>- Titre -</h5>
-              <%= f.input :title, label: false %>
-              <h5>- Courte description -</h5>
-              <%= f.input :short_description, label: false %>
-              <h5>- Contenu -</h5>
-              <%= f.input :content, label: false, :input_html => { :class => 'froala-editor'} %>
-            </div>
-            <div class="col-xs-4">
+              <div class="col-xs-8">
+                <h5>- Titre -</h5>
+                <%= f.input :title, label: false %>
+                <h5>- Courte description -</h5>
+                <%= f.input :short_description, label: false %>
+                <h5>- Photo de l'article -</h5>
+                <%= f.input :photo %>
+                <%= f.input :photo_cache, as: :hidden %>
+              </div>
+              <div class="col-xs-4">
               <h5>- Date de publication -</h5>
               <%= f.input :date, label: false %>
               <h5>- Adresse & Localisation -</h5>
               <%= f.input :address, label: false  %>
-<!--               <#%= f.input :country, collection: ["Mexique", "France"], selected: 1 %>
- -->          <h5>- Photo de l'article -</h5>
-              <%= f.input :photo %>
-              <%= f.input :photo_cache, as: :hidden %>
               <%= f.button :submit, 'Publier l\'article', class:"edit-btn" %>
             </div>
             <% end %>

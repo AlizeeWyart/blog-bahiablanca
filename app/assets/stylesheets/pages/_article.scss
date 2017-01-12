@@ -57,16 +57,23 @@
 .wrapper-show-article {
   padding: 40px;
   margin-top: 40px;
-  .article-show {
+  .map-card-article{
     width: 100%;
-    .article-photo {
-        height: 380px;
-        width: 100%;
-        background-position: top center;
-        border-radius: 3px;
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
+    height: 380px;
+    padding: 20px;
+    border: 1px solid #9F1723;
+  }
+  .article-photo {
+      height: 380px;
+      width: 100%;
+      background-position: top center;
+      background-size: cover;
+      background-repeat: no-repeat;
+  }
+  .article-show {
+    width: 70%;
+    margin: auto;
+    padding: 40px 0 0 0;
     .article-title {
       padding: 10px;
       margin-left: 5px;
@@ -83,7 +90,7 @@
       }
       h3 {
         margin: 0;
-        font-family: "Quicksand";
+        font-family: 'Raleway', sans-serif;
         color: #9F1723;
         margin-bottom: 15px;
         margin-top: 5px;

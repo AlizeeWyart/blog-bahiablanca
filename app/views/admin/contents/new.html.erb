@@ -1,0 +1,176 @@
+<div class="wrapper-admin-interface">
+  <%= render partial: 'admin/shared/navbar_admin' %>
+  <!-- NAV BAR DU HAUT -->
+  <div class="content-right">
+    <div class="title-navbar">
+      <div class="content-title-navbar">
+        <h1 id="title-dashboard">Nouveau Contenu</h1>
+        <h2>
+          <%= link_to root_path do %>
+            <i class="fa fa-home" aria-hidden="true"></i>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+          <% end %>
+        </h2>
+      </div>
+    </div>
+    <!-- CONTENU STYLE N°0 = TEXTE UNIQUEMENT-->
+    <% if params[:style] == "0" %>
+    <div class="content-dashboard" id="home_page_blog">
+      <!-- logo & main infos -->
+      <div class="row-title">
+        <h2> Section avec texte uniquement</h2>
+      </div>
+      <div class="row-content">
+        <div class="content-card page-description" style="width: 100%; padding-bottom:60px">
+          <div class="row-nude col-xs-12">
+            <%= simple_form_for [:admin, @content] do |f| %>
+              <%= f.error_notification %>
+              <h5>- Texte -</h5>
+              <%= f.input :text, label: false, :input_html => { :class => 'froala-editor'} %>
+              <div style="display:none;">
+                <%= f.input :article_id, label: false %>
+                <%= f.input :style, label: false %>
+              </div>
+              <%= f.button :submit, 'Ajouter la section', class:"edit-btn" %>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <!-- CONTENU STYLE N°1 = DEUX PHOTOS-->
+    <% if params[:style] == "1" %>
+    <div class="content-dashboard" id="home_page_blog">
+      <!-- logo & main infos -->
+      <div class="row-title">
+        <h2> Section avec deux photos</h2>
+      </div>
+      <div class="row-content">
+        <div class="content-card page-description" style="width: 100%; padding-bottom:60px">
+          <div class="row-nude col-xs-12">
+            <%= simple_form_for [:admin, @content] do |f| %>
+              <%= f.error_notification %>
+              <div class="row">
+                <div class="col-xs-6">
+                  <h5>- Photo n°1 -</h5>
+                  <%= f.input :photo, label: false %>
+                  <%= f.input :photo_cache, as: :hidden %>
+                </div>
+                <div class="col-xs-6">
+                  <h5>- Photo n°2 -</h5>
+                  <%= f.input :photo2, label: false %>
+                  <%= f.input :photo2_cache, as: :hidden %>
+                </div>
+              </div>
+              <div style="display:none;">
+                <%= f.input :article_id, label: false %>
+                <%= f.input :style, label: false %>
+              </div>
+              <%= f.button :submit, 'Ajouter la section', class:"edit-btn" %>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <!-- CONTENU STYLE N°2 = VIDEO-->
+    <% if params[:style] == "2" %>
+    <div class="content-dashboard" id="home_page_blog">
+      <!-- logo & main infos -->
+      <div class="row-title">
+        <h2> Section avec une vidéo</h2>
+      </div>
+      <div class="row-content">
+        <div class="content-card page-description" style="width: 100%; padding-bottom:60px">
+          <div class="row-nude col-xs-12">
+            <%= simple_form_for [:admin, @content] do |f| %>
+              <%= f.error_notification %>
+              <div class="row">
+                <h5>- Lien de la vidéo -</h5>
+                <%= f.input :video, label: false %>
+                <h5>- Description -</h5>
+                <%= f.input :text, label: false, :input_html => { :class => 'froala-editor'} %>
+              </div>
+              <div style="display:none;">
+                <%= f.input :article_id, label: false %>
+                <%= f.input :style, label: false %>
+              </div>
+              <%= f.button :submit, 'Ajouter la section', class:"edit-btn" %>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <!-- CONTENU STYLE N°3 = PHOTO-->
+    <% if params[:style] == "3" %>
+    <div class="content-dashboard" id="home_page_blog">
+      <!-- logo & main infos -->
+      <div class="row-title">
+        <h2> Section avec une photo</h2>
+      </div>
+      <div class="row-content">
+        <div class="content-card page-description" style="width: 100%; padding-bottom:60px">
+          <div class="row-nude col-xs-12">
+            <%= simple_form_for [:admin, @content] do |f| %>
+              <%= f.error_notification %>
+              <div class="row">
+                <h5>- Lien de la vidéo -</h5>
+                <%= f.input :photo, label: false %>
+                <%= f.input :photo_cache, as: :hidden %>
+                <h5>- Description -</h5>
+                <%= f.input :text, label: false %>
+              </div>
+              <div style="display:none;">
+                <%= f.input :article_id, label: false %>
+                <%= f.input :style, label: false %>
+              </div>
+              <%= f.button :submit, 'Ajouter la section', class:"edit-btn" %>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <!-- CONTENU STYLE N°3 = PORTRAIT ARTISAN-->
+    <% if params[:style] == "4" %>
+    <div class="content-dashboard" id="home_page_blog">
+      <!-- logo & main infos -->
+      <div class="row-title">
+        <h2> Section avec une photo</h2>
+      </div>
+      <div class="row-content">
+        <div class="content-card page-description" style="width: 100%; padding-bottom:60px">
+          <div class="row-nude col-xs-12">
+            <%= simple_form_for [:admin, @content] do |f| %>
+              <%= f.error_notification %>
+              <div class="row">
+                <h5>- Lien de la photo (Elle doit être carrée) -</h5>
+                <%= f.input :photo, label: false %>
+                <%= f.input :photo_cache, as: :hidden %>
+                <h5>- Description -</h5>
+                <%= f.input :text, label: false, :input_html => { :class => 'froala-editor'} %>
+              </div>
+              <div style="display:none;">
+                <%= f.input :article_id, label: false %>
+                <%= f.input :style, label: false %>
+              </div>
+              <%= f.button :submit, 'Ajouter la section', class:"edit-btn" %>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+  $('#content_article_id').val("<%= @article.id %>");
+  $('#content_style').val("<%= @style %>");
+    <% end %>
+<% end %>
+

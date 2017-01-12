@@ -6,6 +6,7 @@ class Admin::DashboardController < ApplicationController
     @infos = PageInfo.select{|info| info.page = @page}.sort_by {|info| info.id }
     @title_region_map = PageInfo.find_by(name: "title_region_map")
     @title_category = PageInfo.find_by(name: "title_category")
+    @second_title = PageInfo.find_by(name: "home_second_title")
     @categories = Category.all
   end
 

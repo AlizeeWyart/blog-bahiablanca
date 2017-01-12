@@ -23,8 +23,10 @@
         <% @article.regions.each do |region| %>
         <i class="fa fa-tag" aria-hidden="true"></i> <%= region.name %>
         <% end %>
+        <% if !@article.category.nil? %>
         <i class="fa fa-tag" aria-hidden="true"></i>
-        Artisanat
+        <%= @article.category.name %>
+        <% end %>
       </h4>
     </div>
     <!-- TITRE & INFOS -->
@@ -50,8 +52,10 @@
           </div>
         <!-- Une vidéo -->
         <% elsif content.style == "Une vidéo" %>
-          <%= content.video %>
-          <%= content.text.html_safe %>
+          <div class="row">
+            <%= content.video %>
+            <%= content.text.html_safe %>
+          </div>
         <!-- Une photo -->
         <% elsif content.style == "Une photo" %>
           <%= cl_image_tag content.photo, style: "width:100%" %>
@@ -59,18 +63,19 @@
         <!-- Un portrait -->
         <% elsif content.style == "Portrait artisan" %>
         <div class="row">
-            <div class="col-xs-12 col-sm-4" style="padding-left:0">
-              <%= cl_image_tag content.photo, style: "width:100%" %>
-            </div>
-            <div class="col-xs-12 col-sm-4" style="padding-right:0">
-             <%= content.text.html_safe %>
-            </div>
+          <div class="col-xs-12 col-sm-6" style="padding-left:0">
+            <%= cl_image_tag content.photo, style: "width:100%" %>
+          </div>
+          <div class="col-xs-12 col-sm-6" style="padding-right:0">
+           <%= content.text.html_safe %>
+          </div>
+        </div>
         <% end %>
       <!-- FIN DE L'AFFICHAGE -->
-    </div>
-    <% end %>
+
     <!-- AFFICHER CONTENT -->
   </div>
+  <% end %>
 
 
       <div class="dynamic-map" style="margin-top:20px;padding:0px">

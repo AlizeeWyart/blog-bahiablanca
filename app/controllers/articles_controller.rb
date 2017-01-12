@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :map ]
+  skip_before_action :authenticate_user!, only: [ :show ]
 
   def show
     @article = Article.find(params[:id])

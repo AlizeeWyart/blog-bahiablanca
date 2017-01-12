@@ -9,7 +9,9 @@ $dark-grey: #434141;
   min-height: 75vh;
   margin:0;
   padding:0;
-
+  .preview-photo {
+    width:100%
+  }
   .edit-btn {
     background-color: $bahia-red;
     border: none;
@@ -328,6 +330,7 @@ $dark-grey: #434141;
 
     h4 {
       position:relative;
+      margin-top: 20px;
     }
     .destroy-red-btn {
       position: absolute;

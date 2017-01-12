@@ -7,9 +7,7 @@ class Admin::ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @categories = @article.categories
-    @all_categories = Category.all
-    @category4a = Category4a.new(article: @article)
+    @categories = Category.all
     @regions = @article.regions
     @region4a = Region4a.new(article: @article)
     @all_regions = Region.all
@@ -17,6 +15,7 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def new
+    @categories = Category.all
     @article = Article.new
   end
 
@@ -43,6 +42,6 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :short_description, :content, :date, :address, :zip_code, :city, :country, :photo, :photo_cache)
+    params.require(:article).permit(:title, :short_description, :content, :date, :address, :zip_code, :city, :country, :category_id, :photo, :photo_cache)
   end
 end

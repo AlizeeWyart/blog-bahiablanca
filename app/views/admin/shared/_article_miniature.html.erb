@@ -7,8 +7,8 @@
       <% article.regions.each do |region| %>
       <i class="fa fa-tag" aria-hidden="true"></i> <%= region.name %>
       <% end %>
-      <% article.categories.each do |categ| %>
-      <i class="fa fa-tag" aria-hidden="true"></i><%= categ.name %>
+      <% if !article.category.nil? %>
+      <i class="fa fa-tag" aria-hidden="true"></i><%= article.category.name %>
       <% end %>
     </h4>
     <h3><%= article.title %></h2>

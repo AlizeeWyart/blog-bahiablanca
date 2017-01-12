@@ -31,9 +31,14 @@
               <%= f.input :title, label: false %>
               <h5>- Courte description -</h5>
               <%= f.input :short_description, label: false %>
+              <div class="col-xs-12 col-sm-6" style="padding-right:5px">
               <h5>- Lieu -</h5>
               <%= f.input :address, label: false %>
-              <%= f.button :submit, 'Modifier', class:"edit-btn" %>
+              </div>
+              <div class="col-xs-12 col-sm-6" style="padding-left:5px">
+              <h5>- La Catégorie -</h5>
+              <%= f.input :category_id, label: false, collection: @categories %>
+              </div>
             </div>
             <div class="col-xs-4">
               <h5>- Date de publication -</h5>
@@ -45,11 +50,14 @@
                 <%= f.input :photo %>
                 <%= f.input :photo_cache, as: :hidden %>
               </div>
-            <% end %>
             </div>
+            <div style="text-align: center;">
+              <%= f.button :submit, 'Modifier', class:"bahia-btn" %>
+              </div>
+            <% end %>
           </div>
           <h4>- Ajouter une section -</h4>
-          <a id="choice-section-form-btn" class="btn btn-default bahia-btn"> <i class="fa fa-plus" aria-hidden="true"></i> Ajouter une section</a>
+          <div id="choice-section-form-btn" class="btn btn-default bahia-btn" style="width: 50%;margin-left: 25%;"> <i class="fa fa-plus" aria-hidden="true"></i> Ajouter une section</div>
           <div class="row-nude" id="style-choice-box" style="display:none;">
               <form id="styleContent">
                <% Content::STYLE.each_with_index do |style, index| %>
@@ -141,37 +149,35 @@
             <% end %>
           <% end %>
           <!-- FIN DE L'AFFICHAGE -->
-          <h4>- LES CATÉGORIES & LIEUX</h4>
-          <div class="row-nude">
-            <div class="col-xs-6">
+          <h4>- LES TAGS DE REGIONS</h4>
+          <div class="row-nude" style="text-align:center">
+            <!-- <div class="col-xs-6">
               <h5 style="margin-top: 20px">- La Catégorie -</h5>
-              <% @categories.each do |category| %>
+              <#% @categories.each do |category| %>
                 <div class="category-show-tags">
                   <span class="category-show-tags-h3">
                     <i class="fa fa-tag" aria-hidden="true"></i>
-                     <%= category.name %>
+                     <#%= category.name %>
                   </span>
-                      <% category4a = category.category4as.select {|c4a| c4a.article = @article }.first %>
-                   <%= link_to admin_category4a_path(category4a), :method => :delete do %>
+                      <#% category4a = category.category4as.select {|c4a| c4a.article = @article }.first %>
+                   <#%= link_to admin_category4a_path(category4a), :method => :delete do %>
                     <i class="fa fa-trash-o" aria-hidden="true" ></i>
-                   <% end %>
-                </div>
-              <% end %>
-                <a id="new-category-form-btn" class="btn btn-default edit-btn"> <i class="fa fa-plus" aria-hidden="true"></i> Ajouter</a>
+                   <#% end %>
+                </div> -->
+             <!--  <#% end %> -->
+                <!-- <a id="new-category-form-btn" class="btn btn-default edit-btn"> <i class="fa fa-plus" aria-hidden="true"></i> Ajouter</a>
                 <div id="new-category-form">
                   <h5>- Nouvelle catégorie -</h5>
-                  <%= simple_form_for [:admin, @category4a] do |f| %>
-                    <%= f.error_notification %>
-                    <%= f.input :category_id, label: false, collection: @all_categories %>
+                  <#%= simple_form_for [:admin, @category4a] do |f| %>
+                    <#%= f.error_notification %>
+                    <#%= f.input :category_id, label: false, collection: @all_categories %>
                     <div style="display:none;">
-                      <%= f.input :article_id, label: false %>
+                      <#%= f.input :article_id, label: false %>
                     </div>
-                    <%= f.button :submit, 'Ajouter la thématique', class:"edit-btn" %>
-                  <% end %>
+                    <#%= f.button :submit, 'Ajouter la thématique', class:"edit-btn" %>
+                  <#% end %>
                 </div>
-            </div>
-            <div class="col-xs-6">
-              <h5 style="margin-top: 20px;">- Les Régions -</h5>
+            </div> -->
               <% @regions.each do |region| %>
                 <div class="category-show-tags">
                   <span class="category-show-tags-h3">
@@ -184,7 +190,7 @@
                    <% end %>
                 </div>
               <% end %>
-                <a id="new-region-form-btn" class="btn btn-default edit-btn"> <i class="fa fa-plus" aria-hidden="true"></i> Ajouter</a>
+                <a id="new-region-form-btn" class="btn btn-default bahia-btn"> <i class="fa fa-plus" aria-hidden="true"></i> Ajouter</a>
                 <div id="new-region-form">
                   <h5>- Nouvelle Région -</h5>
                   <%= simple_form_for [:admin, @region4a] do |f| %>
@@ -193,10 +199,9 @@
                     <div style="display:none;">
                       <%= f.input :article_id, label: false %>
                     </div>
-                    <%= f.button :submit, 'Ajouter la région', class:"edit-btn" %>
+                    <%= f.button :submit, 'Ajouter la région', class:"bahia-btn" %>
                   <% end %>
                 </div>
-            </div>
           </div>
 
 

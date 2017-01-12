@@ -1,6 +1,6 @@
 .wrapper-footer {
   margin-top:40px;
-  background-color:#F3EAEA;
+  background-color:white;
   font-family:'Raleway', sans-serif;
   .footer-column {
     margin:0;
@@ -17,6 +17,9 @@
       text-transform: uppercase;
       color: #9F1723;
       font-size: 16px;
+    }
+    i {
+      margin-left: 10px;
     }
   }
   .text-left {

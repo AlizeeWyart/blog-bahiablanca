@@ -15,6 +15,11 @@ a:hover {
   color: #434141;
 }
 
+.form-control {
+  border-bottom: 2px solid #1EC9E5;
+  background-color: #DCF2F9;
+}
+
 .btn-default:hover {
   color: white;
   background-color: $dark-red;
@@ -23,7 +28,7 @@ a:hover {
 
 .bahia-btn {
   background-color: #9F1723;
-  border-radius: 15px;
+  border-radius: 0px;
   border: 2px solid #9F1723;
   font-family: "Raleway";
   text-transform: uppercase;
@@ -61,12 +66,6 @@ a:hover {
 
 .wrapper-blog-home {
   padding: 40px;
-  .col-xs-12 {
-    padding:0;
-  }
-  .col-md-6 {
-    padding:0;
-  }
   .intro-text {
     padding: 0 250px 40px 250px;
     font-family: 'Raleway', sans-serif;
@@ -82,13 +81,13 @@ a:hover {
   }
   .info-box-left {
     padding: 20px;
-    border: 1px solid #9F1723;
+    border: 1px solid #1EC9E5;
     margin-right: 10px;
     height:400px;
   }
   .info-box-right {
     padding: 20px;
-    border: 1px solid #9F1723;
+    border: 1px solid #1EC9E5;
     margin-left: 10px;
     height:400px;
     display:flex;

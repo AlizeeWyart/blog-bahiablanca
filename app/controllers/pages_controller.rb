@@ -5,9 +5,11 @@ class PagesController < ApplicationController
     @page = Page.find(1)
     @categories = Category.all
     # CONTENU & TEXT
+    @second_title = PageInfo.find_by(name: "home_second_title")
     @title_region_map = PageInfo.find_by(name: "title_region_map")
     @title_category = PageInfo.find_by(name: "title_category")
     @infos = PageInfo.select{|info| info.page = @page}.sort_by {|info| info.id }
+    # MAP
     @map_articles = Article.where.not(latitude: nil, longitude: nil)
     @hash = Gmaps4rails.build_markers(@map_articles) do |article, marker|
       marker.lat article.latitude

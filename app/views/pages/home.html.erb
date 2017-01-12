@@ -8,7 +8,7 @@
 <div class="wrapper-blog-home">
   <div class="row">
     <div class="intro-text">
-      <h3 class="title-first-page">Notre voyage au Mexique</h3>
+      <h3 class="title-first-page"><%= @second_title.content %></h3>
       <%= @infos[1].content.html_safe %>
     </div>
     <div class="col-xs-12 col-md-6">
@@ -31,8 +31,8 @@
   </div>
 </div>
 
+
 <%= render 'shared/footer' %>
-<%= render partial: 'shared/bahialetter_modal' %>
 
 
 <% content_for(:after_js) do %>
@@ -47,9 +47,17 @@
       $('#description-map-box').html("<h3><%= @title_region_map.content %></h3>");
     });
 
+    function wait(ms){
+       var start = new Date().getTime();
+       var end = start;
+       while(end < start + ms) {
+         end = new Date().getTime();
+      }
+    }
 
     $(window).load(function(){
-        $('#bahialetterModal').modal('show');
+      wait(5000);
+      $('#bahialetterModal').modal('show');
     });
 
 

@@ -40,6 +40,8 @@
               <%= f.input :date, label: false %>
               <h5>- Adresse & Localisation -</h5>
               <%= f.input :address, label: false  %>
+              <h5>- Adresse & Localisation -</h5>
+              <%= f.input :category_id, label: false, collection: @categories %>
               <%= f.button :submit, 'Publier l\'article', class:"edit-btn" %>
             </div>
             <% end %>

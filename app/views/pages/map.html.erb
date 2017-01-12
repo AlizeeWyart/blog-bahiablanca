@@ -1,24 +1,23 @@
 <%= render 'shared/navbar' %>
-<div class="wrapper-map">
-  <div class="row-map-and-content">
-    <div class="dynamic-map">
-      <div class="box-title-map">
-      <div id="description-map-box">
-        <% if params[:region] %>
-        <h3><%= params[:region] %></h3>
-        <% else %>
-        <h3><%= @title_region_map.content %></h3>
-        <% end %>
-      </div>
-      </div>
-      <div style="text-align:center">
-        <span id="all-regions-selector"> toutes les régions </span>
-      </div>
-       <div id="map" style="widows: 100%; height: 100%;"></div>
-    </div>
-    <div class="content-articles">
 
-      <% if params[:region] || params[:category] %>
+<div class="wrapper-map">
+  <div class="row">
+    <div class="title-map-page">
+        <% if params[:category] %>
+         <h1><%= @category.name %></h1>
+          <h2><%= @category.short_description %></h2>
+        <% else %>
+          <h1>Les Articles</h1>
+          <h2>Découvrez notre voyage au Mexique</h2>
+        <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="map-box">
+        <div id="map" style="widows: 100%; height: 100%;"></div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-8">
+      <% if params[:category] %>
         <% if @articles.count == 0 %>
           <div class="no-article">
             <h3>Pas d'article pour l'instant !</h3>
@@ -260,9 +259,7 @@
         function() {
         markers = handler.addMarkers(<%= raw @hash.to_json %>);
         handler.bounds.extendWith(markers);
-        handler.map.centerOn(centerlocation);
-        handler.getMap().setZoom(setzoomvariable);
-        <!-- handler.fitMapToBounds(); -->
+        handler.fitMapToBounds();
         if (markers.length == 0) {
           handler.getMap().setZoom(2);
         } else if (markers.length == 1) {

@@ -29,15 +29,13 @@
               <h4>Le contenu</h4>
               <h5>- Titre de la page -</h5>
               <%= render partial: "shared/edit_page_info", locals: {info: @infos.first} %>
-              <h5>- Description -</h5>
-              <%= render partial: "shared/froala_edit_page_info", locals: {info: @infos[1]} %>
               <h5>- Titre du Compte à Rebours -</h5>
               <%= render partial: "shared/edit_page_info", locals: {info: @infos[2]} %>
             </div>
 
             <div class="col-xs-6" ">
               <h4>Preview</h4>
-              <img src="https://s27.postimg.org/peh646ghf/Capture_d_e_cran_2017_01_07_a_18_18_15.png" style="width:100%"/>
+              <%= cl_image_tag("Previews/Capture_d_écran_2017-01-12_à_14.48.38.png", class:"preview-photo") %>
               <button href="#" class="btn btn-default edit-btn" style="right: 126px;">Refresh preview </button>
               <a href="/" class="btn btn-default edit-btn"> Aller à la page </a>
             </div>
@@ -48,21 +46,21 @@
           <div class="row-nude">
             <div class="col-xs-6">
               <h4>Le contenu</h4>
-              <h5>- Titre de la carte -</h5>
-              <%= render partial: "shared/edit_page_info", locals: {info: @title_region_map} %>
-              <h5>- Titre des Thématiques -</h5>
-              <%= render partial: "shared/edit_page_info", locals: {info: @title_category} %>
+              <h5>- Second titre -</h5>
+              <%= render partial: "shared/edit_page_info", locals: {info: @second_title} %>
+              <h5>- Description -</h5>
+              <%= render partial: "shared/froala_edit_page_info", locals: {info: @infos[1]} %>
+
+
             </div>
 
             <div class="col-xs-6" ">
               <h4>Preview</h4>
-              <img src="https://s29.postimg.org/nombyhnzb/Capture_d_e_cran_2017_01_09_a_14_11_50.png" style="width:100%"/>
+              <%= cl_image_tag("Previews/Capture_d_écran_2017-01-12_à_14.51.21.png", class:"preview-photo") %>
               <button href="#" class="btn btn-default edit-btn" style="right: 126px;">Refresh preview </button>
               <a href="/" class="btn btn-default edit-btn"> Aller à la page </a>
             </div>
           </div>
-
-
         </div>
       </div>
     </div>

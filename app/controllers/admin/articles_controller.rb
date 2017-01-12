@@ -13,7 +13,7 @@ class Admin::ArticlesController < ApplicationController
     @regions = @article.regions
     @region4a = Region4a.new(article: @article)
     @all_regions = Region.all
-    @contents = Content.select { |content| content.article = @article }
+    @contents = @article.contents
   end
 
   def new

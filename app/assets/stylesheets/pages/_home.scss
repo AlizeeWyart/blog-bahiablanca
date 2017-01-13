@@ -71,6 +71,9 @@ a:hover {
     font-family: 'Raleway', sans-serif;
     text-align: center;
     font-size: 18px;
+    @media all and (max-width: 900px) {
+      padding:5px;
+    }
   }
   .title-first-page {
     margin: 0 0 40px 0;
@@ -84,6 +87,10 @@ a:hover {
     border: 1px solid #1EC9E5;
     margin-right: 10px;
     height:400px;
+    @media all and (max-width: 900px) {
+      margin-right:0px;
+      margin-bottom:10px;
+    }
   }
   .info-box-right {
     padding: 20px;
@@ -92,6 +99,9 @@ a:hover {
     height:400px;
     display:flex;
     flex-direction:column;
+    @media all and (max-width: 900px) {
+      margin-left:0px;
+    }
     .card-photo {
       flex: 0 0 47%;
       border-radius: 3px;

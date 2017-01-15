@@ -32,6 +32,11 @@
     font-size: 16px;
     margin: 20px 0 5px 0;
   }
+  #fermer-button {
+    position: absolute;
+    right: 30px;
+    cursor: pointer;
+  }
   #fermer-button:hover {
     font-weight: 300;
   }

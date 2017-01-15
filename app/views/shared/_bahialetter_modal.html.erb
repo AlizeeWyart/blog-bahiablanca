@@ -4,8 +4,9 @@
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-text">
+        <a value="Fermer" id="fermer-button">x</a>
         <h2>Inscrivez-vous à la Bahia Letter</h2>
-        <p>Pour être mis au courant de tous les bons plans et entrer dans la communauté Bahia</p>
+        <p>Rejoignez la communauté Bahia :)</p>
         <%= simple_form_for @contact do |f| %>
           <%= f.error_notification %>
           <div class="row">
@@ -27,7 +28,7 @@
           <div class="row" style="text-align:center">
             <div class="col-xs-12">
               <%= f.button :submit, 'Vamos!', class:"bahia-btn" %>
-            <a value="Fermer" class="btn btn-default bahia-btn" id="fermer-button">Fermer</a>
+
             </div>
             </div>
           </div>

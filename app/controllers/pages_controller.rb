@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home, :map ]
 
   def home
+    @contact = Contact.new
     @page = Page.find(1)
     @categories = Category.all
     # CONTENU & TEXT
@@ -9,6 +10,7 @@ class PagesController < ApplicationController
     @title_region_map = PageInfo.find_by(name: "title_region_map")
     @title_category = PageInfo.find_by(name: "title_category")
     @infos = PageInfo.select{|info| info.page = @page}.sort_by {|info| info.id }
+    @all_articles = Article.all
     # MAP
     @map_articles = Article.where.not(latitude: nil, longitude: nil)
     @hash = Gmaps4rails.build_markers(@map_articles) do |article, marker|
@@ -38,6 +40,7 @@ class PagesController < ApplicationController
   end
 
   def map
+    @contact = Contact.new
     @all_articles = Article.all
     @map_articles = Article.where.not(latitude: nil, longitude: nil)
     @title_region_map = PageInfo.find_by(name: "title_region_map")
@@ -79,6 +82,7 @@ class PagesController < ApplicationController
   end
 
   def category
+    @contact = Contact.new
     @all_articles = Article.all
     @categories = Category.all
     if params[:category]
@@ -92,6 +96,7 @@ class PagesController < ApplicationController
   end
 
   def profile
+    @contact = Contact.new
     @admin_users = User.find_by_admin(true)
   end
 

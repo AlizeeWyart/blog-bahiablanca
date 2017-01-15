@@ -6,15 +6,42 @@
 
 .modal-content {
   padding: 20px;
-  #mc_embed_signup h2 {
+  h2 {
     margin: 0;
     text-transform: uppercase;
     text-align: center;
     color: #9F1723;
     font-weight: 300;
     font-size: 26px;
-    margin-bottom: 20px;
+    margin-bottom:5px;
   }
+  p {
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+  }
+  .form-control {
+    border: none;
+    border-bottom: 2px solid #1EC9E5;
+    background-color: #DCF2F9;
+    box-shadow: none;
+  }
+  h4 {
+    font-weight: 300;
+    color: #333333;
+    font-size: 16px;
+    margin: 20px 0 5px 0;
+  }
+  #fermer-button:hover {
+    font-weight: 300;
+  }
+  // #fermer-button {
+  //     border-radius: 0px;
+  //     background-color: #9F1723;
+  //     font-family: 'Raleway', sans-serif;
+  //     text-transform: uppercase;
+  //     width: 130px;
+  //   }
   #mc_embed_signup_scroll {
     .other-fields {
       display: flex;
@@ -44,13 +71,7 @@
     #mc-embedded-subscribe:hover {
       background-color: #6C0E18;
     }
-    #fermer-button {
-      border-radius: 0px;
-      background-color: #9F1723;
-      font-family: 'Raleway', sans-serif;
-      text-transform: uppercase;
-      width: 130px;
-    }
+
 
     #fermer-button:hover {
       background-color: #6C0E18;

@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @contact = Contact.new
     @other_articles = Article.all.limit(3)
     @regions = @article.regions.select { |region| region.code != "MEX-ALL"}
     @comments = Comment.select {|c| c.article = @article }

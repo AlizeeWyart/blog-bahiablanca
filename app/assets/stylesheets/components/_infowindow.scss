@@ -24,6 +24,15 @@
     margin-left: 10px;
   }
   .article-photo {
-    width:100%;
+    width:80%;
+  }
+  p {
+    font-family:'Quicksand', sans-serif;
+    font-size:12px;
+    margin-top: 10px;
+    font-weight: 300;
+  }
+  a p:hover {
+    font-weight:300;
   }
 }

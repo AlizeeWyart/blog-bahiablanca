@@ -17,25 +17,25 @@ class PagesController < ApplicationController
       marker.lat article.latitude
       marker.lng article.longitude
       marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :article => article})
-      # if article.country == "Mexique"
-      #   marker.picture({
-      #    :url => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=I|04677D|000000",
-      #    :width   => 32,
-      #    :height  => 32
-      #   })
-      # elsif article.country == "Mexique"
-      #   marker.picture({
-      #    :url => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|FEC300|000000",
-      #    :width   => 32,
-      #    :height  => 32
-      #   })
-      # else
-      #   marker.picture({
-      #    :url => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=C|13CE66|000000",
-      #    :width   => 32,
-      #    :height  => 32
-      #   })
-      # end
+      if article.category.id == 3
+        marker.picture({
+         :url => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=V|1EC9E5|000000",
+         :width   => 32,
+         :height  => 32
+        })
+      elsif article.category.id == 2
+        marker.picture({
+         :url => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=C|FACC00|000000",
+         :width   => 32,
+         :height  => 32
+        })
+      else
+        marker.picture({
+         :url => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|FEC300|000000",
+         :width   => 32,
+         :height  => 32
+        })
+      end
     end
   end
 

@@ -1,6 +1,7 @@
 
 <%= render 'shared/navbar' %>
-<div class="homepage-photos">
+<div class="homepage-photos" style="background-image: url('<%= cl_image_path("PHOTOS/jujuclaireyunan.jpg")%>'); background-repeat:no-repeat; background-position: center center; background-size: cover;
+">
    <h1><%= @infos.first.content %></h1>
     <%= render 'shared/countdown' %>
 </div>
@@ -55,7 +56,7 @@
       }
     }
 
-    $(document).ready(function() {
+    $(window).load(function(){
       wait(5000);
       $('#bahialetterModal').modal('show');
     });
@@ -272,16 +273,15 @@
         }},
         function() {
         markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
+        <!-- handler.bounds.extendWith(markers); -->
         handler.map.centerOn(centerlocation);
         handler.getMap().setZoom(setzoomvariable);
         <!-- handler.fitMapToBounds(); -->
         if (markers.length == 0) {
-          handler.getMap().setZoom(2);
+          handler.getMap().setZoom(setzoomvariable);
         } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
+          handler.getMap().setZoom(setzoomvariable);
         }
       });
-
   <% end %>
 <% end %>

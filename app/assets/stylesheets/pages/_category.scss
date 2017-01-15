@@ -39,11 +39,17 @@
         opacity:0;
         transition: opacity 0.35s, transform 0.35s;
         }
+        @media all and (max-width: 700px){
+          font-size:12px;
+        }
       h2 {
         color:white;
         text-transform:uppercase;
         text-align:center;
         transition: opacity 0.35s, transform 0.35s;
+        @media all and (max-width: 700px){
+          font-size:24px;
+        }
       }
     }
     .card-photo:hover p {

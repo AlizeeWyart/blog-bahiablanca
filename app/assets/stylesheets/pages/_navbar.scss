@@ -73,12 +73,18 @@
   a {
     margin-left:20px;
   }
+  @media all and (max-width: 650px){
+    margin-right:10px;
+   }
 }
 .right {
   justify-content: flex-start;
   a {
     margin-right: 20px;
   }
+  @media all and (max-width: 650px){
+    margin-left:10px;
+   }
 }
 
 .logo-bahia-container {
@@ -89,7 +95,7 @@
 .logo-bahia {
   position: relative;
   top: 2px;
-  width: 100%;
+  width: 70px;
   top: 21px;
   z-index: 2;
 }

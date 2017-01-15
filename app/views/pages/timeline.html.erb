@@ -1,0 +1,117 @@
+<%= render 'shared/navbar' %>
+
+
+  <div class="container-timeline">
+    <h1 class="project-name">L'HISTOIRE DE BAHIA BLANCA</h1>
+    <h2 class="project-description">Du projet étudiant au lancement de la marque, découvrez les grandes étapes de notre aventure !</h2>
+  </div>
+
+<div class="wrapper-timeline">
+
+  <section id="cd-timeline">
+    <!-- JANV 2017 - LEFT-->
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img">
+        <i class="fa fa-bandcamp" aria-hidden="true"></i>
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-photo right">
+        <%= cl_image_tag "TIMELINE/bahia.png", class: "photo-timeline" %>
+      </div>
+
+      <div class="cd-timeline-content left">
+        <h2>17 Janvier 2017</h2>
+        <p> C’est le grand départ au Mexique pour rencontrer l’atelier d’artisanes qui produira la collection Bahia été 2017 !</p>
+      </div> <!-- cd-timeline-content -->
+    </div>
+
+    <!-- SEPT 2016 RIGHT-->
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img">
+        <i class="fa fa-bandcamp" aria-hidden="true"></i>
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-photo left">
+        <%= cl_image_tag "TIMELINE/schoolab_bahia.png", class: "photo-timeline" %>
+      </div>
+
+
+      <div class="cd-timeline-content right">
+        <h2>Novembre 2016</h2>
+        <p> BAHIA BLANCA est sélectionné pour intégrer l’incubateur Schoolab dans le Sentier</p>
+      </div> <!-- cd-timeline-content -->
+    </div>
+
+    <!-- SEPT 2016 LEFT -->
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img">
+        <i class="fa fa-bandcamp" aria-hidden="true"></i>
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-photo right">
+        <%= cl_image_tag "TIMELINE/model_bahia.png", class: "photo-timeline" %>
+      </div>
+
+      <div class="cd-timeline-content left">
+        <h2>Septembre 2016</h2>
+        <p> Nos études sont finies, Claire et Juliette se lancent à 100% sur le développement de la marque. Luce, styliste parisienne, nous rejoint pour dessiner les premiers modèles.</p>
+      </div> <!-- cd-timeline-content -->
+    </div>
+
+    <!-- JUILLET AOUT 2016 RIGHT -->
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img">
+        <i class="fa fa-bandcamp" aria-hidden="true"></i>
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-photo left">
+        <%= cl_image_tag "TIMELINE/marché_bahia.png", class: "photo-timeline" %>
+      </div>
+
+      <div class="cd-timeline-content right">
+        <h2>Juillet-Août 2016</h2>
+        <p> 2 mois de ventes sur les marchés de l’île d’Yeu et du Cap Ferret, les retours sont très enthousiasmants !</p>
+      </div> <!-- cd-timeline-content -->
+    </div>
+
+    <!-- JUILLET 2015 LEFT -->
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img">
+        <i class="fa fa-bandcamp" aria-hidden="true"></i>
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-photo right">
+        <%= cl_image_tag "TIMELINE/marche_bahia_2.png", class: "photo-timeline" %>
+      </div>
+
+      <div class="cd-timeline-content left">
+        <h2>Juillet 2015</h2>
+        <p> Juliette et Thibault présentent leurs coups de coeur mexicains ramenés dans leurs valises aux vacanciers du Cap Ferret !</p>
+      </div> <!-- cd-timeline-content -->
+    </div>
+
+    <!-- 2014 RIGHT-->
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img">
+        <i class="fa fa-bandcamp" aria-hidden="true"></i>
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-photo left">
+        <%= cl_image_tag "TIMELINE/mexique_bahia.png", class: "photo-timeline" %>
+      </div>
+
+      <div class="cd-timeline-content right">
+        <h2>2014</h2>
+        <p> Juliette fait un stage de 6 mois dans une start-up sociale à Mexico DF, parcourt le Mexique et tombe amoureuse de ce pays et notamment de l’artisanat local.</p>
+      </div> <!-- cd-timeline-content -->
+    </div>
+  </section>
+</div>
+
+
+<%= render 'shared/footer' %>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+  <% end %>
+<% end %>

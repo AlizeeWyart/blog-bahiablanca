@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :map ]
+  skip_before_action :authenticate_user!, only: [ :home, :map, :timeline ]
 
   def home
     @contact = Contact.new
@@ -136,6 +136,12 @@ class PagesController < ApplicationController
   def profile
     @contact = Contact.new
     @admin_users = User.find_by_admin(true)
+  end
+
+  def timeline
+    @contact = Contact.new
+    @all_articles = Article.all
+    @categories = Category.all
   end
 
   private

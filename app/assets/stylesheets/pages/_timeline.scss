@@ -1,0 +1,324 @@
+// Variables
+$bg-body: #FFFFFF;
+
+$red: #9F1723;
+$blue: #1EC9E5;
+$primary-color: $red;
+$secondary-color: $blue;
+
+
+// Typography
+$base-font: 'Quicksand', sans-serif;
+$base-font-title: "Raleway", sans-serif;
+
+$base-font-color: #9F1723;
+
+// Timeline
+$timeline-color: $primary-color;
+
+
+// Mixins and Placeholders
+%clearfix {
+  &:after, &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    clear: both;
+  }
+}
+
+@mixin prefix($prop, $val) {
+  @each $prefix in '-webkit-', '-moz-', '-ms-', '' {
+    #{$prefix}#{$prop}: $val;
+  }
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+
+img {max-width: 100%;}
+
+a {
+  text-decoration: none;
+}
+
+.container-timeline {
+  padding: 80px 80px 0 80px;
+  @media screen and (max-width: 768px) {
+    padding: 20px;
+  }
+}
+
+
+.project-name {
+  text-align: center;
+  margin: 0px 0 10px 0;
+  text-align: center;
+  color: #9F1723;
+  text-transform: uppercase;
+  font-size: 40px;
+}
+
+.project-description {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+  margin: 0 0 80px 0;
+}
+
+// Timeline
+#timeline {
+  width: 100%;
+  margin: 30px auto;
+  position: relative;
+  padding: 0 10px;
+  @include prefix(transition, all .4s ease);
+
+  &:before {
+    content:"";
+    width: 3px;
+    height: 100%;
+    background: $timeline-color;
+    left: 50%;
+    top: 0;
+    position: absolute;
+  }
+
+  &:after {
+    content: "";
+    clear: both;
+    display: table;
+    width: 100%;
+  }
+
+  .timeline-item {
+    margin-bottom: 50px;
+    position: relative;
+    @extend %clearfix;
+
+    .timeline-icon {
+      background: $timeline-color;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      overflow: hidden;
+      margin-left: -23px;
+      @include prefix(border-radius, 50%);
+
+      svg {
+        position: relative;
+        top: 14px;
+        left: 14px;
+      }
+    }
+
+    .timeline-content {
+      width: 45%;
+      background: #fff;
+      padding: 20px;
+      @include prefix(box-shadow, 0 3px 0 rgba(0,0,0,0.1));
+      @include prefix(border-radius, 5px);
+      @include prefix(transition, all .3s ease);
+
+      h2 {
+        padding: 15px;
+        background: $timeline-color;
+        color: #fff;
+        margin: -20px -20px 0 -20px;
+        font-weight: 300;
+        @include prefix(border-radius, 3px 3px 0 0);
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        left: 45%;
+        top: 20px;
+        width: 0;
+        height: 0;
+        border-top: 7px solid transparent;
+        border-bottom: 7px solid transparent;
+        border-left:7px solid $timeline-color;
+      }
+
+      &.right {
+        float: right;
+
+        &:before {
+          content: '';
+          right: 45%;
+          left: inherit;
+          border-left: 0;
+          border-right: 7px solid $timeline-color;
+        }
+      }
+    }
+  }
+}
+
+// Buttons
+// .btn {
+//   padding: 5px 15px;
+//   text-decoration: none;
+//   background: transparent;
+//   border: 2px solid lighten($primary-color, 10%);
+//   color: lighten($primary-color, 10%);
+//   display: inline-block;
+//   position: relative;
+//   text-transform: uppercase;
+//   font-size: 12px;
+//   @include prefix(border-radius, 5px);
+//   @include prefix(transition, background .3s ease);
+//   @include prefix(box-shadow, 2px 2px 0 lighten($primary-color, 10%));
+
+//   &:hover {
+//     box-shadow: none ;
+//     top: 2px;
+//     left: 2px;
+//     @include prefix(box-shadow, 2px 2px 0 transparent);
+//   }
+// }
+
+@media screen and (max-width: 768px) {
+  #timeline {
+    margin: 30px;
+    padding: 0px;
+    width: 90%;
+    &:before {
+      left: 0;
+    }
+
+    .timeline-item {
+      .timeline-content {
+        width: 90%;
+        float: right;
+
+        &:before, &.right:before {
+          left: 10%;
+          margin-left: -6px;
+          border-left: 0;
+          border-right: 7px solid $timeline-color;
+        }
+      }
+
+      .timeline-icon {
+        left: 0;
+      }
+    }
+  }
+}
+
+.wrapper-timeline {
+  #cd-timeline {
+    position: relative;
+    padding: 2em 0;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    h2 {
+    color: #9F1723;
+    font-weight: 500;
+    }
+    p {
+      font-family:"Quicksand", sans-serif;
+    }
+  }
+  #cd-timeline::before {
+    /* this is the vertical line */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 4px;
+    background: #d7e4ed;
+    @media screen and (max-width: 768px) {
+      left: 5%;
+    }
+  }
+
+  .cssanimations .cd-timeline-img.is-hidden {
+    visibility: hidden;
+  }
+  .cssanimations .cd-timeline-img.bounce-in {
+    visibility: visible;
+    animation: cd-bounce-1 0.6s;
+  }
+
+  .cd-timeline-content {
+    width:40%;
+    min-height: 50vh;
+    padding:10px;
+    h2 {
+      margin: 0 0 20px 0;
+    }
+  }
+
+  .cd-timeline-content.left {
+    margin-left: 40px;
+    text-align:right;
+  }
+
+  .cd-timeline-content.right {
+    margin-left: 58%;
+    text-align: left;
+  }
+
+  .cd-timeline-photo.right {
+    position: absolute;
+    left: 58%;
+    padding: 10px;
+  }
+
+  .cd-timeline-photo.left {
+    position: absolute;
+    right: 58%;
+    padding: 10px;
+    @media screen and (max-width: 768px) {
+      left: 15%;
+    }
+  }
+
+  .photo-timeline {
+    height: 40vh;
+    @media screen and (max-width: 768px) {
+      height: 100px;
+    }
+  }
+
+  .cd-timeline-img {
+    position: relative;
+    top: 50px;
+    left: 50%;
+    margin-left: -16px;
+    i {
+      background-color: #9F1723;
+      color: white;
+      border-radius: 50%;
+      padding: 10px;
+    }
+    @media screen and (max-width: 768px) {
+      left: 5%;
+    }
+  }
+
+  @keyframes cd-bounce-1 {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+
+    60% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+}

@@ -248,6 +248,10 @@
         ]
     }
 ];
+
+      var centerlocation = {lat: 23.634501, lng:  -102.552784};
+      var setzoomvariable = 5;
+
       var handler = Gmaps.build('Google');
       handler.buildMap(
         {internal: { id: 'map' },
@@ -258,12 +262,14 @@
         }},
         function() {
         markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
+        <!-- handler.bounds.extendWith(markers); -->
+        handler.map.centerOn(centerlocation);
+        handler.getMap().setZoom(setzoomvariable);
+        <!-- handler.fitMapToBounds(); -->
         if (markers.length == 0) {
-          handler.getMap().setZoom(2);
+          handler.getMap().setZoom(setzoomvariable);
         } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
+          handler.getMap().setZoom(setzoomvariable);
         }
       });
 

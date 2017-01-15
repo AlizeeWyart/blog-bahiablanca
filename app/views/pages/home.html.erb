@@ -48,18 +48,7 @@
       $('#description-map-box').html("<h3><%= @title_region_map.content %></h3>");
     });
 
-    function wait(ms){
-       var start = new Date().getTime();
-       var end = start;
-       while(end < start + ms) {
-         end = new Date().getTime();
-      }
-    }
 
-    $(window).load(function(){
-      wait(5000);
-      $('#bahialetterModal').modal('show');
-    });
 
 
     $(".map g g").on("click", function(){
@@ -283,5 +272,19 @@
           handler.getMap().setZoom(setzoomvariable);
         }
       });
+
+      function wait(ms){
+       var start = new Date().getTime();
+       var end = start;
+       while(end < start + ms) {
+         end = new Date().getTime();
+      }
+    }
+
+    $(document).ready(function(){
+      setTimeout(function() {
+        $('#bahialetterModal').modal();
+      }, 7000);
+    });
   <% end %>
 <% end %>

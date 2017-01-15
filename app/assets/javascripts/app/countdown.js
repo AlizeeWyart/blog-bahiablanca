@@ -55,7 +55,7 @@
     return futureFormattedDate
   }
   $("#countdown").countdown({
-    date: "17 January 2017 09:00:00", // Change this to your desired date to countdown to
+    date: "14 February 2017 18:00:00", // Change this to your desired date to countdown to
     format: "on"
   });
 });
@@ -473,7 +473,7 @@ function init () {
   new Digits({
     wrapper: '#example-1',
     mode: 'countdown',
-    to: 'January 16 2017 00:00:00',  // GMT-0500
+    to: 'February 14 2017 18:00:00',  // GMT-0500
     labels: true,
     ready: function () {
       alert("C'est le grand départ de Bahia Blanca !");

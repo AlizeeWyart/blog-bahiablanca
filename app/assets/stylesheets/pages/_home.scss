@@ -14,6 +14,11 @@ a:hover {
   font-weight:bolder;
   color: #434141;
 }
+a:visited {
+  color:#434141;
+  text-decoration:none;
+  font-weight: normal;
+}
 
 .form-control {
   border-bottom: 2px solid #1EC9E5;
@@ -74,7 +79,7 @@ a:hover {
   .title-first-page {
     margin: 0 0 40px 0;
     text-align: center;
-    color: #9F1723;
+    color: #1EC9E5;
     text-transform: uppercase;
     font-size: 40px;
   }

@@ -1,0 +1,32 @@
+<%= render 'shared/navbar' %>
+
+<div class="wrapper-contact">
+  <h1>Envoyez-nous un mot doux</h1>
+  <%= simple_form_for @contact do |f| %>
+    <%= f.error_notification %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <h4>Votre prénom</h4>
+        <%= f.input :first_name, label: false %>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <h4>Votre nom</h4>
+        <%= f.input :last_name, label: false %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <h4>Votre e-mail</h4>
+        <%= f.input :email, label: false %>
+        <h4>Votre message</h4>
+        <%= f.input :message, label: false %>
+      </div>
+    </div>
+    <div class="row" style="text-align:center">
+      <div class="col-xs-12">
+        <%= f.button :submit, 'Envoyez', class:"bahia-btn" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+

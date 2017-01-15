@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     resources :contents, only: [:new, :create, :update]
   end
 
+  # CONTACT FORM
+  resources :contacts, only: [:create]
+  get "contact" => "contacts#new"
+
   get "map" => "pages#map"
   get "thematic" => "pages#category"
   resources :page_infos, only: [:update]

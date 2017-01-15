@@ -55,7 +55,7 @@
     return futureFormattedDate
   }
   $("#countdown").countdown({
-    date: "16 January 2017 09:00:00", // Change this to your desired date to countdown to
+    date: "17 January 2017 09:00:00", // Change this to your desired date to countdown to
     format: "on"
   });
 });

@@ -26,6 +26,8 @@ gem 'carrierwave'
 gem "geocoder"
 gem "coffee-rails"
 gem "gmaps4rails"
+# CONTACT FORM
+gem 'mail_form'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"

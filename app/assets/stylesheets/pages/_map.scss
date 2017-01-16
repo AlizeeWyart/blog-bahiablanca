@@ -3,16 +3,29 @@
   margin-top: 20px;
   .title-map-page {
     position:relative;
+    text-align: center;
     .flower-left {
       position: absolute;
-      width: 200px;
+      width: 272px;
       top: -19px;
       left: 176px;
+      @media all and (max-width: 1100px){
+        left:100px;
+      }
+      @media all and (max-width: 900px){
+        left:0px;
+      }
+      @media all and (max-width: 700px){
+        position: relative;
+        right:0;
+        top:0;
+        left:0;
+        margin-top:-20px;
+      }
     }
     .cactus-left {
       position: absolute;
-      position: absolute;
-      width: 212px;
+      width: 247px;
       top: -124px;
       right: 171px;
       z-index: 1;
@@ -26,7 +39,11 @@
         right:-55px;
       }
       @media all and (max-width: 700px){
-        opacity:0.5;
+        position: relative;
+        right:0;
+        top:0;
+        left:0;
+        margin-top:-20px;
       }
     }
     .flower-right {
@@ -74,8 +91,11 @@
     text-align: center;
     margin-bottom: 20px;
     h3 {
-      font-family: 'Quicksand', sans-serif;
-      margin:0;
+      margin: 0;
+      color: black;
+      font-weight: 300;
+      font-size: 18px;
+      text-align: left;
     }
   }
 

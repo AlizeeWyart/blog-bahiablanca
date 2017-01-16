@@ -1,0 +1,22 @@
+
+  #loading-page {
+    width:100vw;
+    height:100vh;
+    .loading {
+    }
+    .elem {
+      -webkit-animation: rotation 2s infinite linear;
+      margin-left: 25%;
+      max-width:50%;
+      @media all and (max-width: 900px) {
+        margin-top:25%;
+        max-width:90%;
+      }
+    }
+
+    @-webkit-keyframes rotation {
+        from {-webkit-transform: rotate(0deg);}
+        to   {-webkit-transform: rotate(359deg);}
+    }
+  }
+

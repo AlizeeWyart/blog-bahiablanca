@@ -247,7 +247,7 @@ a {
     width: 4px;
     background: #d7e4ed;
     @media screen and (max-width: 768px) {
-      left: 5%;
+      left: 10%;
     }
   }
 
@@ -267,20 +267,24 @@ a {
       margin: 0 0 20px 0;
     }
     @media screen and (max-width: 768px) {
-      width:55%;
+      width:75%;
     }
   }
 
   .cd-timeline-content.left {
     margin-left: 40px;
     text-align:right;
+    @media screen and (max-width: 768px) {
+      margin-left: 90px;
+      text-align: left;
+    }
   }
 
   .cd-timeline-content.right {
     margin-left: 58%;
     text-align: left;
     @media screen and (max-width: 768px) {
-      margin-left: 42%;
+      margin-left: 90px;
     }
   }
 
@@ -290,6 +294,9 @@ a {
     padding: 10px;
     @media screen and (max-width: 768px) {
       left:60%;
+      position:relative;
+      margin-left: 90px;
+      left:0;
     }
   }
 
@@ -298,16 +305,18 @@ a {
     right: 58%;
     padding: 10px;
     @media screen and (max-width: 768px) {
-      left: 50px;
-      right:0;
+      position: relative;
+      left: 0;
+      right: 0;
+      margin-left: 90px;
     }
   }
 
   .photo-timeline {
     height: 40vh;
     @media screen and (max-width: 768px) {
-      height: 100px;
-      width:100px;
+      height: 250px;
+      width:250px;
     }
   }
 
@@ -323,7 +332,7 @@ a {
       padding: 10px;
     }
     @media screen and (max-width: 768px) {
-      left: 5%;
+      left: 10%;
     }
   }
 

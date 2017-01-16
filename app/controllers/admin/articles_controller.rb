@@ -12,6 +12,7 @@ class Admin::ArticlesController < ApplicationController
     @region4a = Region4a.new(article: @article)
     @all_regions = Region.all
     @contents = @article.contents
+    @comments = Comment.select{|comment| comment.article = @article}
   end
 
   def new
@@ -33,6 +34,12 @@ class Admin::ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.update(article_params)
     redirect_to admin_article_path(@article)
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.delete
+    redirect_to admin_path
   end
 
   private

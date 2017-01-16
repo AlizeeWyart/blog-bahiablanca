@@ -6,9 +6,9 @@ class Article < ApplicationRecord
 
   belongs_to :user
   belongs_to :category
-  has_many :region4as
+  has_many :region4as, :dependent => :destroy
   has_many :regions, through: :region4as
-  has_many :comments
-  has_many :contents
-  has_many :category4as
+  has_many :comments, :dependent => :destroy
+  has_many :contents, :dependent => :destroy
+  has_many :category4as, :dependent => :destroy
 end

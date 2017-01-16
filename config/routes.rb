@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :category4as, only: [:create, :destroy]
     resources :region4as, only: [:create, :destroy]
     resources :regions, only: [:update]
-    resources :articles, only: [:index, :show, :new, :create, :edit, :update]
+    resources :articles, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resources :contents, only: [:new, :create, :update]
   end
 
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:create, :update, :destroy]
   resources :articles, only: [:show]
   resources :users, only: [:update]
-  resources :comments, only: [:create]
+  resources :comments, only: [:create, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 

@@ -52,32 +52,37 @@
   $('#fermer-button').on("click", function(){
     $('#bahialetterModal').modal('hide');
   })
-  $('#submit-enews').on("click", function(){
-    var firstName = $('#contact_first_name').val();
-    console.log(firstName);
-    var lastName = $('#contact_last_name').val();
-    console.log(lastName);
-    var email = $('#contact_email').val();
-    console.log(email);
-    var message = "Inscription Bahia Letter";
-    console.log(message);
-    $.ajax({
-      type: "POST",
-      url: "/contacts",
-      data: { contact: { first_name: firstName, message: message,  last_name: lastName, email: email } },
-      success:function(data){
-            console.log("it is working!");
-            $('#new_contact').css("display" , "none");
-            $('#thanks_message').css("display", "block");
-        },
-      error:function(data){
-        console.log("it is NOT working!");
-        $('#error_message').css("display", "block");
-      }
-    })
-<!--     document.location = $(location).attr('href') + "?firstname=" + firstName + "&" + "email=" + email;
- -->    <!-- window.history.pushState({firstName: firstName} , "", "?firstname=" + firstName + "&lastname=" + lastName + "&email=" + email); -->
 
+  $(document).ready(function(){
+    $('#submit-enews').on("click", function(){
+      var firstName = $('#contact_first_name').val();
+      console.log(firstName);
+      var lastName = $('#contact_last_name').val();
+      console.log(lastName);
+      var email = $('#contact_email').val();
+      console.log(email);
+      var message = "Inscription Bahia Letter";
+      console.log(message);
+      $.ajax({
+        type: "POST",
+        dataType: 'script',
+        url: "/contacts",
+        data: { contact: { first_name: firstName, message: message,  last_name: lastName, email: email } },
+        success:function(data){
+              console.log("it is working!");
+              $('#new_contact').css("display" , "none");
+              $('#thanks_message').css("display", "block");
+          },
+        error:function(data){
+          console.log("it is NOT working!");
+          $('#error_message').css("display", "block");
+        }
+      });
+      return false;
+  <!--     document.location = $(location).attr('href') + "?firstname=" + firstName + "&" + "email=" + email;
+   -->    <!-- window.history.pushState({firstName: firstName} , "", "?firstname=" + firstName + "&lastname=" + lastName + "&email=" + email); -->
+
+    })
   })
   <% end %>
 <% end %>

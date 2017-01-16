@@ -78,10 +78,16 @@
   <% end %>
 
 
-      <div class="dynamic-map" style="margin-top:20px;padding:0px">
+      <div class="dynamic-map">
         <div class="box-title-map">
           <div class="description-map-box" id="comments-box">
-            <h3>Commentaires</h3>
+            <% if @comments.count >= 1 %>
+            <h3>
+              <%= @comments.count %> Commentaire
+              <% if @comments.count >1 %>s
+              <% end %>
+            </h3>
+            <% end %>
             <% @comments.each do |comment| %>
             <div class="comment-show-box">
               <b><%= comment.title %></b> par <%= comment.first_name %>
@@ -104,7 +110,7 @@
               <%= f.input :email, label: "Votre email" %>
               <%= f.input :title, label: "Titre" %>
               <%= f.input :content, label: "Votre commentaire" %>
-              <%= f.button :submit, 'Go :)', class:"edit-btn" %>
+              <%= f.button :submit, 'Go :)', class:"bahia-btn" %>
             <% end %>
           </div>
         </div>
@@ -330,7 +336,7 @@
 
 
       $('#comment-form-btn').on("click", function() {
-        $('#comments-box').css("display", "none");
+        $('#comment-form-btn').css("display", "none");
         $('.comment-form').css("display", "block");
       })
   <% end %>

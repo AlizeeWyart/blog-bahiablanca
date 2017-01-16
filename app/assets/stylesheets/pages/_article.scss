@@ -146,6 +146,18 @@
       color: #F3EAEA;
     }
   }
+  .dynamic-map {
+    margin-top: 20px;
+    padding: 0px;
+    background-color: white;
+    border-top: 2px solid #1EC9E5;
+    border-radius: 0px;
+    h3 {
+      font-family:'Raleway', sans-serif;
+      color:#1EC9E5;
+      font-weight:300;
+    }
+  }
   .comment-form {
     display: block;
     padding: 20px;
@@ -154,7 +166,7 @@
   }
   .control-label {
     font-weight: 300;
-    text-transform: uppercase;
+    color: black;
   }
   .form-group {
     margin-bottom: 5px;
@@ -162,8 +174,8 @@
   .form-control {
     box-shadow: none;
     border: none;
-    border-bottom: 2px solid #9F1723;
-    background-color: white;
+    border-bottom: 2px solid #1EC9E5;
+    background-color: #DCF2F9;
     font-family: "Quicksand", sans-serif;
   }
   #comment-form-btn {

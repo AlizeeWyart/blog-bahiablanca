@@ -1,6 +1,6 @@
 <%= render 'shared/navbar' %>
 
-<div class="wrapper-contact">
+<div class="wrapper-contact" style="background-image:url('<%= cl_image_path("AQUARELLES/Soleil.png") %>');    background-repeat: no-repeat; background-size: 50%";>
   <h1>Envoyez-nous un mot doux</h1>
   <%= simple_form_for @contact do |f| %>
     <%= f.error_notification %>

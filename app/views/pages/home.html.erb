@@ -2,14 +2,19 @@
 <%= render 'shared/navbar' %>
 <div class="homepage-photos" style="background-image: url('<%= cl_image_path("PHOTOS/jujuclaireyunan.jpg")%>'); background-repeat:no-repeat; background-position: center center; background-size: cover;
 ">
-   <h1><%= @infos.first.content %></h1>
+   <!-- <h1><#%= @infos.first.content %></h1> -->
+   <%= cl_image_tag "AQUARELLES/Vamos.png", class:"vamos-title" %>
     <%= render 'shared/countdown' %>
 </div>
 
 <div class="wrapper-blog-home">
   <div class="row">
     <div class="intro-text">
-      <h3 class="title-first-page"><%= @second_title.content %></h3>
+      <%= cl_image_tag "AQUARELLES/Peroquet.png", class:"perroquet-img" %>
+      <h3 class="title-first-page">
+        <%= @second_title.content %>
+        </h3>
+
       <%= @infos[1].content.html_safe %>
     </div>
     <div class="col-xs-12 col-md-6">

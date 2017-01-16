@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :create ]
   def create
     @comment = Comment.new(comment_params)
     @is_user = User.find_by_email(params[:email])

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :regions, only: [:update]
     resources :articles, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resources :contents, only: [:new, :create, :update]
+    get "messages" => "dashboard#messages"
   end
 
   # CONTACT FORM

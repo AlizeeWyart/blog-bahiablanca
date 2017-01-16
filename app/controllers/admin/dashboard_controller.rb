@@ -27,6 +27,10 @@ class Admin::DashboardController < ApplicationController
     end
   end
 
+  def messages
+    @contacts = Contact.all
+  end
+
   private
 
   def is_admin?

@@ -1,0 +1,38 @@
+<div class="wrapper-admin-interface">
+  <!-- MENU -->
+  <%= render partial: 'admin/shared/navbar_admin' %>
+  <!-- NAV BAR DU HAUT -->
+  <div class="content-right">
+    <div class="title-navbar">
+      <div class="content-title-navbar">
+        <h1 id="title-dashboard">MESSAGES & ENWS</h1>
+        <h2>
+          <%= link_to root_path do %>
+            <i class="fa fa-home" aria-hidden="true"></i>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+          <% end %>
+        </h2>
+      </div>
+    </div>
+    <!-- CONTENU HOME PAGE-->
+    <div class="content-dashboard" id="home_page_blog">
+      <!-- logo & main infos -->
+      <div class="row-title">
+        <h2>Mes Messages et demandes d'inscription newsletter</h2>
+      </div>
+      <div class="row-content">
+        <div class="content-card page-description">
+          <div class="row-nude">
+            <% @contacts.each do |contact| %>
+            <h3><%= contact.first_name %> <%= contact.last_name %></h3>
+            <h4><%= contact.email %></h4>
+            <p><%= contact.message %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

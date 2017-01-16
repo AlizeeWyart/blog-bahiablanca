@@ -324,9 +324,13 @@
     }
 
     $(document).ready(function(){
-      setTimeout(function() {
-        $('#bahialetterModal').modal();
-      }, 5000);
+      var isshow = sessionStorage.getItem('isshow');
+      if (isshow== null) {
+        setTimeout(function() {
+          $('#bahialetterModal').modal();
+        }, 5000);
+        sessionStorage.setItem('isshow', 1);
+        }
     });
   <% end %>
 <% end %>

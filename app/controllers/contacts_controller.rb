@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :new ]
+  skip_before_action :authenticate_user!, only: [ :new, :create ]
 
   def new
     @contact = Contact.new
@@ -12,12 +12,13 @@ class ContactsController < ApplicationController
       @user = User.create(user_params)
       @user.password = "123456"
     end
+    if params[:message].nil?
+      @contact.message = "inscription newsletter"
+    end
     if @contact.save
-       flash[:notice] = "Votre message a bien été envoyé ! On vous répond rapidement"
-       redirect_to contact_path
+       # flash[:notice] = "Bienvenue dans la communauté Bahia !"
     else
-       flash[:alert] = "Nous avons eu un petit beug, vous pouvez nous envoyer un message à hola@bahiablanca.co"
-       render :new
+       # flash[:alert] = "Votre inscription n'a pas marché !"
     end
   end
 

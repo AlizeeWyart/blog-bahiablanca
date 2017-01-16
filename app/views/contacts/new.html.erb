@@ -24,10 +24,45 @@
     </div>
     <div class="row" style="text-align:center">
       <div class="col-xs-12">
-        <%= f.button :submit, 'Vamos!', class:"bahia-btn" %>
+        <%= f.button :submit, 'Vamos!', class:"bahia-btn", id:"new_message_btn" %>
       </div>
     </div>
   <% end %>
+  <div id="thanks_message" style="display:none;">
+    <h4 class="message-text">Merci !!</h4>
+  </div>
+  <div id="error_message" style="display:none;">
+    <h4 class="message-text">Oups ! Petit problème, veuillez recommencer !</h4>
+  </div>
 </div>
 
 <%= render 'shared/footer' %>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $('#new_message_btn').on("click", function(){
+        var firstName = $('#contact_first_name').val();
+        console.log(firstName);
+        var lastName = $('#contact_last_name').val();
+        console.log(lastName);
+        var email = $('#contact_email').val();
+        console.log(email);
+        var message = $('#contact_message').val();
+        console.log(message);
+        $.ajax({
+          type: "POST",
+          url: "/contacts",
+          data: { contact: { first_name: firstName, message: message,  last_name: lastName, email: email } },
+          success:function(data){
+                console.log("it is working!");
+                $('#new_contact').css("display" , "none");
+                $('#thanks_message').css("display", "block");
+            },
+          error:function(data){
+            console.log("it is NOT working!");
+            $('#error_message').css("display", "block");
+          }
+        });
+      });
+  <% end %>
+<% end %>

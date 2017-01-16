@@ -14,7 +14,13 @@
   @media all and (max-width: 400px) {
     background-position: center 100px;
   }
-
+  .message-text {
+    font-weight: 300;
+    color: #333333;
+    font-size: 42px;
+    margin: 20px 0 5px 0;
+    text-align: center;
+  }
   h1 {
     margin: 0 0 50px 0;
     text-align: center;

@@ -13,7 +13,7 @@
     </h4>
     <h3><%= article.title %></h2>
     <% avatar_url =  article.user.photo || "https://cdn4.iconfinder.com/data/icons/linecon/512/photo-512.png" %>
-    <h4><i class="fa fa-calendar-o" aria-hidden="true"></i> <%= article.date.strftime("%e %b %Y") %> <i class="fa fa-heart-o" aria-hidden="true"></i> <%= article.likes %> <i class="fa fa-comment-o margin-left-20" aria-hidden="true"></i> <%= article.comments.count %>  <img class="user-photo" src="<%= avatar_url %>" alt="">Par <%= article.user.first_name %></h4>
+    <h4><i class="fa fa-calendar-o" aria-hidden="true"></i> <%= article.date.strftime("%e %b %Y") %> <i class="fa fa-heart-o" aria-hidden="true"></i> <%= article.heart %> <i class="fa fa-comment-o margin-left-20" aria-hidden="true"></i> <%= article.comments.count %>  <img class="user-photo" src="<%= avatar_url %>" alt="">Par <%= article.user.first_name %></h4>
     <p><%= article.short_description %></p>
   </div>
 </div>

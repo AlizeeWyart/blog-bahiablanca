@@ -22,6 +22,12 @@ class Admin::ContentsController < ApplicationController
   def create
     @content = Content.new(content_params)
     @article = @content.article
+    @contents = Content.select {|content| content.article = @article }.sort_by{|c| c.order }
+    if @contents.count == 0
+      @content.order = 1
+    else
+      @content.order = @contents.last.order + 1
+    end
     if @content.save
        redirect_to admin_article_path(@article)
     else
@@ -36,10 +42,17 @@ class Admin::ContentsController < ApplicationController
     redirect_to admin_article_path(@article)
   end
 
+  def destroy
+    @content = Content.find(params[:id])
+    @article = @content.article
+    @content.delete
+    redirect_to admin_article_path(@article)
+  end
+
   private
 
   def content_params
-    params.require(:content).permit(:article_id, :style, :text, :video, :photo, :photo_cache, :photo2, :photo2_cache)
+    params.require(:content).permit(:article_id, :style, :text, :video, :order, :photo, :photo_cache, :photo2, :photo2_cache)
   end
 
   def is_admin?

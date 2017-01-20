@@ -11,7 +11,7 @@ class Admin::ArticlesController < ApplicationController
     @regions = @article.regions
     @region4a = Region4a.new(article: @article)
     @all_regions = Region.all
-    @contents = @article.contents
+    @contents = @article.contents.sort_by {|a| a.order }
     @comments = Comment.select{|comment| comment.article = @article}
   end
 

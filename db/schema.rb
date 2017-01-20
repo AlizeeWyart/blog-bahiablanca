@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170115144031) do
+ActiveRecord::Schema.define(version: 20170120093608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170115144031) do
     t.string   "country"
     t.integer  "likes",             default: 0
     t.integer  "category_id"
+    t.integer  "heart"
     t.index ["category_id"], name: "index_articles_on_category_id", using: :btree
     t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
   end
@@ -96,6 +97,7 @@ ActiveRecord::Schema.define(version: 20170115144031) do
     t.datetime "updated_at",         null: false
     t.string   "photo_description"
     t.string   "photo_description2"
+    t.integer  "order"
     t.index ["article_id"], name: "index_contents_on_article_id", using: :btree
   end
 

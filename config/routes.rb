@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :region4as, only: [:create, :destroy]
     resources :regions, only: [:update]
     resources :articles, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-    resources :contents, only: [:new, :create, :update]
+    resources :contents, only: [:new, :create, :update, :destroy]
     get "messages" => "dashboard#messages"
   end
 

@@ -52,7 +52,7 @@ class Admin::ContentsController < ApplicationController
   private
 
   def content_params
-    params.require(:content).permit(:article_id, :style, :text, :video, :order, :photo, :photo_cache, :photo2, :photo2_cache)
+    params.require(:content).permit(:article_id, :style, :text, :video, :order, :photo_description, :photo_description2, :photo, :photo_cache, :photo2, :photo2_cache)
   end
 
   def is_admin?

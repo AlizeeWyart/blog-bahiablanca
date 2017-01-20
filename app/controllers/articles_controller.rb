@@ -34,4 +34,16 @@ class ArticlesController < ApplicationController
       # end
     end
   end
+
+  def update
+    @article = Article.find(params[:id])
+    @article.update(article_params)
+    redirect_to article_path(@article)
+  end
+
+  private
+
+  def article_params
+    params.require(:article).permit(:heart)
+  end
 end

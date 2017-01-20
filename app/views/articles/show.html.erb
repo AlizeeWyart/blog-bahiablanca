@@ -33,7 +33,7 @@
     <div class="article-title">
       <h3><%= @article.title %></h3>
       <% avatar_url =  @article.user.photo || "https://cdn4.iconfinder.com/data/icons/linecon/512/photo-512.png" %>
-      <h4 class="article-details" ><i class="fa fa-calendar-o" aria-hidden="true"></i> <%= @article.date.strftime("%e %b %Y") %> <i class="fa fa-heart-o" aria-hidden="true"></i> <%= @article.likes %> <i class="fa fa-comment-o margin-left-20" aria-hidden="true"></i> <%= @article.comments.count %>  <img class="user-photo" src="<%= avatar_url %>" alt="">Par <%= @article.user.first_name %></h4>
+      <h4 class="article-details" ><i class="fa fa-calendar-o" aria-hidden="true"></i> <%= @article.date.strftime("%e %b %Y") %> <i class="fa fa-heart-o" aria-hidden="true" id="add-heart"></i> <span id="nb-like"><%= @article.heart %></span><i class="fa fa-comment-o margin-left-20" aria-hidden="true"></i> <%= @article.comments.count %>  <img class="user-photo" src="<%= avatar_url %>" alt="">Par <%= @article.user.first_name %></h4>
     </div>
     <% @contents.each do |content| %>
     <div class="article-content" style="text-align:justify">
@@ -43,11 +43,13 @@
         <!-- DEUX PHOTOS -->
         <% elsif content.style == "Deux photos" %>
           <div class="row">
-            <div class="col-xs-12 col-sm-6" style="padding-left:0">
+            <div class="col-xs-12 col-sm-6 show-photo" style="padding-left:0">
               <%= cl_image_tag content.photo, style: "width:100%" %>
+              <div class="photo-description"><p><%= content.photo_description %></p></div>
             </div>
-            <div class="col-xs-12 col-sm-6" style="padding-right:0">
+            <div class="col-xs-12 col-sm-6 show-photo" style="padding-right:0">
               <%= cl_image_tag content.photo2, style: "width:100%" %>
+              <div class="photo-description"><p><%= content.photo_description2 %></p></div>
             </div>
           </div>
         <!-- Une vidéo -->
@@ -58,13 +60,16 @@
           </div>
         <!-- Une photo -->
         <% elsif content.style == "Une photo" %>
-          <%= cl_image_tag content.photo, style: "width:100%" %>
-          <p style="text-align:center"><%= content.text %></p>
+          <div class="show-photo" style="margin:0;padding:0;">
+            <%= cl_image_tag content.photo, style: "width:100%" %>
+            <div class="photo-description"><p><%= content.photo_description %></p></div>
+          </div>
         <!-- Un portrait -->
         <% elsif content.style == "Portrait artisan" %>
         <div class="row">
-          <div class="col-xs-12 col-sm-6" style="padding-left:0">
+          <div class="col-xs-12 col-sm-6 show-photo" style="padding-left:0">
             <%= cl_image_tag content.photo, style: "width:100%" %>
+            <div class="photo-description"><p><%= content.photo_description %></p></div>
           </div>
           <div class="col-xs-12 col-sm-6" style="padding-right:0">
            <%= content.text.html_safe %>
@@ -108,9 +113,8 @@
                 <%= f.input :article_id, label: false %>
               </div>
               <%= f.input :email, label: "Votre email" %>
-              <%= f.input :title, label: "Titre" %>
-              <%= f.input :content, label: "Votre commentaire" %>
-              <%= f.button :submit, 'Go :)', class:"bahia-btn" %>
+              <%= f.input :content, label: "J'ai envie de vous dire..." %>
+              <%= f.button :submit, 'Vamos!', class:"bahia-btn" %>
             <% end %>
           </div>
         </div>
@@ -338,7 +342,40 @@
       $('#comment-form-btn').on("click", function() {
         $('#comment-form-btn').css("display", "none");
         $('.comment-form').css("display", "block");
-      })
+      });
+
+
+      $('#add-heart').on("click", function() {
+        $('#add-heart').removeClass("fa-heart-o");
+        $('#add-heart').addClass("fa-heart");
+        addHeart = <%= @article.heart %> + 1;
+        console.log(addHeart);
+        $('#nb-like').html(addHeart);
+        sessionStorage.setItem('heartArticle<%= @article.id %>', 1);
+        $.ajax({
+          type: "PUT",
+          dataType: 'script',
+          url: "/articles/<%= @article.id %>",
+          data: { article: { heart: addHeart}, method: 'put'  },
+          success:function(data){
+                console.log("it is working!");
+            },
+          error:function(data){
+            console.log("it is NOT working!");
+          },
+        });
+
+      });
+
+
+      $(document).ready(function(){
+      var heartArticle<%= @article.id %> = sessionStorage.getItem('heartArticle<%= @article.id %>');
+      if (heartArticle<%= @article.id %> == 1) {
+        $('#add-heart').removeClass("fa-heart-o");
+        $('#add-heart').addClass("fa-heart");
+        <!-- sessionStorage.setItem('heartArticle<#%= @article.id %>', 1); -->
+        }
+      });
   <% end %>
 <% end %>
 

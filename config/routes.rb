@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get "thematic" => "pages#category"
   resources :page_infos, only: [:update]
   resources :categories, only: [:create, :update, :destroy]
-  resources :articles, only: [:show]
+  resources :articles, only: [:show, :update]
   resources :users, only: [:update]
   resources :comments, only: [:create, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

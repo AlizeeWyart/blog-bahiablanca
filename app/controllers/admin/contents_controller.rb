@@ -22,7 +22,7 @@ class Admin::ContentsController < ApplicationController
   def create
     @content = Content.new(content_params)
     @article = @content.article
-    @contents = Content.select {|content| content.article = @article }.sort_by{|c| c.order }
+    @contents = Content.select {|content| content.article = @article }.sort_by {|c| c.order}
     if @contents.count == 0
       @content.order = 1
     else

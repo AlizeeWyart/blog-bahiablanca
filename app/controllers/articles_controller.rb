@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
     @regions = @article.regions.select { |region| region.code != "MEX-ALL"}
     @comments = Comment.select {|c| c.article = @article }
     @new_comment = Comment.new(article: @article)
-    @contents = Content.select {|c| c.article = @article }
+    @contents = Content.select {|c| c.article = @article }.sort_by {|c| c.order}
     @hash = Gmaps4rails.build_markers(@article) do |article, marker|
       marker.lat article.latitude
       marker.lng article.longitude

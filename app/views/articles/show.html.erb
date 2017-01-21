@@ -1,11 +1,18 @@
 <%= render 'shared/navbar' %>
+<% meta_tag :description, @article.short_description %>
+<% meta_tag :'og:title', @article.title %>
+<% if @article.photo %>
+  <% meta_tag :'og:image', cl_image_path(@article.photo) %>
+  <% meta_tag :image_url, cl_image_path(@article.photo) %>
+<% end %>
+<% meta_tag :'og:description', @article.short_description %>
 
 <div class="wrapper-show-article">
   <!-- PHOTO & MAP -->
   <div class="row">
     <div class="col-xs-12 col-sm-8">
-      <% mexico_photo_url = image_path "photo_mexique_1.jpg" %>
       <% photo_url = @article.photo || mexico_photo_url %>
+      <% mexico_photo_url = image_path "photo_mexique_1.jpg" %>
       <div class="article-photo" style="background-image:url('<%= photo_url %>')">
       </div>
     </div>

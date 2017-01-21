@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bahia Blanca Artisanat</title>
-    <meta name="description" content="Bahia Blanca, jeune marque de mode éthique qui place les savoir-faire d'ethnies du Mexique au coeur de ses créations.">
+
+
+  <title>
+  <%= yield_meta_tag(:'title', 'Bahia Blanca Artisanat - Le Journal') %>
+  </title>
+  <meta name='description'
+      content='<%= yield_meta_tag(:description, 'Bahia Blanca, jeune marque de mode éthique qui place les savoir-faire d\'ethnies du Mexique au coeur de ses créations.') %>' />
     <%= favicon_link_tag "favicon_bahia.jpg"  %>
-    <meta property="og:title" content="Bahia Blanca Artisanat">
-    <meta property="og:image" content="small_card.jpg">
+
+  <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="<%= yield_meta_tag(:'og:title', 'Bahia Blanca Artisanat') %>" />
+    <meta property="og:image" content="<%= yield_meta_tag(:'og:image', 'small_card.jpg') %>">
     <meta property="og:url" content="blog.bahiablanca.co">
-    <meta property="og:description" content="Bahia Blanca, jeune marque de mode éthique qui place les savoir-faire d'ethnies du Mexique au coeur de ses créations">
+    <meta property="og:description" content="<%= yield_meta_tag(:'og:description', 'Bahia Blanca, jeune marque de mode éthique qui place les savoir-faire d\'ethnies du Mexique au coeur de ses créations.') %>">
     <meta property="og:site_name" content="Bahia Blanca Artisanat"/>
+
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">

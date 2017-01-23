@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     resources :category4as, only: [:create, :destroy]
     resources :region4as, only: [:create, :destroy]
     resources :regions, only: [:update]
-    resources :articles, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    resources :articles, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+      member do
+        get 'publish'
+      end
+    end
     resources :contents, only: [:new, :create, :update, :destroy]
     get "messages" => "dashboard#messages"
   end

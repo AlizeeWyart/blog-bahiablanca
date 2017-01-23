@@ -41,7 +41,7 @@ class PagesController < ApplicationController
 
   def map
     @contact = Contact.new
-    @all_articles = Article.all
+    @all_articles = Article.select { |a| a.status == "PUBLIE"}
     @map_articles = Article.where.not(latitude: nil, longitude: nil)
     @title_region_map = PageInfo.find_by(name: "title_region_map")
     @title_category = PageInfo.find_by(name: "title_category")
@@ -57,7 +57,7 @@ class PagesController < ApplicationController
     if params[:category]
       @category = Category.find_by_code(params[:category])
       if @category
-        @articles = @category.articles
+        @articles = @category.articles.where(status: "PUBLIE")
         @map_articles = @articles.where.not(latitude:nil, longitude:nil)
         @hash = Gmaps4rails.build_markers(@map_articles) do |article, marker|
           marker.lat article.latitude

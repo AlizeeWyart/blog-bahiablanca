@@ -42,6 +42,20 @@ class Admin::ArticlesController < ApplicationController
     redirect_to admin_path
   end
 
+  def publish
+    @article = Article.find(params[:id])
+    if @article.status == "PUBLIE"
+      @article.status = "EN ATTENTE"
+    else
+      @article.status = "PUBLIE"
+    end
+    if @article.save
+      redirect_to admin_article_path(@article)
+    else
+      render :back
+    end
+  end
+
   private
 
   def is_admin?

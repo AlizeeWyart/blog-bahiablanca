@@ -23,6 +23,17 @@
         <%= link_to admin_article_path(@article), class:"destroy-red-btn", :method => :delete do %>
         <h4>Supprimer l'article</h4>
         <% end %>
+        <div class="published-btn">
+          <p>Publication</p>
+          <%= link_to publish_admin_article_path(@article) do %>
+            <% if @article.status == "PUBLIE" %>
+              <i class="fa fa-toggle-on button" aria-hidden="true"></i>
+            <% else %>
+              <i class="fa fa-toggle-off button" aria-hidden="true"></i>
+            <% end %>
+          <p><%= @article.status %></p>
+        <% end %>
+        </div>
       </div>
       <div class="row-content">
         <div class="content-card page-description" style="width: 100%; padding-bottom:60px">

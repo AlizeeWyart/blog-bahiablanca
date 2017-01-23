@@ -491,5 +491,22 @@ $dark-grey: #434141;
       }
     }
   }
+  .published-btn {
+    right: 10px;
+    top: 10px;
+    position: absolute;
+    text-align: right;
+    cursor:pointer;
+    color:white;
+    p {
+      margin: 0;
+      font-size: 12px;
+      color:white
+    }
+    .button {
+      color:white;
+      font-size:20px;
+    }
+  }
 }
 

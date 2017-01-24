@@ -132,6 +132,9 @@
           font-family:'Quicksand', sans-serif;
         }
     }
+    @media (max-width: 768px) {
+      width: 100%;
+    }
   }
   #region-map-selector {
     margin-top: -100px;
@@ -208,6 +211,11 @@
   }
   .show-photo {
     position:relative;
+    @media (max-width: 768px) {
+      padding-left: 0;
+      padding-right:0;
+      margin-bottom:20px;
+    }
   }
   .show-photo:hover .photo-description {
     opacity:1;

@@ -10,6 +10,10 @@
   height: 22px;
 }
 
+#add-heart {
+  cursor: pointer;
+}
+
 .article-miniature {
   display: flex;
   width: 100%;
@@ -56,6 +60,13 @@
       margin-right: 5px;
       margin-left: 20px;
     }
+    @media all and (max-width: 600px){
+      margin-left:0px;
+    }
+  }
+  @media all and (max-width: 600px){
+    display:block;
+    margin-top:20px;
   }
 }
 .article-miniature:hover .article-miniature-text{
@@ -228,9 +239,12 @@
     text-align: center;
     padding: 10px;
     opacity:0;
-        transition: all .25s linear;
+    transition: all .25s linear;
     p {
       margin:0;
+    }
+    @media all and (max-width: 700px){
+      opacity:1;
     }
   }
 }
